@@ -42,13 +42,13 @@ class Config:
                 with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
                     data = json.load(f)
                 cls._config = AppConfig(**data)
-                print(f"✅ Configuration chargée depuis {CONFIG_PATH}")
+                print(f"[OK] Configuration chargee depuis {CONFIG_PATH}")
             except Exception as e:
-                print(f"❌ Erreur de chargement de config.json : {e}")
-                print("   → Utilisation des valeurs par défaut")
+                print(f"[ERROR] Erreur de chargement de config.json : {e}")
+                print("   -> Utilisation des valeurs par defaut")
                 cls._config = default
         else:
-            print(f"ℹ️  Fichier {CONFIG_PATH} non trouvé, utilisation des valeurs par défaut")
+            print(f"[INFO] Fichier {CONFIG_PATH} non trouve, utilisation des valeurs par defaut")
             cls._config = default
 
     def get(self, key: str, default=None):
