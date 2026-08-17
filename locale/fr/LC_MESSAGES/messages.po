@@ -1,0 +1,191 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PythonCodeExtractor 1.0\n"
+"POT-Creation-Date: 2026-08-13 11:00+0200\n"
+"PO-Revision-Date: 2026-08-16 21:50+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Extracteur de code Python/JSON/TXT"
+msgstr "Extracteur de code Python/JSON/TXT"
+
+msgid "Sélectionner un dossier contenant des fichiers Python/JSON/TXT/PO"
+msgstr "Sélectionner un dossier contenant des fichiers Python/JSON/TXT/PO"
+
+msgid "Dossier sélectionné : {}"
+msgstr "Dossier sélectionné : {}"
+
+msgid "Fichiers trouvés : {}"
+msgstr "Fichiers trouvés : {}"
+
+msgid "  - Fichiers Python : {}"
+msgstr "  - Fichiers Python : {}"
+
+msgid "  - Fichiers JSON : {}"
+msgstr "  - Fichiers JSON : {}"
+
+msgid "  - Fichiers TXT : {}"
+msgstr "  - Fichiers TXT : {}"
+
+msgid "  - Fichiers PO : {}"
+msgstr "  - Fichiers PO : {}"
+
+msgid "  - Fichiers MO : {}"
+msgstr "  - Fichiers MO : {}"
+
+msgid "  - Fichiers HTML : {}"
+msgstr "  - Fichiers HTML : {}"
+
+msgid "  - Fichiers CSS : {}"
+msgstr "  - Fichiers CSS : {}"
+
+msgid "  - Fichiers JS : {}"
+msgstr "  - Fichiers JS : {}"
+
+msgid "Attention"
+msgstr "Attention"
+
+msgid "Veuillez d'abord sélectionner un dossier"
+msgstr "Veuillez d'abord sélectionner un dossier"
+
+msgid "Extraction en cours..."
+msgstr "Extraction en cours..."
+
+msgid "\n--- Extraction en cours ---"
+msgstr "\n--- Extraction en cours ---"
+
+msgid "Extraction échouée"
+msgstr "Extraction échouée"
+
+msgid "Erreur"
+msgstr "Erreur"
+
+msgid "Échec de l'extraction (voir journal)"
+msgstr "Échec de l'extraction (voir journal)"
+
+msgid "Extraction terminée"
+msgstr "Extraction terminée"
+
+msgid "\n--- Extraction terminée avec succès ---"
+msgstr "\n--- Extraction terminée avec succès ---"
+
+msgid "Fichier créé : {}"
+msgstr "Fichier créé : {}"
+
+msgid "Emplacement : {}"
+msgstr "Emplacement : {}"
+
+msgid "Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: {}, CSS: {}, JS: {})"
+msgstr "Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: {}, CSS: {}, JS: {})"
+
+msgid "Extraction terminée avec succès !\n\n"
+msgstr "Extraction terminée avec succès !\n\n"
+
+msgid "Fichier créé : {}\n"
+msgstr "Fichier créé : {}\n"
+
+msgid "Nombre de fichiers extraits : {}\n"
+msgstr "Nombre de fichiers extraits : {}\n"
+
+msgid "  - Fichiers Python : {}\n"
+msgstr "  - Fichiers Python : {}\n"
+
+msgid "  - Fichiers JSON : {}\n"
+msgstr "  - Fichiers JSON : {}\n"
+
+msgid "  - Fichiers TXT : {}\n"
+msgstr "  - Fichiers TXT : {}\n"
+
+msgid "  - Fichiers PO : {}\n"
+msgstr "  - Fichiers PO : {}\n"
+
+msgid "  - Fichiers MO : {}\n"
+msgstr "  - Fichiers MO : {}\n"
+
+msgid "  - Fichiers HTML : {}\n"
+msgstr "  - Fichiers HTML : {}\n"
+
+msgid "  - Fichiers CSS : {}\n"
+msgstr "  - Fichiers CSS : {}\n"
+
+msgid "  - Fichiers JS : {}\n"
+msgstr "  - Fichiers JS : {}\n"
+
+msgid "Emplacement : {}"
+msgstr "Emplacement : {}"
+
+msgid "Succès"
+msgstr "Succès"
+
+msgid "Une erreur est survenue : {}"
+msgstr "Une erreur est survenue : {}"
+
+msgid "Confirmation"
+msgstr "Confirmation"
+
+msgid "Réinitialiser toutes les versions et l'historique ?\n"
+msgstr "Réinitialiser toutes les versions et l'historique ?\n"
+
+msgid "Les anciens fichiers seront archivés dans out/old_out/."
+msgstr "Les anciens fichiers seront archivés dans out/old_out/."
+
+msgid "--- {} ---"
+msgstr "--- {} ---"
+
+msgid "Échec du nettoyage : {}"
+msgstr "Échec du nettoyage : {}"
+
+msgid "Impossible d'ouvrir la fenêtre de transfert : {}"
+msgstr "Impossible d'ouvrir la fenêtre de transfert : {}"
+
+msgid "Envoyer un fichier à un autre PC"
+msgstr "Envoyer un fichier à un autre PC"
+
+msgid "Fichiers disponibles dans out/ :"
+msgstr "Fichiers disponibles dans out/ :"
+
+msgid "PC disponibles sur le réseau :"
+msgstr "PC disponibles sur le réseau :"
+
+msgid "Envoyer le fichier"
+msgstr "Envoyer le fichier"
+
+msgid "Rafraîchir la liste"
+msgstr "Rafraîchir la liste"
+
+msgid "Scanner le réseau"
+msgstr "Scanner le réseau"
+
+msgid "Prêt"
+msgstr "Prêt"
+
+msgid "Erreur de lecture des fichiers"
+msgstr "Erreur de lecture des fichiers"
+
+msgid "Fichier envoyé à {} ({})"
+msgstr "Fichier envoyé à {} ({})"
+
+msgid "Envoi réussi"
+msgstr "Envoi réussi"
+
+msgid "Le serveur distant ne répond pas (timeout)"
+msgstr "Le serveur distant ne répond pas (délai dépassé)"
+
+msgid "Échec de l'envoi (timeout)"
+msgstr "Échec de l'envoi (délai dépassé)"
+
+msgid "Le serveur distant a refusé la connexion"
+msgstr "Le serveur distant a refusé la connexion"
+
+msgid "Échec de l'envoi (refus)"
+msgstr "Échec de l'envoi (refus)"
+
+msgid "Échec de l'envoi : {}"
+msgstr "Échec de l'envoi : {}"
+
+msgid "Échec de l'envoi"
+msgstr "Échec de l'envoi"

@@ -1,0 +1,39 @@
+{
+  "output_dir": "out",
+  "received_subdir": "received",
+  "archive_subdir": "old_out",
+  "version_file": "extractor_version.txt",
+  "language": "en",
+  "network": {
+    "server_host": "127.0.0.1",
+    "server_port": 50000,
+    "discovery_port": 50001,
+    "broadcast_msg": "PYEXTRACTOR_DISCOVER",
+    "reply_msg": "PYEXTRACTOR_HERE",
+    "auth_enabled": true,
+    "auth_token": "change-me-secure-random-token",
+    "allowed_extensions": [".txt"]
+  },
+  "extraction": {
+    "include_json": true,
+    "include_subdirs": true,
+    "show_file_paths": true,
+    "include_structure": true,
+    "include_txt": false,
+    "include_po": true,
+    "include_mo": true,
+    "include_html": true,
+    "include_css": true,
+    "include_js": true,
+    "ignore_init": false,
+    "ignore_git": true,
+    "ignore_pycache": true,
+    "include_statistics": true,
+    "include_file_metadata": true
+  },
+  "gui": {
+    "window_width": 700,
+    "window_height": 600,
+    "log_height": 12
+  }
+}

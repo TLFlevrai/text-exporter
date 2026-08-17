@@ -1,0 +1,3104 @@
+Extraction du code du dossier : C:\dossier tlf\New folder\text exporter
+Date d'extraction : 14/08/2026 18:36:31
+================================================================================
+
+STRUCTURE DU PROJET
+================================================================================
+📁 text exporter/
+├──  🐍 compile_po.py (1.96 Ko)
+├──  📄 config.json (841 octets)
+├──  📝 extractor_version.txt (46 octets)
+├──  🐍 main.py (323 octets)
+└──  📄 recent_folders.json (72 octets)
+├── 📁 locale/
+│   ├── 📁 en/
+│   │   ├── 📁 LC_MESSAGES/
+│   │   │   ├──  📦 messages.mo (3.66 Ko)
+│   │   │   └──  🌐 messages.po (3.95 Ko)
+│   ├── 📁 fr/
+│   │   ├── 📁 LC_MESSAGES/
+│   │   │   ├──  📦 messages.mo (3.96 Ko)
+│   │   │   └──  🌐 messages.po (4.25 Ko)
+├── 📁 out/
+│   ├──  📝 Site webv1.txt (24.12 Ko)
+│   ├──  📝 project - LVv1.txt (20.99 Ko)
+│   ├──  📝 project - LVv2.txt (26.21 Ko)
+│   ├──  📝 project - LVv3.txt (36.20 Ko)
+│   ├──  📝 project - LVv4.txt (39.85 Ko)
+│   ├──  📝 text exporterv1.txt (35.81 Ko)
+│   ├──  📝 text exporterv10.txt (64.95 Ko)
+│   ├──  📝 text exporterv11.txt (65.08 Ko)
+│   ├──  📝 text exporterv12.txt (67.46 Ko)
+│   ├──  📝 text exporterv13.txt (67.96 Ko)
+│   ├──  📝 text exporterv14.txt (67.78 Ko)
+│   ├──  📝 text exporterv15.txt (68.70 Ko)
+│   ├──  📝 text exporterv16.txt (93.24 Ko)
+│   ├──  📝 text exporterv17.txt (92.40 Ko)
+│   ├──  📝 text exporterv18.txt (72.71 Ko)
+│   ├──  📝 text exporterv19.txt (73.73 Ko)
+│   ├──  📝 text exporterv2.txt (50.46 Ko)
+│   ├──  📝 text exporterv20.txt (73.77 Ko)
+│   ├──  📝 text exporterv21.txt (74.82 Ko)
+│   ├──  📝 text exporterv22.txt (74.95 Ko)
+│   ├──  📝 text exporterv23.txt (75.08 Ko)
+│   ├──  📝 text exporterv24.txt (74.24 Ko)
+│   ├──  📝 text exporterv25.txt (76.12 Ko)
+│   ├──  📝 text exporterv26.txt (81.16 Ko)
+│   ├──  📝 text exporterv27.txt (87.17 Ko)
+│   ├──  📝 text exporterv28.txt (102.32 Ko)
+│   ├──  📝 text exporterv29.txt (105.06 Ko)
+│   ├──  📝 text exporterv3.txt (53.03 Ko)
+│   ├──  📝 text exporterv30.txt (115.63 Ko)
+│   ├──  📝 text exporterv31.txt (116.12 Ko)
+│   ├──  📝 text exporterv32.txt (125.40 Ko)
+│   ├──  📝 text exporterv33.txt (125.47 Ko)
+│   ├──  📝 text exporterv34.txt (126.65 Ko)
+│   ├──  📝 text exporterv35.txt (0 octets)
+│   ├──  📝 text exporterv4.txt (57.03 Ko)
+│   ├──  📝 text exporterv5.txt (57.58 Ko)
+│   ├──  📝 text exporterv6.txt (57.63 Ko)
+│   ├──  📝 text exporterv7.txt (62.06 Ko)
+│   ├──  📝 text exporterv8.txt (62.12 Ko)
+│   └──  📝 text exporterv9.txt (0 octets)
+│   ├── 📁 old_out/
+│   │   ├──  📝 text exporterv1.txt (21.69 Ko)
+│   │   ├──  📝 text exporterv2.txt (23.74 Ko)
+│   │   ├──  📝 text exporterv3.txt (23.37 Ko)
+│   │   ├──  📝 text exporterv4.txt (25.07 Ko)
+│   │   ├──  📝 text exporterv5.txt (31.42 Ko)
+│   │   └──  📝 text exporterv6.txt (34.24 Ko)
+│   ├── 📁 received/
+├── 📁 src/
+│   ├──  🐍 __init__.py (0 octets)
+│   ├──  🐍 config.py (3.02 Ko)
+│   ├──  🐍 i18n.py (1.56 Ko)
+│   ├──  🐍 logger.py (553 octets)
+│   ├──  🐍 utils.py (172 octets)
+│   └──  🐍 versioning.py (2.71 Ko)
+│   ├── 📁 __pycache__/
+│   │   ├──  📄 __init__.cpython-311.pyc (164 octets)
+│   │   ├──  📄 __init__.cpython-313.pyc (129 octets)
+│   │   ├──  📄 __init__.cpython-314.pyc (159 octets)
+│   │   ├──  📄 config.cpython-311.pyc (4.20 Ko)
+│   │   ├──  📄 extractor.cpython-313.pyc (13.56 Ko)
+│   │   ├──  📄 extractor.cpython-314.pyc (10.08 Ko)
+│   │   ├──  📄 gui.cpython-313.pyc (13.67 Ko)
+│   │   ├──  📄 gui.cpython-314.pyc (13.31 Ko)
+│   │   ├──  📄 i18n.cpython-311.pyc (2.88 Ko)
+│   │   ├──  📄 logger.cpython-311.pyc (1.05 Ko)
+│   │   ├──  📄 utils.cpython-311.pyc (504 octets)
+│   │   ├──  📄 utils.cpython-313.pyc (465 octets)
+│   │   ├──  📄 utils.cpython-314.pyc (467 octets)
+│   │   ├──  📄 versioning.cpython-311.pyc (5.97 Ko)
+│   │   ├──  📄 versioning.cpython-313.pyc (3.72 Ko)
+│   │   └──  📄 versioning.cpython-314.pyc (2.37 Ko)
+│   ├── 📁 extractor/
+│   │   ├──  🐍 __init__.py (0 octets)
+│   │   ├──  🐍 content_formatter.py (476 octets)
+│   │   ├──  🐍 export_writer.py (2.83 Ko)
+│   │   ├──  🐍 extractor.py (7.98 Ko)
+│   │   ├──  🐍 file_finder.py (1.63 Ko)
+│   │   ├──  🐍 file_utils.py (2.21 Ko)
+│   │   ├──  🐍 stats_writer.py (3.01 Ko)
+│   │   └──  🐍 structure_generator.py (2.93 Ko)
+│   │   ├── 📁 __pycache__/
+│   │   │   ├──  📄 __init__.cpython-311.pyc (174 octets)
+│   │   │   ├──  📄 __init__.cpython-313.pyc (139 octets)
+│   │   │   ├──  📄 content_formatter.cpython-311.pyc (956 octets)
+│   │   │   ├──  📄 content_formatter.cpython-313.pyc (852 octets)
+│   │   │   ├──  📄 export_writer.cpython-311.pyc (3.85 Ko)
+│   │   │   ├──  📄 extractor.cpython-311.pyc (9.48 Ko)
+│   │   │   ├──  📄 extractor.cpython-313.pyc (7.61 Ko)
+│   │   │   ├──  📄 file_finder.cpython-311.pyc (2.19 Ko)
+│   │   │   ├──  📄 file_finder.cpython-313.pyc (2.21 Ko)
+│   │   │   ├──  📄 file_utils.cpython-311.pyc (3.57 Ko)
+│   │   │   ├──  📄 stats_writer.cpython-311.pyc (4.32 Ko)
+│   │   │   ├──  📄 stats_writer.cpython-313.pyc (2.46 Ko)
+│   │   │   ├──  📄 structure_generator.cpython-311.pyc (4.14 Ko)
+│   │   │   └──  📄 structure_generator.cpython-313.pyc (3.66 Ko)
+│   ├── 📁 gui/
+│   │   ├──  🐍 __init__.py (669 octets)
+│   │   ├──  🐍 actions.py (2.80 Ko)
+│   │   ├──  🐍 extraction_controller.py (7.72 Ko)
+│   │   ├──  🐍 extraction_runner.py (3.02 Ko)
+│   │   ├──  🐍 file_selector.py (415 octets)
+│   │   ├──  🐍 folder_scanner.py (1.08 Ko)
+│   │   ├──  🐍 gui.py (3.27 Ko)
+│   │   ├──  🐍 recent_files.py (1.71 Ko)
+│   │   └──  🐍 version_manager.py (200 octets)
+│   │   ├── 📁 __pycache__/
+│   │   │   ├──  📄 __init__.cpython-311.pyc (844 octets)
+│   │   │   ├──  📄 __init__.cpython-313.pyc (133 octets)
+│   │   │   ├──  📄 extraction_controller.cpython-311.pyc (14.54 Ko)
+│   │   │   ├──  📄 extraction_controller.cpython-313.pyc (10.10 Ko)
+│   │   │   ├──  📄 extraction_runner.cpython-311.pyc (5.33 Ko)
+│   │   │   ├──  📄 file_selector.cpython-311.pyc (768 octets)
+│   │   │   ├──  📄 folder_scanner.cpython-311.pyc (1.85 Ko)
+│   │   │   ├──  📄 gui.cpython-311.pyc (5.20 Ko)
+│   │   │   ├──  📄 gui.cpython-313.pyc (3.08 Ko)
+│   │   │   ├──  📄 recent_files.cpython-311.pyc (3.28 Ko)
+│   │   │   ├──  📄 selection_dialog.cpython-311.pyc (17.54 Ko)
+│   │   │   ├──  📄 ui_builder.cpython-313.pyc (7.51 Ko)
+│   │   │   └──  📄 version_manager.cpython-311.pyc (450 octets)
+│   │   ├── 📁 selection/
+│   │   │   ├──  🐍 __init__.py (101 octets)
+│   │   │   ├──  🐍 dialog.py (5.66 Ko)
+│   │   │   ├──  🐍 search.py (1.17 Ko)
+│   │   │   ├──  🐍 toolbar.py (2.38 Ko)
+│   │   │   ├──  🐍 tree_builder.py (3.12 Ko)
+│   │   │   ├──  🐍 tree_controller.py (4.05 Ko)
+│   │   │   └──  🐍 utils.py (1.07 Ko)
+│   │   │   ├── 📁 __pycache__/
+│   │   │   │   ├──  📄 __init__.cpython-311.pyc (264 octets)
+│   │   │   │   ├──  📄 dialog.cpython-311.pyc (10.38 Ko)
+│   │   │   │   ├──  📄 search.cpython-311.pyc (2.79 Ko)
+│   │   │   │   ├──  📄 toolbar.cpython-311.pyc (3.98 Ko)
+│   │   │   │   ├──  📄 tree_builder.cpython-311.pyc (5.00 Ko)
+│   │   │   │   ├──  📄 tree_controller.cpython-311.pyc (7.81 Ko)
+│   │   │   │   └──  📄 utils.cpython-311.pyc (2.25 Ko)
+│   │   ├── 📁 ui_builder/
+│   │   │   ├──  🐍 __init__.py (0 octets)
+│   │   │   ├──  🐍 menus.py (6.21 Ko)
+│   │   │   ├──  🐍 ui_builder.py (1.37 Ko)
+│   │   │   └──  🐍 widgets.py (3.26 Ko)
+│   │   │   ├── 📁 __pycache__/
+│   │   │   │   ├──  📄 __init__.cpython-311.pyc (179 octets)
+│   │   │   │   ├──  📄 __init__.cpython-313.pyc (144 octets)
+│   │   │   │   ├──  📄 menus.cpython-311.pyc (10.76 Ko)
+│   │   │   │   ├──  📄 menus.cpython-313.pyc (3.02 Ko)
+│   │   │   │   ├──  📄 ui_builder.cpython-311.pyc (2.55 Ko)
+│   │   │   │   ├──  📄 ui_builder.cpython-313.pyc (1.54 Ko)
+│   │   │   │   ├──  📄 widgets.cpython-311.pyc (5.83 Ko)
+│   │   │   │   └──  📄 widgets.cpython-313.pyc (4.76 Ko)
+│   ├── 📁 network/
+│   │   ├──  🐍 __init__.py (0 octets)
+│   │   ├──  🐍 discovery.py (3.44 Ko)
+│   │   ├──  🐍 server.py (4.88 Ko)
+│   │   └──  🐍 transfer_dialog.py (7.21 Ko)
+│   │   ├── 📁 __pycache__/
+│   │   │   ├──  📄 __init__.cpython-311.pyc (172 octets)
+│   │   │   ├──  📄 discovery.cpython-311.pyc (7.03 Ko)
+│   │   │   ├──  📄 server.cpython-311.pyc (8.67 Ko)
+│   │   │   └──  📄 transfer_dialog.cpython-311.pyc (15.00 Ko)
+│   ├── 📁 services/
+│   │   ├──  🐍 __init__.py (26 octets)
+│   │   └──  🐍 extraction_service.py (4.33 Ko)
+│   │   ├── 📁 __pycache__/
+│   │   │   ├──  📄 __init__.cpython-311.pyc (173 octets)
+│   │   │   └──  📄 extraction_service.cpython-311.pyc (5.83 Ko)
+
+================================================================================
+
+--- FIN DE LA STRUCTURE ---
+
+
+================================================================================
+FICHIER Python : compile_po.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\compile_po.py
+--------------------------------------------------------------------------------
+# compile_po.py
+import polib
+from pathlib import Path
+
+def ensure_locale_structure():
+    """Crée les dossiers et fichiers .po s'ils n'existent pas."""
+    locale_dir = Path("locale")
+    languages = ["fr", "en"]
+
+    for lang in languages:
+        po_dir = locale_dir / lang / "LC_MESSAGES"
+        po_dir.mkdir(parents=True, exist_ok=True)
+        po_file = po_dir / "messages.po"
+
+        if not po_file.exists():
+            # Créer un fichier .po minimal avec en-tête
+            po_content = f'''msgid ""
+msgstr ""
+"Project-Id-Version: PythonCodeExtractor 1.0\\n"
+"POT-Creation-Date: 2026-08-13 11:00+0200\\n"
+"PO-Revision-Date: 2026-08-13 11:00+0200\\n"
+"Last-Translator: \\n"
+"Language-Team: \\n"
+"Language: {lang}\\n"
+"MIME-Version: 1.0\\n"
+"Content-Type: text/plain; charset=UTF-8\\n"
+"Content-Transfer-Encoding: 8bit\\n"
+'''
+            with open(po_file, 'w', encoding='utf-8') as f:
+                f.write(po_content)
+            print(f"✅ Fichier {po_file} créé.")
+
+def compile_all_po():
+    """Compile tous les fichiers .po en .mo."""
+    locale_dir = Path("locale")
+    if not locale_dir.exists():
+        print("❌ Le dossier 'locale' n'existe pas. Création...")
+        ensure_locale_structure()
+
+    for lang_dir in locale_dir.iterdir():
+        if lang_dir.is_dir():
+            po_file = lang_dir / "LC_MESSAGES" / "messages.po"
+            mo_file = lang_dir / "LC_MESSAGES" / "messages.mo"
+            if po_file.exists():
+                try:
+                    po = polib.pofile(str(po_file))
+                    po.save_as_mofile(str(mo_file))
+                    print(f"✅ {mo_file} généré avec succès")
+                except Exception as e:
+                    print(f"❌ Erreur pour {po_file} : {e}")
+            else:
+                print(f"⚠️  {po_file} manquant, ignoré.")
+
+if __name__ == "__main__":
+    ensure_locale_structure()
+    compile_all_po()
+    print("✅ Compilation terminée.")
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER JSON : config.json
+Type: JSON
+Chemin complet: C:\dossier tlf\New folder\text exporter\config.json
+--------------------------------------------------------------------------------
+{
+  "output_dir": "out",
+  "received_subdir": "received",
+  "archive_subdir": "old_out",
+  "version_file": "extractor_version.txt",
+  "language": "fr",
+  "network": {
+    "server_host": "0.0.0.0",
+    "server_port": 50000,
+    "discovery_port": 50001,
+    "broadcast_msg": "PYEXTRACTOR_DISCOVER",
+    "reply_msg": "PYEXTRACTOR_HERE"
+  },
+  "extraction": {
+    "include_json": true,
+    "include_subdirs": true,
+    "show_file_paths": true,
+    "include_structure": true,
+    "include_txt": false,
+    "include_po": false,
+    "include_mo": false,
+    "include_html": true,
+    "include_css": true,
+    "include_js": true,
+    "ignore_init": false,
+    "include_statistics": true,
+    "include_file_metadata": false
+  },
+  "gui": {
+    "window_width": 700,
+    "window_height": 600,
+    "log_height": 12
+  }
+}
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : main.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\main.py
+--------------------------------------------------------------------------------
+# main.py
+import tkinter as tk
+from src.gui.gui import PythonCodeExtractor
+from src.i18n import setup_i18n
+
+def main():
+    # Initialiser la traduction avant de créer l'interface
+    setup_i18n()
+    root = tk.Tk()
+    app = PythonCodeExtractor(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER JSON : recent_folders.json
+Type: JSON
+Chemin complet: C:\dossier tlf\New folder\text exporter\recent_folders.json
+--------------------------------------------------------------------------------
+{
+  "folders": [
+    "C:/dossier tlf/New folder/text exporter"
+  ]
+}
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\config.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\config.py
+--------------------------------------------------------------------------------
+# src/config.py
+import json
+from pathlib import Path
+
+CONFIG_PATH = Path(__file__).parent.parent / "config.json"
+
+class Config:
+    """Charge et fournit l'accès à la configuration centralisée."""
+
+    _instance = None
+    _config = {}
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._load_config()
+        return cls._instance
+
+    @classmethod
+    def _load_config(cls):
+        """Charge le fichier config.json, ou utilise des valeurs par défaut."""
+        default_config = {
+            "output_dir": "out",
+            "received_subdir": "received",
+            "archive_subdir": "old_out",
+            "version_file": "extractor_version.txt",
+            "network": {
+                "server_host": "0.0.0.0",
+                "server_port": 50000,
+                "discovery_port": 50001,
+                "broadcast_msg": "PYEXTRACTOR_DISCOVER",
+                "reply_msg": "PYEXTRACTOR_HERE"
+            },
+            "extraction": {
+                "include_json": True,
+                "include_subdirs": True,
+                "show_file_paths": True,
+                "include_structure": True,
+                "include_txt": False,
+                "ignore_init": False,
+                "include_statistics": True,
+                "include_file_metadata": False
+            },
+            "gui": {
+                "window_width": 700,
+                "window_height": 600,
+                "log_height": 12
+            }
+        }
+
+        if CONFIG_PATH.exists():
+            try:
+                with open(CONFIG_PATH, 'r', encoding='utf-8') as f:
+                    user_config = json.load(f)
+                # Mise à jour récursive (fusion simple)
+                cls._config = cls._merge(default_config, user_config)
+            except Exception as e:
+                print(f"Erreur de chargement de la configuration : {e} – utilisation des valeurs par défaut")
+                cls._config = default_config
+        else:
+            cls._config = default_config
+
+    @staticmethod
+    def _merge(base, override):
+        """Fusion récursive de deux dictionnaires."""
+        result = base.copy()
+        for key, value in override.items():
+            if key in result and isinstance(result[key], dict) and isinstance(value, dict):
+                result[key] = Config._merge(result[key], value)
+            else:
+                result[key] = value
+        return result
+
+    def get(self, key, default=None):
+        """Récupère une valeur de configuration via une clé pointée (ex: 'network.server_port')."""
+        keys = key.split('.')
+        value = self._config
+        for k in keys:
+            if isinstance(value, dict) and k in value:
+                value = value[k]
+            else:
+                return default
+        return value
+
+    def get_all(self):
+        """Retourne tout le dictionnaire de configuration."""
+        return self._config
+
+# Instance unique
+config = Config()
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\i18n.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\i18n.py
+--------------------------------------------------------------------------------
+# src/i18n.py
+import gettext
+from pathlib import Path
+from src.config import config
+from src.logger import setup_logger
+
+logger = setup_logger(__name__)
+
+class Translator:
+    """Wrapper mutable pour la fonction de traduction."""
+    def __init__(self):
+        self._func = gettext.gettext   # fallback par défaut
+
+    def __call__(self, message):
+        return self._func(message)
+
+    def set_translation(self, func):
+        """Change la fonction de traduction sous-jacente."""
+        self._func = func
+
+# Instance globale unique
+_ = Translator()
+
+def setup_i18n():
+    """Configure la traduction en fonction de la langue définie dans config."""
+    lang = config.get('language', 'fr')
+    locale_dir = Path(__file__).parent.parent / "locale"
+
+    try:
+        translation = gettext.translation(
+            'messages',
+            localedir=locale_dir,
+            languages=[lang],
+            fallback=True
+        )
+        # Installe pour les appels builtins (gettext.install) si nécessaire
+        translation.install()
+        # Met à jour notre wrapper
+        _.set_translation(translation.gettext)
+        logger.info(f"Traduction chargée pour la langue '{lang}'")
+    except Exception as e:
+        logger.warning(
+            f"Traduction non disponible pour '{lang}', utilisation du fallback : {e}"
+        )
+        # Installe le fallback
+        gettext.install('messages', names=('ngettext',))
+        _.set_translation(gettext.gettext)
+
+    return _
+
+def get_current_language():
+    return config.get('language', 'fr')
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\logger.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\logger.py
+--------------------------------------------------------------------------------
+# src/logger.py
+import logging
+import sys
+
+def setup_logger(name=None, level=logging.INFO):
+    """Configure et retourne un logger avec un format standard."""
+    logger = logging.getLogger(name or __name__)
+    if not logger.handlers:
+        handler = logging.StreamHandler(sys.stdout)
+        handler.setFormatter(logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        ))
+        logger.addHandler(handler)
+        logger.setLevel(level)
+    return logger
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\utils.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\utils.py
+--------------------------------------------------------------------------------
+# utils.py
+from datetime import datetime
+
+def get_current_date():
+    """Retourne la date actuelle formatée"""
+    return datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\versioning.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\versioning.py
+--------------------------------------------------------------------------------
+# versioning.py
+from pathlib import Path
+import threading
+from src.logger import setup_logger
+
+logger = setup_logger(__name__)
+
+class VersionManager:
+    def __init__(self, version_file="extractor_version.txt"):
+        self.version_file = Path(version_file)
+        self._lock = threading.Lock()  # Verrou pour protéger les accès
+        self.mapping = self.load_mapping()
+
+    def load_mapping(self):
+        mapping = {}
+        if self.version_file.exists():
+            try:
+                with open(self.version_file, "r", encoding="utf-8") as f:
+                    for line in f:
+                        line = line.strip()
+                        if line and ":" in line:
+                            folder, ver = line.split(":", 1)
+                            mapping[folder] = int(ver)
+            except (IOError, OSError, ValueError) as e:
+                logger.error(f"Erreur lors du chargement du fichier de versions : {e}")
+                mapping = {}
+        return mapping
+
+    def save_mapping(self):
+        with self._lock:
+            try:
+                # Écrire dans un fichier temporaire puis renommer pour éviter la corruption
+                tmp_file = self.version_file.with_suffix(".tmp")
+                with open(tmp_file, "w", encoding="utf-8") as f:
+                    for folder, ver in sorted(self.mapping.items()):
+                        f.write(f"{folder}:{ver}\n")
+                tmp_file.replace(self.version_file)
+            except (IOError, OSError) as e:
+                logger.error(f"Erreur lors de la sauvegarde du fichier de versions : {e}")
+
+    def get_next_version(self, folder_name, output_dir="."):
+        with self._lock:
+            output_dir = Path(output_dir)
+            last_version = self.mapping.get(folder_name, 0)
+            version = last_version + 1
+            while (output_dir / f"{folder_name}v{version}.txt").exists():
+                version += 1
+            return version
+
+    def use_version(self, folder_name, version):
+        with self._lock:
+            self.mapping[folder_name] = version
+        self.save_mapping()  # sauvegarde protégée par le verrou interne
+
+    def reset(self):
+        with self._lock:
+            self.mapping = {}
+            if self.version_file.exists():
+                try:
+                    self.version_file.unlink()
+                    logger.info("Fichier de versions supprimé.")
+                except (IOError, OSError) as e:
+                    logger.error(f"Erreur lors de la suppression du fichier de versions : {e}")
+
+    # Anciennes méthodes, conservées pour compatibilité
+    def load_version(self):
+        return 1
+
+    def save_version(self, version):
+        pass
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\__init__.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\__init__.py
+--------------------------------------------------------------------------------
+
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\extractor\content_formatter.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\extractor\content_formatter.py
+--------------------------------------------------------------------------------
+# src/extractor/content_formatter.py
+import json
+
+def format_json_content(content, file_path=None):
+    """Essaie de formater joliment le contenu JSON.
+       En cas d'échec, retourne le contenu brut précédé d'un commentaire d'erreur.
+    """
+    try:
+        json_data = json.loads(content)
+        return json.dumps(json_data, indent=2, ensure_ascii=False)
+    except json.JSONDecodeError as e:
+        return f"// ERREUR: JSON invalide - {str(e)}\n{content}"
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\extractor\export_writer.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\extractor\export_writer.py
+--------------------------------------------------------------------------------
+# src/extractor/export_writer.py
+from pathlib import Path
+from src.utils import get_current_date
+from .file_utils import human_size
+from .stats_writer import write_statistics_section
+
+def write_header(output_file, folder):
+    output_file.write(f"Extraction du code du dossier : {folder}\n")
+    output_file.write(f"Date d'extraction : {get_current_date()}\n")
+    output_file.write("=" * 80 + "\n\n")
+
+def write_file_section(output_file, full_path, rel_path, ext, file_type,
+                       content, num_lines, file_size, read_ok,
+                       show_file_paths, include_file_metadata):
+    full_path = Path(full_path)
+    rel_path = Path(rel_path)
+    output_file.write(f"\n{'=' * 80}\n")
+    output_file.write(f"FICHIER {file_type} : ")
+    if show_file_paths:
+        output_file.write(f"{rel_path}\n")
+    else:
+        output_file.write(f"{full_path.name}\n")
+    output_file.write(f"Type: {file_type}\n")
+    output_file.write(f"Chemin complet: {full_path}\n")
+
+    if include_file_metadata:
+        parent_dir = rel_path.parent if show_file_paths else full_path.parent
+        if not parent_dir or str(parent_dir) == '.':
+            parent_dir = "."
+        output_file.write(f"Dossier parent: {parent_dir}\n")
+        output_file.write(f"Taille: {human_size(file_size)}\n")
+        output_file.write(f"Nombre de lignes: {num_lines}\n")
+
+    output_file.write("-" * 80 + "\n")
+    if ext == '.mo' and read_ok:
+        output_file.write("// Fichier binaire (.mo) encodé en base64\n")
+        output_file.write(content)
+        if not content.endswith('\n'):
+            output_file.write("\n")
+    else:
+        output_file.write(content)
+        if not content.endswith('\n'):
+            output_file.write("\n")
+    output_file.write("\n--- FIN DU FICHIER ---\n")
+
+def write_statistics(output_file, folder, include_subdirs,
+                     py_count, json_count, txt_count, po_count, mo_count,
+                     html_count, css_count, js_count,
+                     total_lines_py, total_lines_json, total_lines_txt,
+                     total_lines_po, total_lines_mo,
+                     total_lines_html, total_lines_css, total_lines_js,
+                     total_size,
+                     include_statistics):
+    if include_statistics:
+        output_file.write("\n--- FIN DES FICHIERS ---\n\n")
+        write_statistics_section(output_file, folder, include_subdirs,
+                                 py_count, json_count, txt_count, po_count, mo_count,
+                                 html_count, css_count, js_count,
+                                 total_lines_py, total_lines_json, total_lines_txt,
+                                 total_lines_po, total_lines_mo,
+                                 total_lines_html, total_lines_css, total_lines_js,
+                                 total_size)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\extractor\extractor.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\extractor\extractor.py
+--------------------------------------------------------------------------------
+# src/extractor/extractor.py
+from pathlib import Path
+from .file_finder import find_files
+from .structure_generator import generate_project_structure
+from .export_writer import write_header, write_file_section, write_statistics
+from .file_utils import read_file_content
+from src.logger import setup_logger
+
+logger = setup_logger(__name__)
+
+class CodeExtractor:
+    def __init__(self, include_json=True, include_subdirs=True, show_file_paths=True,
+                 include_structure=True, include_txt=False, include_po=False, include_mo=False,
+                 include_html=True, include_css=True, include_js=True,
+                 ignore_init=False, include_statistics=False, include_file_metadata=False):
+        self.include_json = include_json
+        self.include_subdirs = include_subdirs
+        self.show_file_paths = show_file_paths
+        self.include_structure = include_structure
+        self.include_txt = include_txt
+        self.include_po = include_po
+        self.include_mo = include_mo
+        self.include_html = include_html
+        self.include_css = include_css
+        self.include_js = include_js
+        self.ignore_init = ignore_init
+        self.include_statistics = include_statistics
+        self.include_file_metadata = include_file_metadata
+
+    def find_files(self, folder):
+        return find_files(folder,
+                          include_json=self.include_json,
+                          include_subdirs=self.include_subdirs,
+                          include_txt=self.include_txt,
+                          include_po=self.include_po,
+                          include_mo=self.include_mo,
+                          include_html=self.include_html,
+                          include_css=self.include_css,
+                          include_js=self.include_js,
+                          ignore_init=self.ignore_init)
+
+    def generate_project_structure(self, folder):
+        return generate_project_structure(folder,
+                                          include_json=self.include_json,
+                                          include_subdirs=self.include_subdirs,
+                                          include_txt=self.include_txt,
+                                          include_po=self.include_po,
+                                          include_mo=self.include_mo,
+                                          include_html=self.include_html,
+                                          include_css=self.include_css,
+                                          include_js=self.include_js,
+                                          ignore_init=self.ignore_init)
+
+    def extract_all(self, folder, output_filename, progress_callback=None, log_callback=None, selected_files=None):
+        files = self.find_files(folder)
+        if not files:
+            msg = "Aucun fichier trouvé"
+            if log_callback:
+                log_callback(msg)
+            logger.warning(msg)
+            return False, 0, 0, 0, 0, 0, 0, 0, 0
+
+        # Filtrer si selected_files est fourni
+        if selected_files is not None:
+            selected_set = set(Path(f).as_posix() for f in selected_files)
+            files = [(full, rel, ext) for full, rel, ext in files 
+                     if rel.as_posix() in selected_set]
+            if not files:
+                msg = "Aucun fichier sélectionné ne correspond aux fichiers trouvés"
+                if log_callback:
+                    log_callback(msg)
+                logger.warning(msg)
+                return False, 0, 0, 0, 0, 0, 0, 0, 0
+
+        total_files = len(files)
+        py_count = sum(1 for _, _, ext in files if ext == '.py')
+        json_count = sum(1 for _, _, ext in files if ext == '.json')
+        txt_count = sum(1 for _, _, ext in files if ext == '.txt')
+        po_count = sum(1 for _, _, ext in files if ext == '.po')
+        mo_count = sum(1 for _, _, ext in files if ext == '.mo')
+        html_count = sum(1 for _, _, ext in files if ext in ('.html', '.htm'))
+        css_count = sum(1 for _, _, ext in files if ext == '.css')
+        js_count = sum(1 for _, _, ext in files if ext == '.js')
+
+        total_lines_py = 0
+        total_lines_json = 0
+        total_lines_txt = 0
+        total_lines_po = 0
+        total_lines_mo = 0
+        total_lines_html = 0
+        total_lines_css = 0
+        total_lines_js = 0
+        total_size = 0
+
+        output_path = Path(output_filename)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        try:
+            with open(output_path, 'w', encoding='utf-8') as output_file:
+                write_header(output_file, folder)
+
+                if self.include_structure:
+                    structure = self.generate_project_structure(folder)
+                    output_file.write(structure)
+                    output_file.write("\n--- FIN DE LA STRUCTURE ---\n\n")
+                    if log_callback:
+                        log_callback("✓ Structure du projet générée")
+                    logger.info("Structure du projet générée")
+
+                for i, (full_path, rel_path, ext) in enumerate(files):
+                    if progress_callback:
+                        progress_callback(i + 1, total_files)
+
+                    file_type = {
+                        '.py': "Python",
+                        '.json': "JSON",
+                        '.po': "Traduction (PO)",
+                        '.mo': "Traduction compilée (MO)",
+                        '.html': "HTML",
+                        '.htm': "HTML",
+                        '.css': "CSS",
+                        '.js': "JavaScript"
+                    }.get(ext, "Texte")
+
+                    content, num_lines, file_size, read_ok = read_file_content(full_path, ext)
+
+                    write_file_section(output_file, full_path, rel_path, ext, file_type,
+                                       content, num_lines, file_size, read_ok,
+                                       self.show_file_paths, self.include_file_metadata)
+
+                    if read_ok:
+                        total_size += file_size
+                        if ext == '.py':
+                            total_lines_py += num_lines
+                        elif ext == '.json':
+                            total_lines_json += num_lines
+                        elif ext == '.po':
+                            total_lines_po += num_lines
+                        elif ext == '.mo':
+                            total_lines_mo += num_lines
+                        elif ext in ('.html', '.htm'):
+                            total_lines_html += num_lines
+                        elif ext == '.css':
+                            total_lines_css += num_lines
+                        elif ext == '.js':
+                            total_lines_js += num_lines
+                        else:
+                            total_lines_txt += num_lines
+
+                    if log_callback:
+                        log_callback(f"✓ {rel_path} extrait" if read_ok else f"✗ Erreur sur {rel_path}")
+
+                write_statistics(output_file, folder, self.include_subdirs,
+                                 py_count, json_count, txt_count, po_count, mo_count,
+                                 html_count, css_count, js_count,
+                                 total_lines_py, total_lines_json, total_lines_txt,
+                                 total_lines_po, total_lines_mo,
+                                 total_lines_html, total_lines_css, total_lines_js,
+                                 total_size,
+                                 self.include_statistics)
+
+                logger.info(f"Extraction terminée avec succès : {output_filename}")
+                return True, py_count, json_count, txt_count, po_count, mo_count, html_count, css_count, js_count
+        except Exception as e:
+            logger.error(f"Erreur lors de l'extraction globale : {e}")
+            if log_callback:
+                log_callback(f"Erreur critique : {e}")
+            return False, 0, 0, 0, 0, 0, 0, 0, 0
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\extractor\file_finder.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\extractor\file_finder.py
+--------------------------------------------------------------------------------
+# src/extractor/file_finder.py
+from pathlib import Path
+
+def find_files(folder, include_json=True, include_subdirs=True,
+               include_txt=False, include_po=False, include_mo=False,
+               include_html=True, include_css=True, include_js=True,
+               ignore_init=False):
+    """
+    Trouve tous les fichiers .py, .json, .txt, .po, .mo, .html, .css et .js.
+    Retourne une liste de tuples (chemin_complet, chemin_relatif, extension).
+    """
+    folder = Path(folder)
+    files = []
+    extensions = ['.py']
+    if include_json:
+        extensions.append('.json')
+    if include_txt:
+        extensions.append('.txt')
+    if include_po:
+        extensions.append('.po')
+    if include_mo:
+        extensions.append('.mo')
+    if include_html:
+        extensions.append('.html')
+        extensions.append('.htm')
+    if include_css:
+        extensions.append('.css')
+    if include_js:
+        extensions.append('.js')
+
+    if include_subdirs:
+        for file_path in folder.rglob('*'):
+            if file_path.is_file() and file_path.suffix in extensions:
+                if ignore_init and file_path.name == '__init__.py':
+                    continue
+                rel_path = file_path.relative_to(folder)
+                files.append((file_path, rel_path, file_path.suffix))
+    else:
+        for file_path in folder.iterdir():
+            if file_path.is_file() and file_path.suffix in extensions:
+                if ignore_init and file_path.name == '__init__.py':
+                    continue
+                files.append((file_path, Path(file_path.name), file_path.suffix))
+    return files
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\extractor\file_utils.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\extractor\file_utils.py
+--------------------------------------------------------------------------------
+# src/extractor/file_utils.py
+import base64
+from pathlib import Path
+from .content_formatter import format_json_content
+from src.logger import setup_logger
+
+logger = setup_logger(__name__)
+
+
+def human_size(size_bytes):
+    """Retourne une taille lisible en octets, Ko ou Mo."""
+    if size_bytes < 1024:
+        return f"{size_bytes} octets"
+    elif size_bytes < 1024 * 1024:
+        return f"{size_bytes / 1024:.2f} Ko"
+    else:
+        return f"{size_bytes / (1024 * 1024):.2f} Mo"
+
+
+def read_text_file_with_fallback(file_path):
+    """
+    Tente de lire un fichier texte en essayant plusieurs encodages.
+    Retourne le contenu sous forme de chaîne.
+    """
+    encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-15', 'utf-16']
+    for enc in encodings:
+        try:
+            with open(file_path, 'r', encoding=enc) as f:
+                return f.read()
+        except (UnicodeDecodeError, UnicodeError):
+            continue
+    # Dernier recours : latin-1 (ne lève jamais d'exception)
+    with open(file_path, 'r', encoding='latin-1') as f:
+        return f.read()
+
+
+def read_file_content(full_path, ext):
+    """
+    Lit le contenu d’un fichier selon son extension.
+    Retourne (content, num_lines, file_size, read_ok)
+    """
+    full_path = Path(full_path)
+    try:
+        if ext == '.mo':
+            with open(full_path, 'rb') as f:
+                raw = f.read()
+            content = base64.b64encode(raw).decode('ascii')
+            num_lines = len(content.splitlines())
+            file_size = len(raw)
+            read_ok = True
+        else:
+            # Lecture avec détection d'encodage
+            content = read_text_file_with_fallback(full_path)
+            if ext == '.json':
+                content = format_json_content(content, full_path)
+            num_lines = len(content.splitlines())
+            file_size = full_path.stat().st_size
+            read_ok = True
+    except Exception as e:
+        logger.error(f"Erreur de lecture du fichier {full_path} : {e}")
+        content = f"// ERREUR: Impossible de lire le fichier : {str(e)}\n"
+        num_lines = 0
+        file_size = 0
+        read_ok = False
+    return content, num_lines, file_size, read_ok
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\extractor\stats_writer.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\extractor\stats_writer.py
+--------------------------------------------------------------------------------
+# src/extractor/stats_writer.py
+from pathlib import Path
+
+def write_statistics_section(output_file, folder, include_subdirs,
+                             py_count, json_count, txt_count, po_count, mo_count,
+                             html_count, css_count, js_count,
+                             total_lines_py, total_lines_json, total_lines_txt,
+                             total_lines_po, total_lines_mo,
+                             total_lines_html, total_lines_css, total_lines_js,
+                             total_size):
+    folder = Path(folder)
+    num_dirs = 0
+    num_packages = 0
+    if include_subdirs:
+        for root in folder.rglob('*'):
+            if root.is_dir() and root != folder:
+                num_dirs += 1
+                if (root / '__init__.py').exists():
+                    num_packages += 1
+    else:
+        if (folder / '__init__.py').exists():
+            num_packages = 1
+        num_dirs = 0
+
+    output_file.write("\n" + "=" * 80 + "\n")
+    output_file.write("STATISTIQUES\n")
+    output_file.write("=" * 80 + "\n")
+    output_file.write(f"Nombre de dossiers          : {num_dirs}\n")
+    output_file.write(f"Dossiers 'Python package'    : {num_packages}\n")
+    output_file.write(f"Fichiers Python (.py)        : {py_count}\n")
+    output_file.write(f"Fichiers JSON (.json)        : {json_count}\n")
+    output_file.write(f"Fichiers Texte (.txt)        : {txt_count}\n")
+    output_file.write(f"Fichiers PO (.po)            : {po_count}\n")
+    output_file.write(f"Fichiers MO (.mo)            : {mo_count}\n")
+    output_file.write(f"Fichiers HTML (.html/.htm)   : {html_count}\n")
+    output_file.write(f"Fichiers CSS (.css)          : {css_count}\n")
+    output_file.write(f"Fichiers JavaScript (.js)    : {js_count}\n")
+    output_file.write(f"Nombre total de fichiers     : {py_count + json_count + txt_count + po_count + mo_count + html_count + css_count + js_count}\n")
+    output_file.write(f"Nombre de lignes (Python)    : {total_lines_py}\n")
+    output_file.write(f"Nombre de lignes (JSON)      : {total_lines_json}\n")
+    output_file.write(f"Nombre de lignes (Texte)     : {total_lines_txt}\n")
+    output_file.write(f"Nombre de lignes (PO)        : {total_lines_po}\n")
+    output_file.write(f"Nombre de lignes (MO)        : {total_lines_mo}\n")
+    output_file.write(f"Nombre de lignes (HTML)      : {total_lines_html}\n")
+    output_file.write(f"Nombre de lignes (CSS)       : {total_lines_css}\n")
+    output_file.write(f"Nombre de lignes (JS)        : {total_lines_js}\n")
+    output_file.write(f"Nombre total de lignes       : {total_lines_py + total_lines_json + total_lines_txt + total_lines_po + total_lines_mo + total_lines_html + total_lines_css + total_lines_js}\n")
+
+    if total_size < 1024:
+        size_str = f"{total_size} octets"
+    elif total_size < 1024 * 1024:
+        size_str = f"{total_size / 1024:.2f} Ko"
+    else:
+        size_str = f"{total_size / (1024 * 1024):.2f} Mo"
+    output_file.write(f"Volume total extrait         : {size_str}\n")
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\extractor\structure_generator.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\extractor\structure_generator.py
+--------------------------------------------------------------------------------
+# src/extractor/structure_generator.py
+from pathlib import Path
+from .file_utils import human_size   # import de la fonction de formatage des tailles
+
+def generate_project_structure(folder, include_json=True, include_subdirs=True,
+                               include_txt=False, include_po=False, include_mo=False,
+                               include_html=True, include_css=True, include_js=True,
+                               ignore_init=False):
+    folder = Path(folder)
+    lines = []
+    lines.append("STRUCTURE DU PROJET")
+    lines.append("=" * 80)
+
+    root_name = folder.name
+    lines.append(f"📁 {root_name}/")
+
+    def list_files(dir_path, indent):
+        """Liste TOUS les fichiers du dossier dir_path avec leur taille."""
+        files = []
+        for f in dir_path.iterdir():
+            if f.is_file():
+                # Appliquer ignore_init si nécessaire
+                if ignore_init and f.name == '__init__.py':
+                    continue
+                # Récupérer la taille
+                try:
+                    size_bytes = f.stat().st_size
+                    size_str = human_size(size_bytes)
+                except Exception:
+                    size_str = "?"
+                # Choisir une icône selon l'extension
+                ext = f.suffix.lower()
+                if ext == '.py':
+                    icon = "🐍"
+                elif ext == '.json':
+                    icon = "📄"
+                elif ext == '.txt':
+                    icon = "📝"
+                elif ext == '.po':
+                    icon = "🌐"
+                elif ext == '.mo':
+                    icon = "📦"
+                elif ext in ('.html', '.htm'):
+                    icon = "🌍"
+                elif ext == '.css':
+                    icon = "🎨"
+                elif ext == '.js':
+                    icon = "⚡"
+                else:
+                    icon = "📄"   # icône générique pour tous les autres fichiers
+                files.append((f.name, size_str, icon))
+
+        # Trier par nom
+        files.sort(key=lambda x: x[0])
+
+        for i, (name, size_str, icon) in enumerate(files):
+            is_last = (i == len(files) - 1)
+            prefix = "└── " if is_last else "├── "
+            lines.append(f"{indent}{prefix} {icon} {name} ({size_str})")
+
+    # Dossier racine
+    list_files(folder, "")
+
+    # Sous-dossiers (si include_subdirs est True)
+    if include_subdirs:
+        subdirs = sorted([d for d in folder.rglob('*') if d.is_dir()])
+        for sub in subdirs:
+            level = len(sub.relative_to(folder).parts)
+            folder_indent = "│   " * (level - 1) if level > 1 else ""
+            lines.append(f"{folder_indent}├── 📁 {sub.name}/")
+            file_indent = "│   " * level if level > 0 else ""
+            list_files(sub, file_indent)
+
+    lines.append("\n" + "=" * 80 + "\n")
+    return "\n".join(lines)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\extractor\__init__.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\extractor\__init__.py
+--------------------------------------------------------------------------------
+
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\actions.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\actions.py
+--------------------------------------------------------------------------------
+# src/gui/actions.py
+import os
+from tkinter import messagebox
+from src.i18n import _
+from src.logger import setup_logger
+
+logger = setup_logger(__name__)
+
+def show_error_dialog(title, message):
+    """Affiche une boîte de dialogue d'erreur."""
+    messagebox.showerror(title, message)
+
+def show_info_dialog(title, message):
+    """Affiche une boîte de dialogue d'information."""
+    messagebox.showinfo(title, message)
+
+def show_warning_dialog(title, message):
+    """Affiche une boîte de dialogue d'avertissement."""
+    messagebox.showwarning(title, message)
+
+def handle_extraction_success(controller, output_filename, stats):
+    """
+    Gère le succès de l'extraction : affiche les informations dans le journal
+    et une boîte de dialogue récapitulative.
+    """
+    controller.add_info(_("\n--- Extraction terminée avec succès ---"))
+    controller.add_info(_("Fichier créé : {}").format(output_filename))
+    controller.add_info(_("Emplacement : {}").format(os.path.abspath(output_filename)))
+    controller.add_info(_("Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: {}, CSS: {}, JS: {})").format(
+        stats['total_files'], stats['py_count'], stats['json_count'], stats['txt_count'],
+        stats['po_count'], stats['mo_count'], stats['html_count'], stats['css_count'], stats['js_count']
+    ))
+
+    success_msg = (
+        _("Extraction terminée avec succès !\n\n")
+        + _("Fichier créé : {}\n").format(output_filename)
+        + _("Nombre de fichiers extraits : {}\n").format(stats['total_files'])
+        + _("  - Fichiers Python : {}\n").format(stats['py_count'])
+        + _("  - Fichiers JSON : {}\n").format(stats['json_count'])
+        + _("  - Fichiers TXT : {}\n").format(stats['txt_count'])
+        + _("  - Fichiers PO : {}\n").format(stats['po_count'])
+        + _("  - Fichiers MO : {}\n").format(stats['mo_count'])
+        + _("  - Fichiers HTML : {}\n").format(stats['html_count'])
+        + _("  - Fichiers CSS : {}\n").format(stats['css_count'])
+        + _("  - Fichiers JS : {}\n").format(stats['js_count'])
+        + _("Emplacement : {}").format(os.path.abspath(output_filename))
+    )
+    show_info_dialog(_("Succès"), success_msg)
+
+def handle_extraction_failure(controller):
+    """Gère l'échec de l'extraction."""
+    controller.ui['progress_var'].set(0)
+    show_error_dialog(_("Erreur"), _("Échec de l'extraction (voir journal)"))
+
+def handle_clean_versions_success(controller, status):
+    """Gère le succès du nettoyage des versions."""
+    controller.add_info(_("--- {} ---").format(status))
+    controller.set_status(status)
+
+def handle_clean_versions_failure(controller, error):
+    """Gère l'échec du nettoyage des versions."""
+    show_error_dialog(_("Erreur"), _("Échec du nettoyage : {}").format(error))
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\extraction_controller.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\extraction_controller.py
+--------------------------------------------------------------------------------
+# src/gui/extraction_controller.py
+import os
+import tkinter as tk
+from tkinter import filedialog, messagebox
+from src.services.extraction_service import ExtractionService
+from src.logger import setup_logger
+from src.network.transfer_dialog import TransferDialog
+from src.gui.file_selector import select_files
+from src.gui.extraction_runner import run_extraction
+from src.gui.folder_scanner import scan_folder
+from src.gui.recent_files import add_recent_folder
+from src.i18n import _
+
+logger = setup_logger(__name__)
+
+class ExtractionController:
+    def __init__(self, root, ui_widgets, service=None):
+        self.root = root
+        self.ui = ui_widgets
+        self.service = service or ExtractionService()
+        self.selected_folder = ""
+        self.selected_files = []
+        self.is_extracting = False
+        # Lier le contrôleur à l'UI pour le menu
+        self.ui['controller'] = self
+
+    # --- Actions principales ---
+
+    def browse_folder(self):
+        folder = filedialog.askdirectory(
+            title=_("Sélectionner un dossier contenant des fichiers Python/JSON/TXT/PO/MO/HTML/CSS/JS")
+        )
+        if not folder:
+            return
+
+        self._set_folder(folder)
+        self._reset_selection()
+        self._log_folder_stats()
+
+    def select_recent_folder(self, folder_path):
+        """Sélectionne un dossier depuis les emplacements récents."""
+        if not os.path.exists(folder_path):
+            messagebox.showerror(_("Erreur"), _("Le dossier n'existe plus : {}").format(folder_path))
+            from src.gui.recent_files import remove_recent_folder
+            remove_recent_folder(folder_path)
+            if 'update_recent_menu' in self.ui:
+                self.ui['update_recent_menu']()
+            return
+
+        self._set_folder(folder_path)
+        self._reset_selection()
+        self._log_folder_stats()
+        self.add_info(_("Dossier récent sélectionné : {}").format(folder_path))
+
+    def open_selection_dialog(self):
+        if not self.selected_folder:
+            messagebox.showwarning(_("Attention"), _("Veuillez d'abord sélectionner un dossier"))
+            return
+
+        options = self._get_include_options()
+        selected = select_files(self.root, self.selected_folder, options)
+
+        if selected is not None:
+            self.selected_files = selected
+            count = len(selected)
+            self.add_info(_("Sélection mise à jour : {} fichier(s) sélectionné(s)").format(count))
+            self.ui['status_var'].set(_("Sélection : {} fichier(s)").format(count))
+        else:
+            self.add_info(_("Sélection annulée"))
+
+    def extract_code(self):
+        if not self.selected_folder:
+            messagebox.showwarning(_("Attention"), _("Veuillez d'abord sélectionner un dossier"))
+            return
+
+        if self.is_extracting:
+            return
+
+        self.is_extracting = True
+        try:
+            self._do_extraction()
+        finally:
+            self.is_extracting = False
+
+    def clean_versions(self):
+        archive = self.ui['archive_old'].get()
+        if not messagebox.askyesno(
+            _("Confirmation"),
+            _("Réinitialiser toutes les versions et l'historique ?\n") +
+            (_("Les anciens fichiers seront archivés dans out/old_out/.") if archive else "")
+        ):
+            return
+
+        try:
+            status = self.service.clean_versions(archive=archive)
+            self.add_info(_("--- {} ---").format(status))
+            self.ui['status_var'].set(status)
+        except Exception as e:
+            logger.error(f"Erreur lors du nettoyage : {e}")
+            messagebox.showerror(_("Erreur"), _("Échec du nettoyage : {}").format(e))
+
+    def open_transfer_dialog(self):
+        try:
+            TransferDialog(self.root, out_dir='out')
+        except Exception as e:
+            logger.error(f"Erreur lors de l'ouverture du dialogue de transfert : {e}")
+            messagebox.showerror(_("Erreur"), _("Impossible d'ouvrir la fenêtre de transfert : {}").format(e))
+
+    # --- Gestion du journal ---
+
+    def add_info(self, message):
+        self.ui['info_text'].insert(tk.END, message + "\n")
+        self.ui['info_text'].see(tk.END)
+        self.root.update_idletasks()
+
+    def clear_info(self):
+        self.ui['info_text'].delete(1.0, tk.END)
+
+    # --- Méthodes privées ---
+
+    def _set_folder(self, folder):
+        self.selected_folder = folder
+        self.ui['folder_path_var'].set(folder)
+        self.ui['extract_btn'].config(state='normal')
+        self.clear_info()
+
+    def _reset_selection(self):
+        self.selected_files = []
+        self.ui['status_var'].set(_("Prêt"))
+
+    def _log_folder_stats(self):
+        self.add_info(_("Dossier sélectionné : {}").format(self.selected_folder))
+
+        stats = scan_folder(self.selected_folder, self.ui)
+        self.add_info(_("Fichiers trouvés : {}").format(stats['total']))
+        for ext, count in stats['types'].items():
+            if count > 0:
+                self.add_info(_("  - Fichiers {} : {}").format(ext.upper(), count))
+
+    def _get_include_options(self):
+        return {
+            'include_json': self.ui['include_json'].get(),
+            'include_txt': self.ui['include_txt'].get(),
+            'include_po': self.ui['include_po'].get(),
+            'include_mo': self.ui['include_mo'].get(),
+            'include_html': self.ui['include_html'].get(),
+            'include_css': self.ui['include_css'].get(),
+            'include_js': self.ui['include_js'].get()
+        }
+
+    def _get_extraction_options(self):
+        return {
+            'include_json': self.ui['include_json'].get(),
+            'include_subdirs': self.ui['include_subdirs'].get(),
+            'show_file_paths': self.ui['show_file_paths'].get(),
+            'include_structure': self.ui['include_structure'].get(),
+            'include_txt': self.ui['include_txt'].get(),
+            'include_po': self.ui['include_po'].get(),
+            'include_mo': self.ui['include_mo'].get(),
+            'include_html': self.ui['include_html'].get(),
+            'include_css': self.ui['include_css'].get(),
+            'include_js': self.ui['include_js'].get(),
+            'ignore_init': self.ui['ignore_init'].get(),
+            'include_statistics': self.ui['include_statistics'].get(),
+            'include_file_metadata': self.ui['include_file_metadata'].get()
+        }
+
+    def _do_extraction(self):
+        options = self._get_extraction_options()
+        selected = self.selected_files if self.selected_files else None
+
+        self.ui['status_var'].set(_("Extraction en cours..."))
+        self.add_info(_("\n--- Extraction en cours ---"))
+
+        def progress_callback(current, total):
+            if total > 0:
+                progress = (current / total) * 100
+                self.ui['progress_var'].set(progress)
+                self.root.update_idletasks()
+
+        def log_callback(msg):
+            self.add_info(msg)
+
+        success, output_filename, stats = run_extraction(
+            controller=self,
+            service=self.service,
+            selected_folder=self.selected_folder,
+            options=options,
+            selected_files=selected,
+            progress_callback=progress_callback,
+            log_callback=log_callback
+        )
+
+        self.ui['progress_var'].set(0)
+
+        if success:
+            self.ui['status_var'].set(_("Extraction terminée"))
+            # Ajouter aux emplacements récents
+            add_recent_folder(self.selected_folder)
+            if 'update_recent_menu' in self.ui:
+                self.ui['update_recent_menu']()
+        else:
+            self.ui['status_var'].set(_("Extraction échouée"))
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\extraction_runner.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\extraction_runner.py
+--------------------------------------------------------------------------------
+# src/gui/extraction_runner.py
+import os
+from tkinter import messagebox
+from src.i18n import _
+from src.logger import setup_logger
+
+logger = setup_logger(__name__)
+
+def run_extraction(controller, service, selected_folder, options, selected_files,
+                   progress_callback, log_callback):
+    """
+    Exécute l'extraction via le service et gère les mises à jour de l'UI.
+    Retourne (success, output_filename, stats) ou (False, None, None)
+    """
+    try:
+        success, output_filename, stats = service.extract_folder(
+            selected_folder,
+            options,
+            progress_callback=progress_callback,
+            log_callback=log_callback,
+            selected_files=selected_files
+        )
+
+        if not success:
+            controller.ui['status_var'].set(_("Extraction échouée"))
+            controller.ui['progress_var'].set(0)
+            messagebox.showerror(_("Erreur"), _("Échec de l'extraction (voir journal)"))
+            return False, None, None
+
+        # Succès
+        controller.ui['status_var'].set(_("Extraction terminée"))
+        controller.ui['progress_var'].set(0)
+        controller.add_info(_("\n--- Extraction terminée avec succès ---"))
+        controller.add_info(_("Fichier créé : {}").format(output_filename))
+        controller.add_info(_("Emplacement : {}").format(os.path.abspath(output_filename)))
+        controller.add_info(_("Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: {}, CSS: {}, JS: {})").format(
+            stats['total_files'], stats['py_count'], stats['json_count'], stats['txt_count'],
+            stats['po_count'], stats['mo_count'], stats['html_count'], stats['css_count'], stats['js_count']
+        ))
+
+        success_msg = (
+            _("Extraction terminée avec succès !\n\n")
+            + _("Fichier créé : {}\n").format(output_filename)
+            + _("Nombre de fichiers extraits : {}\n").format(stats['total_files'])
+            + _("  - Fichiers Python : {}\n").format(stats['py_count'])
+            + _("  - Fichiers JSON : {}\n").format(stats['json_count'])
+            + _("  - Fichiers TXT : {}\n").format(stats['txt_count'])
+            + _("  - Fichiers PO : {}\n").format(stats['po_count'])
+            + _("  - Fichiers MO : {}\n").format(stats['mo_count'])
+            + _("  - Fichiers HTML : {}\n").format(stats['html_count'])
+            + _("  - Fichiers CSS : {}\n").format(stats['css_count'])
+            + _("  - Fichiers JS : {}\n").format(stats['js_count'])
+            + _("Emplacement : {}").format(os.path.abspath(output_filename))
+        )
+        messagebox.showinfo(_("Succès"), success_msg)
+        return True, output_filename, stats
+
+    except Exception as e:
+        logger.error(f"Erreur lors de l'extraction : {e}")
+        controller.ui['status_var'].set(_("Extraction échouée"))
+        controller.ui['progress_var'].set(0)
+        messagebox.showerror(_("Erreur"), _("Une erreur est survenue : {}").format(e))
+        return False, None, None
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\file_selector.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\file_selector.py
+--------------------------------------------------------------------------------
+# src/gui/file_selector.py
+from src.gui.selection import SelectionDialog
+
+def select_files(parent, folder_path, options):
+    """
+    Ouvre la fenêtre de sélection et retourne la liste des chemins relatifs sélectionnés.
+    Si l'utilisateur annule, retourne None.
+    """
+    dialog = SelectionDialog(parent, folder_path, options)
+    parent.wait_window(dialog.window)
+    return dialog.get_selected()
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\folder_scanner.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\folder_scanner.py
+--------------------------------------------------------------------------------
+# src/gui/folder_scanner.py
+from src.extractor.extractor import CodeExtractor
+
+def scan_folder(folder, ui):
+    """
+    Scanne le dossier et retourne les statistiques.
+    """
+    extractor = CodeExtractor(
+        include_json=ui['include_json'].get(),
+        include_subdirs=ui['include_subdirs'].get(),
+        include_txt=ui['include_txt'].get(),
+        include_po=ui['include_po'].get(),
+        include_mo=ui['include_mo'].get(),
+        include_html=ui['include_html'].get(),
+        include_css=ui['include_css'].get(),
+        include_js=ui['include_js'].get(),
+        ignore_init=ui['ignore_init'].get()
+    )
+    files = extractor.find_files(folder)
+    
+    types = {
+        'py': 0, 'json': 0, 'txt': 0, 'po': 0, 'mo': 0,
+        'html': 0, 'htm': 0, 'css': 0, 'js': 0
+    }
+    for _, _, ext in files:
+        ext_clean = ext.lstrip('.')
+        if ext_clean in types:
+            types[ext_clean] += 1
+        elif ext_clean in ('html', 'htm'):
+            types['html'] += 1
+    
+    return {
+        'total': len(files),
+        'types': types
+    }
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\gui.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\gui.py
+--------------------------------------------------------------------------------
+# src/gui/gui.py
+import tkinter as tk
+from src.gui.ui_builder.ui_builder import build_ui
+from src.gui.extraction_controller import ExtractionController
+from src.services.extraction_service import ExtractionService
+from src.network.server import ReceiveServer
+from src.network.discovery import DiscoveryService
+from src.config import config
+from src.i18n import _
+
+class PythonCodeExtractor:
+    def __init__(self, root):
+        self.root = root
+        self.root.title(_("Extracteur de code Python/JSON/TXT"))
+        width = config.get('gui.window_width', 700)
+        height = config.get('gui.window_height', 600)
+        self.root.geometry(f"{width}x{height}")
+        self.root.resizable(True, True)
+
+        # Construire l'interface
+        self.ui = build_ui(root)
+
+        # Service et contrôleur
+        self.service = ExtractionService()
+        self.controller = ExtractionController(root, self.ui, service=self.service)
+        self.ui['controller'] = self.controller
+
+        # Lier les boutons
+        self._bind_buttons()
+        self._bind_menus()
+
+        # Démarrer les services réseau
+        self._start_network_services()
+
+        # Gestion de la fermeture
+        self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+
+    def _bind_buttons(self):
+        """Lier les boutons de l'interface principale."""
+        self.ui['browse_btn'].config(command=self.controller.browse_folder)
+        self.ui['clear_btn'].config(command=self.controller.clear_info)
+        self.ui['extract_btn'].config(command=self.controller.extract_code)
+        self.ui['select_btn'].config(command=self.controller.open_selection_dialog)
+
+    def _bind_menus(self):
+        """Lier les actions des menus."""
+        # Menu Maintenance - Nettoyer les versions
+        maintenance_menu = self.ui['maintenance_menu']
+        clean_index = self.ui['clean_versions_index']
+        maintenance_menu.entryconfig(clean_index, command=self.controller.clean_versions)
+
+        # Menu Transfert - Envoyer un fichier
+        transfer_menu = self.ui['transfer_menu']
+        transfer_menu.entryconfig(self.ui['send_file_index'], command=self.controller.open_transfer_dialog)
+
+        # Menu Vue - Basculer la visibilité du journal
+        view_menu = self.ui.get('view_menu')
+        if view_menu:
+            # Le toggle est géré via la variable log_visible dans widgets.py
+            pass
+
+    def _start_network_services(self):
+        """Démarrer le serveur et le service de découverte réseau."""
+        try:
+            self.server = ReceiveServer()
+            self.server.start()
+            self.discovery = DiscoveryService()
+            self.discovery.start_listener()
+        except Exception as e:
+            # Les erreurs réseau ne doivent pas bloquer l'application
+            print(f"Erreur lors du démarrage des services réseau : {e}")
+
+    def on_close(self):
+        """Fermeture propre de l'application."""
+        # Arrêter le serveur réseau
+        if hasattr(self, 'server') and self.server:
+            self.server.stop()
+        # Arrêter le service de découverte
+        if hasattr(self, 'discovery') and self.discovery:
+            self.discovery.stop_listener()
+        # Détruire la fenêtre principale
+        self.root.destroy()
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\recent_files.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\recent_files.py
+--------------------------------------------------------------------------------
+# src/gui/recent_files.py
+import json
+import os
+from pathlib import Path
+
+RECENT_FILE = Path(__file__).parent.parent.parent / "recent_folders.json"
+MAX_RECENT = 10
+
+
+def load_recent_folders():
+    """Charge la liste des dossiers récents depuis le fichier JSON."""
+    if RECENT_FILE.exists():
+        try:
+            with open(RECENT_FILE, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                folders = data.get('folders', [])
+                # Filtrer les dossiers qui n'existent plus
+                return [f for f in folders if os.path.exists(f)]
+        except Exception:
+            return []
+    return []
+
+
+def save_recent_folders(folders):
+    """Sauvegarde la liste des dossiers récents."""
+    try:
+        with open(RECENT_FILE, 'w', encoding='utf-8') as f:
+            json.dump({'folders': folders[:MAX_RECENT]}, f, indent=2)
+    except Exception:
+        pass
+
+
+def add_recent_folder(folder_path):
+    """Ajoute un dossier en tête de liste et sauvegarde."""
+    folders = load_recent_folders()
+    # Supprimer l'entrée si déjà présente
+    if folder_path in folders:
+        folders.remove(folder_path)
+    # Insérer en tête
+    folders.insert(0, folder_path)
+    # Tronquer
+    folders = folders[:MAX_RECENT]
+    save_recent_folders(folders)
+    return folders
+
+
+def remove_recent_folder(folder_path):
+    """Supprime un dossier de la liste (si inexistant par exemple)."""
+    folders = load_recent_folders()
+    if folder_path in folders:
+        folders.remove(folder_path)
+        save_recent_folders(folders)
+    return folders
+
+
+def clear_recent_folders():
+    """Supprime tous les dossiers récents."""
+    save_recent_folders([])
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\version_manager.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\version_manager.py
+--------------------------------------------------------------------------------
+# src/gui/version_manager.py
+
+def clean_versions(service, archive=False):
+    """
+    Nettoie l'historique des versions via le service.
+    """
+    return service.clean_versions(archive=archive)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\__init__.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\__init__.py
+--------------------------------------------------------------------------------
+# src/gui/__init__.py
+from .extraction_controller import ExtractionController
+from .file_selector import select_files
+from .extraction_runner import run_extraction
+from .folder_scanner import scan_folder
+from .recent_files import load_recent_folders, add_recent_folder, clear_recent_folders, remove_recent_folder
+from .gui import PythonCodeExtractor
+from .selection import SelectionDialog
+
+__all__ = [
+    'ExtractionController',
+    'select_files',
+    'run_extraction',
+    'scan_folder',
+    'load_recent_folders',
+    'add_recent_folder',
+    'clear_recent_folders',
+    'remove_recent_folder',
+    'PythonCodeExtractor',
+    'SelectionDialog'
+]
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\selection\dialog.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\selection\dialog.py
+--------------------------------------------------------------------------------
+# src/gui/selection/dialog.py
+import tkinter as tk
+from tkinter import ttk
+from src.i18n import _
+from .utils import get_allowed_extensions, count_selected
+from .tree_builder import TreeBuilder
+from .tree_controller import TreeController
+from .search import SearchBar
+from .toolbar import SelectionToolbar
+
+class SelectionDialog:
+    def __init__(self, parent, root_path, options):
+        self.parent = parent
+        self.root_path = root_path
+        self.options = options
+        self.allowed_extensions = get_allowed_extensions(options)
+
+        # Fenêtre principale
+        self.window = tk.Toplevel(parent)
+        self.window.title(_("Sélectionner les fichiers à extraire"))
+        self.window.geometry("850x600")
+        self.window.minsize(700, 400)
+        self.window.transient(parent)
+        self.window.grab_set()
+
+        self._create_widgets()
+        self._build_tree()
+        self._update_selected_count()
+
+        # Raccourcis clavier
+        self.window.bind('<Control-a>', lambda e: self.controller.select_all())
+        self.window.bind('<Control-d>', lambda e: self.controller.deselect_all())
+        self.window.bind('<space>', self._on_space)
+
+    def _create_widgets(self):
+        main = ttk.Frame(self.window, padding=10)
+        main.pack(fill=tk.BOTH, expand=True)
+
+        # Barre de recherche (sera initialisée après la création du tree)
+        self.search = SearchBar(main, None, [])  # sera mis à jour après
+
+        # Treeview avec 3 colonnes
+        columns = ("select", "name", "size")
+        self.tree = ttk.Treeview(main, columns=columns, show="tree headings")
+        self.tree.heading("select", text=_("Sélection"))
+        self.tree.heading("name", text=_("Nom"))
+        self.tree.heading("size", text=_("Taille"))
+        self.tree.column("select", width=80, anchor="center")
+        self.tree.column("name", anchor="w", width=300)
+        self.tree.column("size", width=100, anchor="e")
+
+        v_scroll = ttk.Scrollbar(main, orient=tk.VERTICAL, command=self.tree.yview)
+        h_scroll = ttk.Scrollbar(main, orient=tk.HORIZONTAL, command=self.tree.xview)
+        self.tree.configure(yscrollcommand=v_scroll.set, xscrollcommand=h_scroll.set)
+
+        self.tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        v_scroll.pack(side=tk.RIGHT, fill=tk.Y)
+        h_scroll.pack(side=tk.BOTTOM, fill=tk.X)
+
+        # Bind des événements
+        self.tree.bind("<ButtonRelease-1>", self._on_click)
+        self.tree.bind("<Double-Button-1>", self._on_double_click)
+
+        # Créer le contrôleur AVANT la barre d'outils
+        self.controller = TreeController(
+            self.tree, {}, {}, {}
+        )
+
+        # Mettre à jour la recherche avec le tree
+        self.search.tree = self.tree
+
+        # Barre d'outils - maintenant avec le contrôleur
+        self.toolbar = SelectionToolbar(main, self.controller, self.allowed_extensions)
+
+        # Compteur
+        status_frame = ttk.Frame(main)
+        status_frame.pack(fill=tk.X, pady=(5, 0))
+        self.selected_count_var = tk.StringVar(value="0 fichier sélectionné")
+        ttk.Label(status_frame, textvariable=self.selected_count_var).pack(side=tk.LEFT)
+        ttk.Label(status_frame, text=_("(fichiers extractibles)")).pack(side=tk.LEFT, padx=(5, 0))
+
+        # Boutons Valider / Annuler
+        action_frame = ttk.Frame(main)
+        action_frame.pack(fill=tk.X, pady=10)
+        ttk.Button(action_frame, text=_("Valider"), 
+                   command=self._validate).pack(side=tk.RIGHT, padx=5)
+        ttk.Button(action_frame, text=_("Annuler"), 
+                   command=self.window.destroy).pack(side=tk.RIGHT, padx=5)
+
+    def _build_tree(self):
+        """Construit l'arborescence via TreeBuilder."""
+        builder = TreeBuilder(self.tree, self.root_path, self.options)
+        data = builder.build()
+
+        # Mettre à jour le contrôleur avec les données
+        self.controller.file_nodes = data['file_nodes']
+        self.controller.folder_nodes = data['folder_nodes']
+        self.controller.folder_children = data['folder_children']
+        self.controller.items_state = {}
+        self.search.all_items = data['all_items']
+
+    def _on_click(self, event):
+        region = self.tree.identify_region(event.x, event.y)
+        item = self.tree.identify_row(event.y)
+        if not item:
+            return
+        if region == "cell":
+            col = self.tree.identify_column(event.x)
+            if col == "#1":
+                self.controller.toggle_item(item)
+                self._update_selected_count()
+                return
+        if item in self.controller.file_nodes or item in self.controller.folder_nodes:
+            self.controller.toggle_item(item)
+            self._update_selected_count()
+
+    def _on_double_click(self, event):
+        item = self.tree.identify_row(event.y)
+        if item and item in self.controller.folder_nodes:
+            current = self.tree.item(item, "open")
+            self.tree.item(item, open=not current)
+
+    def _on_space(self, event):
+        item = self.tree.focus()
+        if item:
+            self.controller.toggle_item(item)
+            self._update_selected_count()
+        return "break"
+
+    def _update_selected_count(self):
+        total = len(self.controller.file_nodes)
+        selected = self.controller.count_selected()
+        self.selected_count_var.set(f"{selected} / {total} fichier(s) sélectionné(s)")
+
+    def _validate(self):
+        self.selected_files = self.controller.get_selected_files()
+        self.window.destroy()
+
+    def get_selected(self):
+        return self.selected_files if hasattr(self, 'selected_files') else []
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\selection\search.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\selection\search.py
+--------------------------------------------------------------------------------
+# src/gui/selection/search.py
+import tkinter as tk
+from tkinter import ttk
+from src.i18n import _
+
+class SearchBar:
+    def __init__(self, parent, tree, all_items):
+        self.tree = tree
+        self.all_items = all_items
+        self.var = tk.StringVar()
+        self.var.trace('w', self._on_search_change)
+
+        frame = ttk.Frame(parent)
+        frame.pack(fill=tk.X, pady=(0, 5))
+        ttk.Label(frame, text=_("Rechercher :")).pack(side=tk.LEFT, padx=(0, 5))
+        entry = ttk.Entry(frame, textvariable=self.var)
+        entry.pack(side=tk.LEFT, fill=tk.X, expand=True)
+        entry.focus_set()
+
+        self.entry = entry
+
+    def _on_search_change(self, *args):
+        pattern = self.var.get().strip().lower()
+        if not pattern:
+            for item in self.all_items:
+                self.tree.reattach(item, self.tree.parent(item), self.tree.index(item))
+            return
+        for item in self.all_items:
+            text = self.tree.item(item, "text").lower()
+            if pattern in text:
+                self.tree.reattach(item, self.tree.parent(item), self.tree.index(item))
+            else:
+                self.tree.detach(item)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\selection\toolbar.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\selection\toolbar.py
+--------------------------------------------------------------------------------
+# src/gui/selection/toolbar.py
+import tkinter as tk
+from tkinter import ttk
+from src.i18n import _
+
+class SelectionToolbar:
+    def __init__(self, parent, controller, allowed_extensions):
+        self.controller = controller
+        self.allowed_extensions = allowed_extensions
+
+        self.toolbar = ttk.Frame(parent)
+        self.toolbar.pack(fill=tk.X, pady=5)
+
+        # Boutons par extension avec icônes
+        ext_buttons = [
+            ('.py', "🐍", _("Tous les .py")),
+            ('.json', "📄", _("Tous les .json")),
+            ('.txt', "📝", _("Tous les .txt")),
+            ('.po', "🌐", _("Tous les .po")),
+            ('.mo', "📦", _("Tous les .mo")),
+            ('.html', "🌍", _("Tous les .html")),
+            ('.htm', "🌍", _("Tous les .htm")),
+            ('.css', "🎨", _("Tous les .css")),
+            ('.js', "⚡", _("Tous les .js"))
+        ]
+
+        # Stocker les boutons pour pouvoir les mettre à jour plus tard
+        self.buttons = []
+
+        for ext, icon, label in ext_buttons:
+            if ext in allowed_extensions:
+                btn = ttk.Button(self.toolbar, text=f"{icon} {label}")
+                btn.pack(side=tk.LEFT, padx=2)
+                self.buttons.append((btn, ext))
+
+        # Boutons génériques
+        self.select_all_btn = ttk.Button(self.toolbar, text=_("☑ Tout"))
+        self.select_all_btn.pack(side=tk.LEFT, padx=2)
+
+        self.deselect_all_btn = ttk.Button(self.toolbar, text=_("☐ Rien"))
+        self.deselect_all_btn.pack(side=tk.LEFT, padx=2)
+
+        self.invert_btn = ttk.Button(self.toolbar, text=_("⇄ Inverser"))
+        self.invert_btn.pack(side=tk.LEFT, padx=2)
+
+        # Si le contrôleur est déjà défini, configurer les commandes
+        if controller:
+            self.set_controller(controller)
+
+    def set_controller(self, controller):
+        """Définit le contrôleur et configure les commandes des boutons."""
+        self.controller = controller
+
+        # Configurer les boutons d'extension
+        for btn, ext in self.buttons:
+            btn.config(command=lambda e=ext: controller.select_by_extension(e))
+
+        # Configurer les boutons génériques
+        self.select_all_btn.config(command=controller.select_all)
+        self.deselect_all_btn.config(command=controller.deselect_all)
+        self.invert_btn.config(command=controller.invert_selection)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\selection\tree_builder.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\selection\tree_builder.py
+--------------------------------------------------------------------------------
+# src/gui/selection/tree_builder.py
+from pathlib import Path
+from .utils import get_allowed_extensions, format_size
+
+class TreeBuilder:
+    def __init__(self, tree, root_path, options):
+        self.tree = tree
+        self.root_path = Path(root_path).resolve()
+        self.options = options
+        self.allowed_extensions = get_allowed_extensions(options)
+        self.file_nodes = {}      # rel_path -> iid
+        self.folder_nodes = {}    # rel_path -> iid
+        self.folder_children = {} # iid -> liste des iid enfants
+        self.all_items = []       # liste de tous les iid
+
+    def build(self):
+        """Construit toute l'arborescence."""
+        # Nettoyer
+        for item in self.tree.get_children():
+            self.tree.delete(item)
+
+        self.file_nodes.clear()
+        self.folder_nodes.clear()
+        self.folder_children.clear()
+        self.all_items.clear()
+
+        # Racine
+        root_name = self.root_path.name
+        root_iid = self.tree.insert("", "end", text=root_name, 
+                                    values=("", root_name, ""), open=True)
+        self.folder_nodes[str(self.root_path)] = root_iid
+        self.folder_children[root_iid] = []
+        self.all_items.append(root_iid)
+
+        self._walk_directory(self.root_path, root_iid)
+
+        # Ouvrir tous les dossiers
+        for iid in self.folder_nodes.values():
+            self.tree.item(iid, open=True)
+
+        return {
+            'file_nodes': self.file_nodes,
+            'folder_nodes': self.folder_nodes,
+            'folder_children': self.folder_children,
+            'all_items': self.all_items
+        }
+
+    def _walk_directory(self, dir_path, parent_iid):
+        try:
+            entries = sorted(dir_path.iterdir(), key=lambda p: (not p.is_dir(), p.name))
+        except PermissionError:
+            return
+
+        for path in entries:
+            rel_path = path.relative_to(self.root_path)
+            rel_str = str(rel_path).replace('\\', '/')
+
+            if path.is_dir():
+                iid = self.tree.insert(parent_iid, "end", text=path.name, 
+                                       values=("", path.name, ""), open=False)
+                self.folder_nodes[rel_str] = iid
+                self.folder_children.setdefault(parent_iid, []).append(iid)
+                self.folder_children[iid] = []
+                self.all_items.append(iid)
+                self._walk_directory(path, iid)
+            else:
+                ext = path.suffix.lower()
+                is_extractable = ext in self.allowed_extensions
+                select_char = "☐" if is_extractable else "•"
+                size_str = format_size(path.stat().st_size) if path.exists() else "?"
+                iid = self.tree.insert(parent_iid, "end", text=path.name,
+                                       values=(select_char, path.name, size_str))
+                self.file_nodes[rel_str] = iid
+                self.folder_children.setdefault(parent_iid, []).append(iid)
+                self.tree.set(iid, "select", select_char)
+                self.tree.item(iid, tags=(ext,))
+                self.all_items.append(iid)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\selection\tree_controller.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\selection\tree_controller.py
+--------------------------------------------------------------------------------
+# src/gui/selection/tree_controller.py
+
+class TreeController:
+    def __init__(self, tree, file_nodes, folder_nodes, folder_children):
+        self.tree = tree
+        self.file_nodes = file_nodes
+        self.folder_nodes = folder_nodes
+        self.folder_children = folder_children
+        self.items_state = {}  # iid -> bool (True = sélectionné)
+
+    def toggle_item(self, item):
+        """Bascule l'état d'un fichier ou dossier."""
+        if item in self.file_nodes:
+            current = self.tree.set(item, "select")
+            if current == "•":
+                return
+            new_state = not self.items_state.get(item, False)
+            self.set_item_state(item, new_state)
+        elif item in self.folder_nodes:
+            children = self.folder_children.get(item, [])
+            if children:
+                all_selected = all(self.items_state.get(c, False) 
+                                   for c in children if c in self.file_nodes)
+                new_state = not all_selected
+                self.set_folder_state(item, new_state)
+        return self.items_state
+
+    def set_item_state(self, item, state):
+        """Change l'état d'un fichier."""
+        if item not in self.file_nodes:
+            return
+        self.items_state[item] = state
+        self.tree.set(item, "select", "☑" if state else "☐")
+        self._update_parent_state(item)
+
+    def set_folder_state(self, folder_item, state):
+        """Applique l'état à tous les fichiers d'un dossier (récursivement)."""
+        for child in self.folder_children.get(folder_item, []):
+            if child in self.file_nodes:
+                self.set_item_state(child, state)
+            elif child in self.folder_nodes:
+                self.set_folder_state(child, state)
+        self._update_folder_indicator(folder_item)
+
+    def select_by_extension(self, ext):
+        """Sélectionne tous les fichiers avec une extension donnée."""
+        for iid in self.file_nodes.values():
+            tags = self.tree.item(iid, "tags")
+            if ext in tags:
+                self.set_item_state(iid, True)
+
+    def select_all(self):
+        """Sélectionne tous les fichiers extractibles."""
+        for iid in self.file_nodes.values():
+            if self.tree.set(iid, "select") != "•":
+                self.set_item_state(iid, True)
+
+    def deselect_all(self):
+        """Désélectionne tous les fichiers."""
+        for iid in self.file_nodes.values():
+            if self.tree.set(iid, "select") != "•":
+                self.set_item_state(iid, False)
+
+    def invert_selection(self):
+        """Inverse la sélection."""
+        for iid in self.file_nodes.values():
+            if self.tree.set(iid, "select") != "•":
+                current = self.items_state.get(iid, False)
+                self.set_item_state(iid, not current)
+
+    def get_selected_files(self):
+        """Retourne la liste des chemins relatifs sélectionnés."""
+        return [rel_str for rel_str, iid in self.file_nodes.items() 
+                if self.items_state.get(iid, False)]
+
+    def count_selected(self):
+        """Retourne le nombre de fichiers sélectionnés."""
+        return sum(1 for state in self.items_state.values() if state)
+
+    # --- Méthodes privées ---
+
+    def _update_parent_state(self, item):
+        parent = self.tree.parent(item)
+        if not parent:
+            return
+        self._update_folder_indicator(parent)
+        self._update_parent_state(parent)
+
+    def _update_folder_indicator(self, folder_item):
+        children = self.folder_children.get(folder_item, [])
+        file_children = [c for c in children if c in self.file_nodes]
+        if not file_children:
+            return
+        selected = sum(1 for c in file_children if self.items_state.get(c, False))
+        total = len(file_children)
+        if selected == 0:
+            indicator = "☐"
+        elif selected == total:
+            indicator = "☑"
+        else:
+            indicator = "◐"
+        self.tree.set(folder_item, "select", indicator)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\selection\utils.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\selection\utils.py
+--------------------------------------------------------------------------------
+# src/gui/selection/utils.py
+from src.extractor.file_utils import human_size
+
+def get_allowed_extensions(options):
+    """Retourne la liste des extensions autorisées selon les options."""
+    extensions = ['.py']
+    if options.get('include_json', True):
+        extensions.append('.json')
+    if options.get('include_txt', False):
+        extensions.append('.txt')
+    if options.get('include_po', False):
+        extensions.append('.po')
+    if options.get('include_mo', False):
+        extensions.append('.mo')
+    if options.get('include_html', True):
+        extensions.extend(['.html', '.htm'])
+    if options.get('include_css', True):
+        extensions.append('.css')
+    if options.get('include_js', True):
+        extensions.append('.js')
+    return extensions
+
+def format_size(size_bytes):
+    """Retourne la taille formatée via human_size."""
+    return human_size(size_bytes) if size_bytes >= 0 else "?"
+
+def count_selected(items_state):
+    """Retourne le nombre de fichiers sélectionnés."""
+    return sum(1 for state in items_state.values() if state)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\selection\__init__.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\selection\__init__.py
+--------------------------------------------------------------------------------
+# src/gui/selection/__init__.py
+from .dialog import SelectionDialog
+
+__all__ = ['SelectionDialog']
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\ui_builder\menus.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\ui_builder\menus.py
+--------------------------------------------------------------------------------
+# src/gui/ui_builder/menus.py
+import tkinter as tk
+from src.config import config
+import json
+from pathlib import Path
+import sys
+import subprocess
+import os
+from src.i18n import _
+from src.gui.recent_files import load_recent_folders, clear_recent_folders
+
+def build_menus(parent, ui):
+    menubar = tk.Menu(parent)
+    parent.config(menu=menubar)
+    ui['menubar'] = menubar
+
+    # --- Menu Fichier ---
+    file_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label=_("Fichier"), menu=file_menu)
+    file_menu.add_command(label=_("Quitter"), command=parent.destroy, accelerator="Ctrl+Q")
+    parent.bind_all("<Control-q>", lambda e: parent.destroy())
+
+    # Sous-menu "Emplacements récents"
+    recent_menu = tk.Menu(file_menu, tearoff=0)
+    file_menu.add_cascade(label=_("Emplacements récents"), menu=recent_menu)
+    ui['recent_menu'] = recent_menu
+
+    # Fonction pour mettre à jour le sous-menu
+    def update_recent_menu():
+        recent_menu.delete(0, tk.END)
+        folders = load_recent_folders()
+        if not folders:
+            recent_menu.add_command(label=_("Aucun"), state='disabled')
+        else:
+            for f in folders:
+                label = f"{os.path.basename(f)} ({f})"
+                recent_menu.add_command(
+                    label=label,
+                    command=lambda path=f: _select_recent_folder(parent, ui, path)
+                )
+            recent_menu.add_separator()
+            recent_menu.add_command(label=_("Effacer la liste"), command=_clear_recent)
+    ui['update_recent_menu'] = update_recent_menu
+
+    # Définition locale de _clear_recent pour avoir accès à ui
+    def _clear_recent():
+        """Efface la liste des dossiers récents et rafraîchit le menu."""
+        clear_recent_folders()
+        # Mettre à jour le menu via la fonction stockée dans l'UI
+        if 'update_recent_menu' in ui:
+            ui['update_recent_menu']()
+
+    # Remplir initialement
+    update_recent_menu()
+
+    # --- Menu Options ---
+    options_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label=_("Options"), menu=options_menu)
+    options_menu.add_checkbutton(label=_("Inclure les sous-dossiers"), variable=ui['include_subdirs'])
+    options_menu.add_checkbutton(label=_("Afficher les chemins des fichiers"), variable=ui['show_file_paths'])
+    options_menu.add_separator()
+    options_menu.add_checkbutton(label=_("Inclure les fichiers JSON"), variable=ui['include_json'])
+    options_menu.add_checkbutton(label=_("Inclure les fichiers TXT"), variable=ui['include_txt'])
+    options_menu.add_checkbutton(label=_("Inclure les fichiers .po (traductions)"), variable=ui['include_po'])
+    options_menu.add_checkbutton(label=_("Inclure les fichiers .mo (compilés)"), variable=ui['include_mo'])
+    options_menu.add_checkbutton(label=_("Inclure les fichiers HTML"), variable=ui['include_html'])
+    options_menu.add_checkbutton(label=_("Inclure les fichiers CSS"), variable=ui['include_css'])
+    options_menu.add_checkbutton(label=_("Inclure les fichiers JavaScript"), variable=ui['include_js'])
+    options_menu.add_separator()
+    options_menu.add_checkbutton(label=_("Inclure la structure du projet"), variable=ui['include_structure'])
+    options_menu.add_checkbutton(label=_("Ignorer les fichiers __init__.py"), variable=ui['ignore_init'])
+    options_menu.add_checkbutton(label=_("Inclure les statistiques"), variable=ui['include_statistics'])
+    options_menu.add_checkbutton(label=_("Métadonnées détaillées par fichier"), variable=ui['include_file_metadata'])
+
+    # --- Menu Langue ---
+    lang_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label=_("Langue"), menu=lang_menu)
+    lang_menu.add_command(label="Français", command=lambda: change_language(parent, "fr"))
+    lang_menu.add_command(label="English", command=lambda: change_language(parent, "en"))
+
+    # --- Menu Maintenance ---
+    maintenance_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label=_("Maintenance"), menu=maintenance_menu)
+    maintenance_menu.add_checkbutton(label=_("Archiver les anciens fichiers"), variable=ui['archive_old'])
+    maintenance_menu.add_command(label=_("Nettoyer les versions"))
+    ui['maintenance_menu'] = maintenance_menu
+    ui['clean_versions_index'] = maintenance_menu.index("end")
+
+    # --- Menu Transfert ---
+    transfer_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label=_("Transfert"), menu=transfer_menu)
+    transfer_menu.add_command(label=_("Envoyer un fichier..."))
+    ui['transfer_menu'] = transfer_menu
+    ui['send_file_index'] = 0
+
+    # --- Menu Vue ---
+    view_menu = tk.Menu(menubar, tearoff=0)
+    menubar.add_cascade(label=_("Vue"), menu=view_menu)
+    view_menu.add_checkbutton(label=_("Afficher le journal"), variable=ui['log_visible'])
+    ui['view_menu'] = view_menu
+
+
+def _select_recent_folder(parent, ui, folder_path):
+    """Sélectionne un dossier récent via le contrôleur."""
+    controller = ui.get('controller')
+    if controller:
+        controller.select_recent_folder(folder_path)
+    else:
+        # Fallback
+        ui['folder_path_var'].set(folder_path)
+        ui['extract_btn'].config(state='normal')
+
+
+def change_language(parent, lang_code):
+    script_path = Path(sys.argv[0]).resolve()
+    project_root = script_path.parent
+    config_path = project_root / "config.json"
+
+    if not config_path.exists():
+        alt_path = Path(__file__).parent.parent.parent / "config.json"
+        if alt_path.exists():
+            config_path = alt_path
+        else:
+            tk.messagebox.showerror(
+                "Erreur",
+                f"Fichier config.json introuvable.\n"
+                f"Recherché dans :\n{config_path}\n{alt_path}"
+            )
+            return
+
+    try:
+        with open(config_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        data['language'] = lang_code
+        with open(config_path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+
+        parent.destroy()
+        subprocess.Popen([sys.executable, str(script_path)])
+        sys.exit(0)
+    except Exception as e:
+        tk.messagebox.showerror("Erreur", f"Impossible de changer la langue : {e}")
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\ui_builder\ui_builder.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\ui_builder\ui_builder.py
+--------------------------------------------------------------------------------
+# src/gui/ui_builder/ui_builder.py
+import tkinter as tk
+from .menus import build_menus
+from .widgets import build_widgets
+from src.config import config
+
+def build_ui(parent):
+    ui = {}
+
+    ui['folder_path_var'] = tk.StringVar()
+    ui['progress_var'] = tk.DoubleVar()
+    ui['status_var'] = tk.StringVar(value="Prêt")
+
+    ui['include_subdirs'] = tk.BooleanVar(value=True)
+    ui['show_file_paths'] = tk.BooleanVar(value=True)
+    ui['include_json'] = tk.BooleanVar(value=True)
+    ui['include_txt'] = tk.BooleanVar(value=False)
+    ui['include_po'] = tk.BooleanVar(value=config.get('extraction.include_po', False))
+    ui['include_mo'] = tk.BooleanVar(value=config.get('extraction.include_mo', False))
+    ui['include_html'] = tk.BooleanVar(value=config.get('extraction.include_html', True))
+    ui['include_css'] = tk.BooleanVar(value=config.get('extraction.include_css', True))
+    ui['include_js'] = tk.BooleanVar(value=config.get('extraction.include_js', True))
+    ui['include_structure'] = tk.BooleanVar(value=True)
+    ui['archive_old'] = tk.BooleanVar(value=False)
+    ui['log_visible'] = tk.BooleanVar(value=True)
+    ui['ignore_init'] = tk.BooleanVar(value=False)
+    ui['include_statistics'] = tk.BooleanVar(value=True)
+    ui['include_file_metadata'] = tk.BooleanVar(value=False)
+
+    build_menus(parent, ui)
+    build_widgets(parent, ui)
+
+    return ui
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\ui_builder\widgets.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\ui_builder\widgets.py
+--------------------------------------------------------------------------------
+# src/gui/ui_builder/widgets.py
+import tkinter as tk
+from tkinter import ttk
+from src.config import config
+from src.i18n import _
+
+def build_widgets(parent, ui):
+    main_frame = ttk.Frame(parent, padding="10")
+    main_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+    ui['main_frame'] = main_frame
+
+    title_label = ttk.Label(main_frame, text=_("Extracteur de code Python, JSON & TXT"),
+                            font=('Arial', 16, 'bold'))
+    title_label.grid(row=0, column=0, columnspan=2, pady=10)
+
+    folder_label = ttk.Label(main_frame, text=_("Dossier à scanner :"))
+    folder_label.grid(row=1, column=0, sticky=tk.W, pady=5)
+
+    folder_entry = ttk.Entry(main_frame, textvariable=ui['folder_path_var'],
+                             width=60, state='readonly')
+    folder_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.W)
+
+    browse_btn = ttk.Button(main_frame, text=_("Parcourir"))
+    browse_btn.grid(row=1, column=2, padx=5, pady=5)
+    ui['browse_btn'] = browse_btn
+
+    button_frame = ttk.Frame(main_frame)
+    button_frame.grid(row=2, column=0, columnspan=3, pady=10)
+
+    extract_btn = ttk.Button(button_frame, text=_("Extraire le code"), state='disabled')
+    extract_btn.pack(side=tk.LEFT, padx=5)
+    ui['extract_btn'] = extract_btn
+
+    # Nouveau bouton "Sélectionner..."
+    select_btn = ttk.Button(button_frame, text=_("Sélectionner..."))
+    select_btn.pack(side=tk.LEFT, padx=5)
+    ui['select_btn'] = select_btn
+
+    clear_btn = ttk.Button(button_frame, text=_("Effacer le journal"))
+    clear_btn.pack(side=tk.LEFT, padx=5)
+    ui['clear_btn'] = clear_btn
+
+    progress_bar = ttk.Progressbar(main_frame, variable=ui['progress_var'],
+                                   maximum=100, length=500)
+    progress_bar.grid(row=3, column=0, columnspan=3, pady=10)
+    ui['progress_bar'] = progress_bar
+
+    info_frame = ttk.LabelFrame(main_frame, text=_("Journal"), padding="5")
+    info_frame.grid(row=4, column=0, columnspan=3, sticky=(tk.W, tk.E, tk.N, tk.S), pady=5)
+    ui['info_frame'] = info_frame
+
+    log_height = config.get('gui.log_height', 12)
+    info_text = tk.Text(info_frame, height=log_height, width=80, wrap=tk.WORD)
+    info_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+
+    scrollbar = ttk.Scrollbar(info_frame, orient="vertical", command=info_text.yview)
+    scrollbar.grid(row=0, column=1, sticky=(tk.N, tk.S))
+    info_text.configure(yscrollcommand=scrollbar.set)
+    ui['info_text'] = info_text
+
+    status_bar = ttk.Label(main_frame, textvariable=ui['status_var'],
+                           relief=tk.SUNKEN, anchor=tk.W)
+    status_bar.grid(row=5, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=5)
+    ui['status_bar'] = status_bar
+
+    main_frame.columnconfigure(1, weight=1)
+    main_frame.rowconfigure(4, weight=1)
+    info_frame.columnconfigure(0, weight=1)
+    info_frame.rowconfigure(0, weight=1)
+    parent.columnconfigure(0, weight=1)
+    parent.rowconfigure(0, weight=1)
+
+    def toggle_log_visibility():
+        if ui['log_visible'].get():
+            ui['info_frame'].grid()
+        else:
+            ui['info_frame'].grid_remove()
+
+    view_menu = ui.get('view_menu')
+    if view_menu:
+        view_menu.entryconfig(0, command=toggle_log_visibility)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\gui\ui_builder\__init__.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\gui\ui_builder\__init__.py
+--------------------------------------------------------------------------------
+
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\network\discovery.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\network\discovery.py
+--------------------------------------------------------------------------------
+# src/network/discovery.py
+import socket
+import threading
+import time
+from src.config import config
+
+class DiscoveryService:
+    """Découvre les autres instances du programme sur le réseau local."""
+
+    def __init__(self, listen_port=None):
+        self.listen_port = listen_port or config.get('network.discovery_port', 50001)
+        self._peers = {}
+        self._lock = threading.Lock()
+        self.broadcast_msg = config.get('network.broadcast_msg', 'PYEXTRACTOR_DISCOVER').encode()
+        self.reply_msg = config.get('network.reply_msg', 'PYEXTRACTOR_HERE').encode()
+        self._stop_event = threading.Event()
+        self._listener_thread = None
+
+    def start_listener(self):
+        """Démarre le thread d'écoute des messages de découverte."""
+        if self._listener_thread is None or not self._listener_thread.is_alive():
+            self._stop_event.clear()
+            self._listener_thread = threading.Thread(target=self._listen, daemon=True)
+            self._listener_thread.start()
+
+    def stop_listener(self):
+        """Arrête proprement le thread d'écoute."""
+        self._stop_event.set()
+        if self._listener_thread and self._listener_thread.is_alive():
+            self._listener_thread.join(timeout=1.0)
+
+    def _listen(self):
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            sock.bind(('', self.listen_port))
+            sock.settimeout(0.5)  # pour vérifier régulièrement _stop_event
+            while not self._stop_event.is_set():
+                try:
+                    data, addr = sock.recvfrom(1024)
+                except socket.timeout:
+                    continue
+                except Exception:
+                    break
+                if data == self.broadcast_msg:
+                    hostname = socket.gethostname()
+                    reply = f"{self.reply_msg.decode()}:{hostname}".encode()
+                    sock.sendto(reply, addr)
+                elif data.startswith(self.reply_msg):
+                    parts = data.decode().split(':', 1)
+                    if len(parts) == 2:
+                        hostname = parts[1]
+                        with self._lock:
+                            self._peers[addr[0]] = hostname
+
+    def scan(self, timeout=2):
+        """
+        Envoie un message broadcast et attend les réponses des autres instances.
+        Retourne un dictionnaire {ip: hostname}.
+        """
+        self._peers.clear()
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP) as sock:
+            sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+            sock.settimeout(timeout)
+            sock.bind(('', 0))
+            sock.sendto(self.broadcast_msg, ('<broadcast>', self.listen_port))
+            start = time.time()
+            while time.time() - start < timeout:
+                try:
+                    data, addr = sock.recvfrom(1024)
+                    if data.startswith(self.reply_msg):
+                        parts = data.decode().split(':', 1)
+                        if len(parts) == 2:
+                            hostname = parts[1]
+                            with self._lock:
+                                self._peers[addr[0]] = hostname
+                except socket.timeout:
+                    break
+        with self._lock:
+            return dict(self._peers)
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\network\server.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\network\server.py
+--------------------------------------------------------------------------------
+# src/network/server.py
+import socket
+import threading
+from pathlib import Path
+from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
+from hashlib import sha256
+from src.logger import setup_logger
+from src.config import config
+
+logger = setup_logger(__name__)
+
+class ReceiveServer(threading.Thread):
+    """Serveur TCP multi‑threadé avec vérification d'intégrité (SHA‑256)."""
+
+    def __init__(self, host=None, port=None, received_dir=None, max_workers=10):
+        super().__init__(daemon=True)
+        self.host = host or config.get('network.server_host', '0.0.0.0')
+        self.port = port or config.get('network.server_port', 50000)
+
+        if received_dir is None:
+            output_dir = Path(config.get('output_dir', 'out'))
+            received_subdir = config.get('received_subdir', 'received')
+            self.received_dir = output_dir / received_subdir
+        else:
+            self.received_dir = Path(received_dir)
+
+        self._stop_event = threading.Event()
+        self._executor = ThreadPoolExecutor(max_workers=max_workers, thread_name_prefix="ServerWorker")
+
+    def run(self):
+        self.received_dir.mkdir(parents=True, exist_ok=True)
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
+            server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            try:
+                server_socket.bind((self.host, self.port))
+                server_socket.listen(5)
+                server_socket.settimeout(1.0)  # timeout pour vérifier l'événement
+                logger.info(f"Serveur démarré sur {self.host}:{self.port} (pool de {self._executor._max_workers} threads)")
+            except Exception as e:
+                logger.error(f"Impossible de démarrer le serveur : {e}")
+                return
+
+            while not self._stop_event.is_set():
+                try:
+                    conn, addr = server_socket.accept()
+                except socket.timeout:
+                    continue
+                except Exception as e:
+                    logger.error(f"Erreur lors de l'acceptation : {e}")
+                    break
+                self._executor.submit(self._handle_client, conn, addr)
+
+    def _handle_client(self, conn, addr):
+        try:
+            # 1) Lire la taille du nom de fichier
+            name_size_bytes = conn.recv(4)
+            if not name_size_bytes:
+                logger.warning(f"Connexion fermée par {addr} avant l'envoi du nom")
+                return
+            name_size = int.from_bytes(name_size_bytes, 'big')
+            filename = conn.recv(name_size).decode('utf-8')
+
+            # 2) Lire la taille des données (sans le hash)
+            data_size_bytes = conn.recv(8)
+            if not data_size_bytes:
+                logger.warning(f"Connexion fermée par {addr} avant l'envoi de la taille")
+                return
+            data_size = int.from_bytes(data_size_bytes, 'big')
+
+            # 3) Lire les données + le hash (32 octets)
+            total_to_read = data_size + 32
+            data = b''
+            while len(data) < total_to_read:
+                chunk = conn.recv(min(4096, total_to_read - len(data)))
+                if not chunk:
+                    logger.warning(f"Connexion interrompue par {addr} pendant le transfert")
+                    break
+                data += chunk
+
+            if len(data) != total_to_read:
+                logger.error(f"Taille reçue incorrecte pour {filename} de {addr} : attendu {total_to_read}, reçu {len(data)}")
+                return
+
+            # 4) Séparer les données et le hash
+            file_data = data[:data_size]
+            received_hash = data[data_size:]
+
+            # 5) Vérifier l'intégrité
+            computed_hash = sha256(file_data).digest()
+            if computed_hash != received_hash:
+                logger.error(f"Hash incorrect pour {filename} de {addr} – fichier rejeté")
+                return
+
+            # 6) Sauvegarder le fichier
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            safe_name = f"{timestamp}_{filename}"
+            filepath = self.received_dir / safe_name
+            with open(filepath, 'wb') as f:
+                f.write(file_data)
+
+            logger.info(f"Fichier reçu de {addr}: {filepath} ({data_size} octets) - hash OK")
+        except socket.error as e:
+            logger.error(f"Erreur socket avec {addr} : {e}")
+        except Exception as e:
+            logger.error(f"Erreur inattendue lors de la réception de {addr} : {e}")
+        finally:
+            conn.close()
+
+    def stop(self):
+        logger.info("Arrêt du serveur en cours...")
+        self._stop_event.set()
+        # Attendre que toutes les tâches en cours se terminent
+        self._executor.shutdown(wait=True, cancel_futures=False)
+        logger.info("Serveur arrêté")
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\network\transfer_dialog.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\network\transfer_dialog.py
+--------------------------------------------------------------------------------
+# src/network/transfer_dialog.py
+import os
+import socket
+import threading
+import tkinter as tk
+from tkinter import ttk, messagebox
+from pathlib import Path
+from hashlib import sha256
+from .discovery import DiscoveryService
+from src.logger import setup_logger
+from src.config import config
+from src.i18n import _
+
+logger = setup_logger(__name__)
+
+class TransferDialog(tk.Toplevel):
+    def __init__(self, parent, out_dir=None):
+        super().__init__(parent)
+        self.title(_("Envoyer un fichier à un autre PC"))
+        self.geometry("600x400")
+        self.resizable(True, True)
+        self.out_dir = Path(out_dir or config.get('output_dir', 'out'))
+        self.discovery = DiscoveryService()
+        self.selected_file = None
+        self.selected_peer = None
+        self.peers = {}
+        self.files_map = []
+
+        self._create_widgets()
+        self._populate_files()
+        self._start_scan()
+
+    def _create_widgets(self):
+        main = ttk.Frame(self, padding=10)
+        main.pack(fill=tk.BOTH, expand=True)
+
+        ttk.Label(main, text=_("Fichiers disponibles dans out/ :")).grid(row=0, column=0, sticky=tk.W)
+        self.file_listbox = tk.Listbox(main, height=8, width=70)
+        self.file_listbox.grid(row=1, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=5)
+        scroll_file = ttk.Scrollbar(main, orient=tk.VERTICAL, command=self.file_listbox.yview)
+        scroll_file.grid(row=1, column=2, sticky=(tk.N, tk.S))
+        self.file_listbox.config(yscrollcommand=scroll_file.set)
+        self.file_listbox.bind('<<ListboxSelect>>', self._on_file_select)
+
+        ttk.Label(main, text=_("PC disponibles sur le réseau :")).grid(row=2, column=0, sticky=tk.W, pady=(10, 0))
+        self.peer_listbox = tk.Listbox(main, height=6, width=70)
+        self.peer_listbox.grid(row=3, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=5)
+        scroll_peer = ttk.Scrollbar(main, orient=tk.VERTICAL, command=self.peer_listbox.yview)
+        scroll_peer.grid(row=3, column=2, sticky=(tk.N, tk.S))
+        self.peer_listbox.config(yscrollcommand=scroll_peer.set)
+        self.peer_listbox.bind('<<ListboxSelect>>', self._on_peer_select)
+
+        btn_frame = ttk.Frame(main)
+        btn_frame.grid(row=4, column=0, columnspan=2, pady=10)
+        self.send_btn = ttk.Button(btn_frame, text=_("Envoyer le fichier"), command=self._send, state='disabled')
+        self.send_btn.pack(side=tk.LEFT, padx=5)
+        ttk.Button(btn_frame, text=_("Rafraîchir la liste"), command=self._populate_files).pack(side=tk.LEFT, padx=5)
+        ttk.Button(btn_frame, text=_("Scanner le réseau"), command=self._start_scan).pack(side=tk.LEFT, padx=5)
+
+        self.status_var = tk.StringVar(value=_("Prêt"))
+        ttk.Label(main, textvariable=self.status_var).grid(row=5, column=0, columnspan=2, sticky=tk.W)
+
+        main.columnconfigure(0, weight=1)
+        main.columnconfigure(1, weight=1)
+
+    def _populate_files(self):
+        self.file_listbox.delete(0, tk.END)
+        self.files_map = []
+        try:
+            for file_path in self.out_dir.rglob('*'):
+                if file_path.is_file() and file_path.suffix == '.txt':
+                    display = str(file_path.relative_to(self.out_dir))
+                    self.files_map.append((display, str(file_path)))
+                    self.file_listbox.insert(tk.END, display)
+        except Exception as e:
+            logger.error(f"Erreur lors du peuplement de la liste des fichiers : {e}")
+            self.status_var.set(_("Erreur de lecture des fichiers"))
+
+    def _on_file_select(self, event):
+        sel = self.file_listbox.curselection()
+        if sel:
+            idx = sel[0]
+            self.selected_file = self.files_map[idx][1]
+            self._update_send_button()
+
+    def _on_peer_select(self, event):
+        sel = self.peer_listbox.curselection()
+        if sel:
+            idx = sel[0]
+            try:
+                ip = list(self.peers.keys())[idx]
+                self.selected_peer = ip
+            except IndexError:
+                logger.warning("Sélection de pair hors de portée")
+                self.selected_peer = None
+            self._update_send_button()
+
+    def _update_send_button(self):
+        if self.selected_file and self.selected_peer:
+            self.send_btn.config(state='normal')
+        else:
+            self.send_btn.config(state='disabled')
+
+    def _start_scan(self):
+        self.status_var.set(_("Scan du réseau en cours..."))
+        threading.Thread(target=self._scan_thread, daemon=True).start()
+
+    def _scan_thread(self):
+        self.peers = {}
+        try:
+            self.peers = self.discovery.scan(timeout=2)
+        except Exception as e:
+            logger.error(f"Erreur de scan réseau : {e}")
+        self.after(0, self._update_peer_list)
+
+    def _update_peer_list(self):
+        self.peer_listbox.delete(0, tk.END)
+        for ip, hostname in self.peers.items():
+            display = f"{hostname} ({ip})"
+            self.peer_listbox.insert(tk.END, display)
+        self.status_var.set(f"{len(self.peers)} PC trouvé(s)" if self.peers else _("Aucun PC trouvé"))
+
+    def _send(self):
+        if not (self.selected_file and self.selected_peer):
+            return
+        ip = self.selected_peer
+        filename = os.path.basename(self.selected_file)
+        port = config.get('network.server_port', 50000)
+        try:
+            # Lire le fichier
+            with open(self.selected_file, 'rb') as f:
+                data = f.read()
+
+            # Calculer le hash SHA-256
+            file_hash = sha256(data).digest()
+
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(5)
+            sock.connect((ip, port))
+
+            # Envoyer le nom du fichier
+            name_bytes = filename.encode('utf-8')
+            sock.sendall(len(name_bytes).to_bytes(4, 'big'))
+            sock.sendall(name_bytes)
+
+            # Envoyer la taille des données (sans le hash)
+            sock.sendall(len(data).to_bytes(8, 'big'))
+
+            # Envoyer les données
+            sock.sendall(data)
+
+            # Envoyer le hash
+            sock.sendall(file_hash)
+
+            sock.close()
+            hostname = self.peers.get(ip, ip)
+            messagebox.showinfo(_("Succès"), _("Fichier envoyé à {} ({})").format(hostname, ip))
+            self.status_var.set(_("Envoi réussi"))
+            logger.info(f"Fichier {filename} envoyé à {hostname} ({ip}) - hash envoyé")
+        except socket.timeout:
+            logger.error(f"Timeout lors de l'envoi à {ip}")
+            messagebox.showerror(_("Erreur"), _("Le serveur distant ne répond pas (timeout)"))
+            self.status_var.set(_("Échec de l'envoi (timeout)"))
+        except ConnectionRefusedError:
+            logger.error(f"Connexion refusée par {ip}")
+            messagebox.showerror(_("Erreur"), _("Le serveur distant a refusé la connexion"))
+            self.status_var.set(_("Échec de l'envoi (refus)"))
+        except Exception as e:
+            logger.error(f"Erreur lors de l'envoi à {ip} : {e}")
+            messagebox.showerror(_("Erreur"), _("Échec de l'envoi : {}").format(e))
+            self.status_var.set(_("Échec de l'envoi"))
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\network\__init__.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\network\__init__.py
+--------------------------------------------------------------------------------
+
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\services\extraction_service.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\services\extraction_service.py
+--------------------------------------------------------------------------------
+# src/services/extraction_service.py
+import shutil
+from pathlib import Path
+from src.extractor.extractor import CodeExtractor
+from src.versioning import VersionManager
+from src.logger import setup_logger
+from src.config import config
+
+logger = setup_logger(__name__)
+
+class ExtractionService:
+    def __init__(self, output_dir=None, version_file=None):
+        self.output_dir = Path(output_dir or config.get('output_dir', 'out'))
+        self.version_manager = VersionManager(version_file or config.get('version_file', 'extractor_version.txt'))
+
+    def extract_folder(self, folder_path, options, progress_callback=None, log_callback=None, selected_files=None):
+        """
+        selected_files : liste de chemins relatifs (str) à extraire.
+        Si None ou vide, on extrait tous les fichiers trouvés.
+        """
+        folder_path = Path(folder_path)
+        default_options = config.get('extraction', {})
+        merged_options = {**default_options, **options}
+
+        extractor = CodeExtractor(
+            include_json=merged_options.get('include_json', True),
+            include_subdirs=merged_options.get('include_subdirs', True),
+            show_file_paths=merged_options.get('show_file_paths', True),
+            include_structure=merged_options.get('include_structure', True),
+            include_txt=merged_options.get('include_txt', False),
+            include_po=merged_options.get('include_po', False),
+            include_mo=merged_options.get('include_mo', False),
+            include_html=merged_options.get('include_html', True),
+            include_css=merged_options.get('include_css', True),
+            include_js=merged_options.get('include_js', True),
+            ignore_init=merged_options.get('ignore_init', False),
+            include_statistics=merged_options.get('include_statistics', True),
+            include_file_metadata=merged_options.get('include_file_metadata', False)
+        )
+
+        folder_name = folder_path.name
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        next_version = self.version_manager.get_next_version(folder_name, output_dir=self.output_dir)
+        output_filename = self.output_dir / f"{folder_name}v{next_version}.txt"
+
+        # Récupération des 9 valeurs
+        success, py_count, json_count, txt_count, po_count, mo_count, html_count, css_count, js_count = extractor.extract_all(
+            folder_path,
+            output_filename,
+            progress_callback=progress_callback,
+            log_callback=log_callback,
+            selected_files=selected_files   # <-- nouveau paramètre
+        )
+
+        if success:
+            self.version_manager.use_version(folder_name, next_version)
+            stats = {
+                'py_count': py_count,
+                'json_count': json_count,
+                'txt_count': txt_count,
+                'po_count': po_count,
+                'mo_count': mo_count,
+                'html_count': html_count,
+                'css_count': css_count,
+                'js_count': js_count,
+                'total_files': py_count + json_count + txt_count + po_count + mo_count + html_count + css_count + js_count,
+                'output_filename': str(output_filename)
+            }
+            logger.info(f"Extraction réussie : {output_filename}")
+            return True, str(output_filename), stats
+        else:
+            logger.error("Échec de l'extraction")
+            return False, None, None
+
+    def clean_versions(self, archive=False):
+        if archive:
+            archive_dir = self.output_dir / config.get('archive_subdir', 'old_out')
+            archive_dir.mkdir(parents=True, exist_ok=True)
+            moved_files = []
+            for item in self.output_dir.iterdir():
+                if item.is_file() and item.suffix == '.txt':
+                    try:
+                        shutil.move(str(item), str(archive_dir / item.name))
+                        moved_files.append(item.name)
+                    except Exception as e:
+                        logger.error(f"Erreur archivage {item} : {e}")
+                        raise
+            logger.info(f"Archivés : {', '.join(moved_files)}")
+
+        self.version_manager.reset()
+        logger.info("Historique des versions réinitialisé.")
+        return "Nettoyage terminé" + (" (fichiers archivés)" if archive else "")
+
+--- FIN DU FICHIER ---
+
+================================================================================
+FICHIER Python : src\services\__init__.py
+Type: Python
+Chemin complet: C:\dossier tlf\New folder\text exporter\src\services\__init__.py
+--------------------------------------------------------------------------------
+# src/services/__init__.py
+
+--- FIN DU FICHIER ---
+
+--- FIN DES FICHIERS ---
+
+
+================================================================================
+STATISTIQUES
+================================================================================
+Nombre de dossiers          : 22
+Dossiers 'Python package'    : 7
+Fichiers Python (.py)        : 42
+Fichiers JSON (.json)        : 2
+Fichiers Texte (.txt)        : 0
+Fichiers PO (.po)            : 0
+Fichiers MO (.mo)            : 0
+Fichiers HTML (.html/.htm)   : 0
+Fichiers CSS (.css)          : 0
+Fichiers JavaScript (.js)    : 0
+Nombre total de fichiers     : 44
+Nombre de lignes (Python)    : 2488
+Nombre de lignes (JSON)      : 39
+Nombre de lignes (Texte)     : 0
+Nombre de lignes (PO)        : 0
+Nombre de lignes (MO)        : 0
+Nombre de lignes (HTML)      : 0
+Nombre de lignes (CSS)       : 0
+Nombre de lignes (JS)        : 0
+Nombre total de lignes       : 2527
+Volume total extrait         : 101.34 Ko
