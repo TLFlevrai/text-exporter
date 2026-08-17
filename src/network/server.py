@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 from hashlib import sha256
 import hmac
 from src.logger import setup_logger
-from src.config import config
+from src.config import get_config
 
 logger = setup_logger(__name__)
 
@@ -21,20 +21,21 @@ class ReceiveServer(threading.Thread):
 
     def __init__(self, host=None, port=None, received_dir=None, max_workers=10, on_event=None):
         super().__init__(daemon=True)
-        self.host = host or config.get('network.server_host', '127.0.0.1')
-        self.port = port or config.get('network.server_port', 50000)
+        cfg = get_config()
+        self.host = host or cfg.get('network.server_host', '127.0.0.1')
+        self.port = port or cfg.get('network.server_port', 50000)
 
-        output_dir = Path(config.get('output_dir', 'out'))
-        received_subdir = config.get('received_subdir', 'received')
+        output_dir = Path(cfg.get('output_dir', 'out'))
+        received_subdir = cfg.get('received_subdir', 'received')
         self.received_dir = (received_dir or output_dir / received_subdir)
 
         # Auth config
-        self.auth_enabled = config.get('network.auth_enabled', True)
-        self.auth_token = config.get('network.auth_token', 'change-me-secure-random-token').encode('utf-8')
-        self.allowed_extensions = set(config.get('network.allowed_extensions', ['.txt']))
+        self.auth_enabled = cfg.get('network.auth_enabled', True)
+        self.auth_token = cfg.get('network.auth_token', 'change-me-secure-random-token').encode('utf-8')
+        self.allowed_extensions = set(cfg.get('network.allowed_extensions', ['.txt']))
 
         if self.auth_enabled and self.auth_token == b'change-me-secure-random-token':
-            logger.warning("⚠️  TOKEN D'AUTHENTIFICATION PAR DÉFAUT DÉTECTÉ ! Changez 'auth_token' dans config.json")
+            logger.warning("[WARN] TOKEN D'AUTHENTIFICATION PAR DEFAUT DETECTE ! Changez 'auth_token' dans config.json")
 
         self._stop_event = threading.Event()
         self._executor = ThreadPoolExecutor(max_workers=max_workers, thread_name_prefix="ServerWorker")

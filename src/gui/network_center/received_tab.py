@@ -5,7 +5,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from pathlib import Path
 from datetime import datetime
-from src.i18n import _
+from src.i18n import _, pgettext
 from src.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -46,9 +46,10 @@ class ReceivedTab(ttk.Frame):
         btn_frame = ttk.Frame(main)
         btn_frame.pack(fill=tk.X, pady=5)
 
-        ttk.Button(btn_frame, text=_("Ouvrir"), command=self._open_file).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_frame, text=_("Ouvrir le dossier"), command=self._open_folder).pack(side=tk.LEFT, padx=2)
-        ttk.Button(btn_frame, text=_("Supprimer"), command=self._delete_file).pack(side=tk.LEFT, padx=2)
+        # Contexte "button" pour distinguer des messages de confirmation
+        ttk.Button(btn_frame, text=pgettext("button", "Ouvrir"), command=self._open_file).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_frame, text=pgettext("button", "Ouvrir le dossier"), command=self._open_folder).pack(side=tk.LEFT, padx=2)
+        ttk.Button(btn_frame, text=pgettext("button", "Supprimer"), command=self._delete_file).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_frame, text=_("Déplacer vers out/"), command=self._move_to_out).pack(side=tk.LEFT, padx=2)
         ttk.Button(btn_frame, text=_("Rafraîchir"), command=self._refresh_list).pack(side=tk.LEFT, padx=2)
 
@@ -110,7 +111,7 @@ class ReceivedTab(ttk.Frame):
         if not self.selected_file or not self.selected_file.exists():
             messagebox.showinfo(_("Information"), _("Aucun fichier sélectionné"))
             return
-        if messagebox.askyesno(_("Confirmation"), _("Supprimer définitivement {} ?").format(self.selected_file.name)):
+        if messagebox.askyesno(_("Confirmation"), pgettext("confirmation", "Supprimer définitivement {} ?").format(self.selected_file.name)):
             try:
                 self.selected_file.unlink()
                 self._refresh_list()

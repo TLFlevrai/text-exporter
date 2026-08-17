@@ -4,13 +4,13 @@ import threading
 from pathlib import Path
 from .schema import AppConfig, ExtractionOptions, NetworkConfig, GuiConfig
 
-__all__ = ['AppConfig', 'ExtractionOptions', 'NetworkConfig', 'GuiConfig', 'config']
+__all__ = ['AppConfig', 'ExtractionOptions', 'NetworkConfig', 'GuiConfig', 'get_config']
 
 # Chemin vers config.json à la racine du projet
 CONFIG_PATH = Path(__file__).parent.parent.parent / "config.json"
 
 
-class Config:
+class _Config:
     """Chargeur de configuration centralisé (Singleton thread-safe)."""
     
     _instance = None
@@ -85,5 +85,14 @@ class Config:
             cls._config = None
 
 
-# Instance unique (singleton) - Initialisation paresseuse thread-safe
-config = Config()
+def get_config() -> _Config:
+    """Retourne l'instance singleton de configuration (toujours à jour après reset)."""
+    return _Config()
+
+
+# Pour compatibilité - déprécié, utiliser get_config()
+class _ConfigProxy:
+    def __getattr__(self, name):
+        return getattr(get_config(), name)
+
+config = _ConfigProxy()

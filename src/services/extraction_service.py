@@ -2,7 +2,7 @@
 import shutil
 from pathlib import Path
 from typing import Optional, List, Callable, Tuple
-from src.config import ExtractionOptions
+from src.config import ExtractionOptions, get_config
 from src.versioning import VersionManager
 from src.logger import setup_logger
 from src.services.interfaces import ICodeExtractor, IVersionManager
@@ -98,8 +98,7 @@ class ExtractionService:
 
     def clean_versions(self, archive: bool = False) -> str:
         if archive:
-            from src.config import config
-            archive_dir = self.output_dir / config.get('archive_subdir', 'old_out')
+            archive_dir = self.output_dir / get_config().get('archive_subdir', 'old_out')
             archive_dir.mkdir(parents=True, exist_ok=True)
             moved_files = []
             for item in self.output_dir.iterdir():

@@ -2,7 +2,7 @@
 import os
 import re
 from pathlib import Path
-from src.config import config
+from src.config import get_config
 from src.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -99,7 +99,7 @@ class PDFService:
 
         # Vérifier que le chemin est dans le dossier de sortie autorisé
         if must_be_in_output_dir:
-            output_dir = Path(config.get('output_dir', 'out')).resolve()
+            output_dir = Path(get_config().get('output_dir', 'out')).resolve()
             try:
                 resolved.relative_to(output_dir)
             except ValueError:

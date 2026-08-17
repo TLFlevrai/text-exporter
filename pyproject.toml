@@ -1,0 +1,230 @@
+[project]
+name = "text-exporter"
+version = "1.0.0"
+description = "Extracteur de code Python/JSON/TXT/HTML/CSS/JS avec GUI, versioning et réseau"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "TLF", email = "tlf@example.com"}
+]
+keywords = ["code-extractor", "gui", "tkinter", "i18n", "network"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Text Processing :: General",
+]
+dependencies = [
+    "pydantic>=2.0",
+    "fpdf2>=2.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-mock",
+    "pytest-cov",
+    "ruff>=0.1",
+    "mypy>=1.0",
+    "pre-commit",
+    "babel>=2.18",
+    "types-requests",
+]
+test = [
+    "pytest>=7.0",
+    "pytest-mock",
+    "pytest-cov",
+]
+
+[project.urls]
+Homepage = "https://github.com/tlf/text-exporter"
+Repository = "https://github.com/tlf/text-exporter"
+Issues = "https://github.com/tlf/text-exporter/issues"
+
+[tool.babel]
+domain = "messages"
+input_dirs = ["src"]
+output_file = "locale/messages.pot"
+project = "Text Exporter"
+version = "1.0.0"
+msgid_bugs_address = ""
+copyright_holder = ""
+sort_output = true
+sort_by_file = true
+
+[tool.babel.extractors]
+python = "babel.extract:extract_python"
+
+[tool.babel.mappings]
+".py" = { extractor = "python" }
+
+# Keywords for babel extraction (configured via command line or separate config)
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "W",   # pycodestyle warnings
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "T20", # flake8-print
+    "PIE", # flake8-pie
+    "RUF", # Ruff-specific rules
+    "ARG", # flake8-unused-arguments
+    "PTH", # flake8-use-pathlib
+    "ERA", # eradicate (commented code)
+    "PL",  # pylint
+    "TRY", # tryceratops
+    "NPY", # numpy-specific
+    "TD",  # type hints
+]
+ignore = [
+    "E501",  # line too long (handled by line-length)
+    "B008",  # function call in default argument (sometimes needed)
+    "TRY003", # avoid specifying long messages outside exception (ok for i18n)
+]
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "S106", "S311"]
+"src/config/__init__.py" = ["B008"]
+src = ["src"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+trailing-commas = "always"
+line-ending = "lf"
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+known-third-party = ["pydantic", "fpdf2", "tkinter", "babel", "polib"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+implicit_reexport = true
+allow_untyped_globals = false
+enable_error_code = [
+    "attr-defined",
+    "import",
+    "no-untyped-def",
+    "union-attr",
+    "misc",
+]
+exclude = [
+    "build",
+    "dist",
+    ".venv",
+    "venv",
+    "locale",
+    "out",
+    "tests/fixtures",
+]
+[[tool.mypy.overrides]]
+module = [
+    "tkinter.*",
+    "pydantic.*",
+    "fpdf.*",
+    "babel.*",
+    "polib.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "-ra",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+]
+markers = [
+    "unit: Unit tests",
+    "integration: Integration tests",
+    "slow: Slow tests",
+    "network: Tests requiring network",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/__pycache__/*",
+    "*/locale/*",
+    "*/out/*",
+]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
+precision = 2
+
+[tool.pre-commit]
+default_stages = ["commit"]
+default_language_version = "python3.10"
+
+repos = [
+    {repo = "https://github.com/astral-sh/ruff-pre-commit", rev = "v0.3.0", hooks = [
+        {id = "ruff", args = ["check", "--fix", "--exit-non-zero-on-fix"]},
+        {id = "ruff-format", args = ["--check"]},
+    ]},
+    {repo = "https://github.com/pre-commit/pre-commit-hooks", rev = "v4.5.0", hooks = [
+        {id = "trailing-whitespace"},
+        {id = "end-of-file-fixer"},
+        {id = "check-yaml"},
+        {id = "check-toml"},
+        {id = "check-json"},
+        {id = "check-merge-conflict"},
+        {id = "debug-logger"},
+        {id = "check-added-large-files", args = ["--maxkb=500"]},
+    ]},
+    {repo = "https://github.com/pre-commit/mirrors-mypy", rev = "v1.8.0", hooks = [
+        {id = "mypy", args = ["--strict", "--show-error-codes"]},
+    ]},
+    {repo = "local", hooks = [
+        {id = "pybabel-compile", name = "Compile translations", entry = "pybabel compile -d locale -D messages", language = "system", types = ["file"], files = "locale/.*\\.po$"},
+    ]},
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["src*"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.setuptools.entry-points]
+console_scripts = [
+    "text-exporter = main:main",
+]

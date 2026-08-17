@@ -1,7 +1,7 @@
 # src/extractor/file_discovery.py
 import os
 from pathlib import Path
-from typing import List, Tuple, Set
+from typing import List, Tuple, Set, Iterator, Optional
 from src.config import ExtractionOptions
 from src.logger import setup_logger
 
@@ -34,38 +34,8 @@ class FileDiscoveryService:
         Retourne la liste des fichiers à extraire.
         Format: [(full_path, relative_path, extension), ...]
         """
-        folder_path = Path(folder).resolve()
-        files: List[Tuple[Path, Path, str]] = []
-
-        # os.walk topdown=True permet de modifier 'dirs' pour élaguer
-        for root, dirs, filenames in os.walk(folder_path, topdown=True):
-            # --- PRUNING : supprime les dossiers ignorés AVANT la descente ---
-            # On modifie 'dirs' en place (seul moyen d'élaguer avec os.walk)
-            dirs[:] = [d for d in dirs if d not in self._ignored_dir_names]
-
-            # Si include_subdirs=False, on vide dirs pour ne pas descendre
-            if not self.options.include_subdirs and root != str(folder_path):
-                dirs[:] = []
-
-            root_path = Path(root)
-            for fname in filenames:
-                if not self._is_extractable_file(fname):
-                    continue
-
-                full_path = root_path / fname
-                # Vérification __init__.py (fichier, pas dossier)
-                if self.options.ignore_init and fname == '__init__.py':
-                    continue
-
-                try:
-                    rel_path = full_path.relative_to(folder_path)
-                except ValueError:
-                    # Hors racine (symlink étrange) -> ignorer
-                    continue
-
-                files.append((full_path, rel_path, full_path.suffix))
-
-        return files
+        items = list(self._walk(Path(folder).resolve(), collect_dirs=False))
+        return [(item.full_path, item.rel_path, item.extension) for item in items]
 
     def find_all_paths(self, folder: str) -> Tuple[List[Tuple[Path, Path, str]], Set[Path]]:
         """
@@ -73,13 +43,48 @@ class FileDiscoveryService:
         Utilise le MÊME parcours optimisé que find_files.
         """
         folder_path = Path(folder).resolve()
-        files: List[Tuple[Path, Path, str]] = []
-        dirs_set: Set[Path] = set()
+        files = []
+        dirs_set = set()
 
+        for item in self._walk(folder_path, collect_dirs=True):
+            if item.kind == 'file':
+                files.append((item.full_path, item.rel_path, item.extension))
+            elif item.kind == 'dir':
+                dirs_set.add(item.rel_path)
+
+        return files, dirs_set
+
+    # --------------------------------------------------------------------- #
+    # INTERNE
+    # --------------------------------------------------------------------- #
+
+    class _WalkItem:
+        """Résultat d'un pas de parcours."""
+        __slots__ = ('kind', 'full_path', 'rel_path', 'extension')
+
+        def __init__(self, kind: str, full_path: Optional[Path] = None,
+                     rel_path: Optional[Path] = None, extension: Optional[str] = None):
+            self.kind = kind
+            self.full_path = full_path
+            self.rel_path = rel_path
+            self.extension = extension
+
+    def _walk(self, folder_path: Path, collect_dirs: bool = False) -> Iterator[_WalkItem]:
+        """
+        Générateur unique de parcours avec pruning.
+        
+        Args:
+            folder_path: Racine du parcours (déjà résolue)
+            collect_dirs: Si True, émet aussi les dossiers découverts
+            
+        Yields:
+            _WalkItem pour chaque fichier (et dossier si collect_dirs)
+        """
         for root, dirs, filenames in os.walk(folder_path, topdown=True):
-            # --- PRUNING IDENTIQUE ---
+            # --- PRUNING : supprime les dossiers ignorés AVANT la descente ---
             dirs[:] = [d for d in dirs if d not in self._ignored_dir_names]
 
+            # Si include_subdirs=False, on vide dirs pour ne pas descendre
             if not self.options.include_subdirs and root != str(folder_path):
                 dirs[:] = []
 
@@ -88,11 +93,12 @@ class FileDiscoveryService:
             rel_root_str = str(rel_root) if rel_root != Path('.') else ''
 
             # Collecter les dossiers (pour l'affichage structure)
-            for d in dirs:
-                if rel_root_str:
-                    dirs_set.add(Path(rel_root_str) / d)
-                else:
-                    dirs_set.add(Path(d))
+            if collect_dirs:
+                for d in dirs:
+                    if rel_root_str:
+                        yield self._WalkItem('dir', rel_path=Path(rel_root_str) / d)
+                    else:
+                        yield self._WalkItem('dir', rel_path=Path(d))
 
             # Collecter les fichiers
             for fname in filenames:
@@ -105,20 +111,16 @@ class FileDiscoveryService:
                 try:
                     rel_path = full_path.relative_to(folder_path)
                 except ValueError:
+                    # Hors racine (symlink étrange) -> ignorer
                     continue
 
-                files.append((full_path, rel_path, full_path.suffix))
+                # Parents du fichier pour l'arbre (si collect_dirs)
+                if collect_dirs:
+                    for parent in rel_path.parents:
+                        if parent != Path('.'):
+                            yield self._WalkItem('dir', rel_path=parent)
 
-                # Parents du fichier pour l'arbre
-                for parent in rel_path.parents:
-                    if parent != Path('.'):
-                        dirs_set.add(parent)
-
-        return files, dirs_set
-
-    # --------------------------------------------------------------------- #
-    # INTERNE
-    # --------------------------------------------------------------------- #
+                yield self._WalkItem('file', full_path=full_path, rel_path=rel_path, extension=full_path.suffix)
 
     def _is_extractable_file(self, filename: str) -> bool:
         """Vérification rapide d'extension (pas d'allocation Path)."""

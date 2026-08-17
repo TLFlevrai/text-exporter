@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-from src.config import config
+from src.config import get_config
 from src.logger import setup_logger
 from src.versioning import VersionManager
 
@@ -37,11 +37,12 @@ class VersionArchiveService:
         archive_subdir: Optional[str] = None,
         version_manager: Optional[VersionManager] = None,
     ):
-        self.output_dir = Path(output_dir or config.get('output_dir', 'out'))
-        self.archive_subdir = archive_subdir or config.get('archive_subdir', 'old_out')
+        cfg = get_config()
+        self.output_dir = Path(output_dir or cfg.get('output_dir', 'out'))
+        self.archive_subdir = archive_subdir or cfg.get('archive_subdir', 'old_out')
         self.archive_dir = self.output_dir / self.archive_subdir
         self.version_manager = version_manager or VersionManager(
-            config.get('version_file', 'extractor_version.txt')
+            cfg.get('version_file', 'extractor_version.txt')
         )
 
     def scan_projects(self) -> Dict[str, List[VersionEntry]]:

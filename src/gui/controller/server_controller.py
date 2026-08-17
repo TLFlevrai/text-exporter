@@ -1,6 +1,5 @@
 # src/gui/controller/server_controller.py
 from .base_controller import BaseController
-from src.config import config
 from src.logger import setup_logger
 
 logger = setup_logger(__name__)

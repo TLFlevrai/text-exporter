@@ -1,191 +1,999 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PythonCodeExtractor 1.0\n"
-"POT-Creation-Date: 2026-08-13 11:00+0200\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-08-17 15:44+0300\n"
 "PO-Revision-Date: 2026-08-16 21:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.18.0\n"
 
-msgid "Extracteur de code Python/JSON/TXT"
-msgstr "Python/JSON/TXT Code Extractor"
-
-msgid "Sélectionner un dossier contenant des fichiers Python/JSON/TXT/PO"
-msgstr "Select a folder containing Python/JSON/TXT/PO files"
-
-msgid "Dossier sélectionné : {}"
-msgstr "Selected folder: {}"
-
-msgid "Fichiers trouvés : {}"
-msgstr "Files found: {}"
-
-msgid "  - Fichiers Python : {}"
-msgstr "  - Python files: {}"
-
-msgid "  - Fichiers JSON : {}"
-msgstr "  - JSON files: {}"
-
-msgid "  - Fichiers TXT : {}"
-msgstr "  - TXT files: {}"
-
-msgid "  - Fichiers PO : {}"
-msgstr "  - PO files: {}"
-
-msgid "  - Fichiers MO : {}"
-msgstr "  - MO files: {}"
-
-msgid "  - Fichiers HTML : {}"
-msgstr "  - HTML files: {}"
-
-msgid "  - Fichiers CSS : {}"
-msgstr "  - CSS files: {}"
-
-msgid "  - Fichiers JS : {}"
-msgstr "  - JS files: {}"
-
-msgid "Attention"
-msgstr "Warning"
-
-msgid "Veuillez d'abord sélectionner un dossier"
-msgstr "Please select a folder first"
-
-msgid "Extraction en cours..."
-msgstr "Extracting..."
-
-msgid "\n--- Extraction en cours ---"
-msgstr "\n--- Extraction in progress ---"
-
+#: src/gui/controller/extraction_controller.py:92
+#: src/gui/controller/extraction_controller.py:98
+#: src/gui/extraction_runner.py:28 src/gui/extraction_runner.py:80
 msgid "Extraction échouée"
 msgstr "Extraction failed"
 
+#: src/gui/controller/extraction_controller.py:99
+#: src/gui/controller/folder_controller.py:27
+#: src/gui/controller/navigation_controller.py:32
+#: src/gui/controller/navigation_controller.py:49
+#: src/gui/extraction_runner.py:30 src/gui/extraction_runner.py:82
+#: src/gui/network_center/received_tab.py:99
+#: src/gui/network_center/received_tab.py:108
+#: src/gui/network_center/received_tab.py:120
+#: src/gui/network_center/received_tab.py:140
+#: src/gui/network_center/send_tab.py:167 src/gui/ui_builder/menus.py:161
+#: src/gui/version_explorer/dialog.py:81
+#: src/gui/version_explorer/dialog.py:103
+#: src/gui/version_explorer/dialog.py:189
+#: src/gui/version_explorer/dialog.py:197
+#: src/gui/version_explorer/dialog.py:203
+#: src/gui/version_explorer/dialog.py:223
 msgid "Erreur"
 msgstr "Error"
 
+#: src/gui/extraction_runner.py:30
 msgid "Échec de l'extraction (voir journal)"
 msgstr "Extraction failed (see log)"
 
+#: src/gui/controller/extraction_controller.py:87
+#: src/gui/extraction_runner.py:34
 msgid "Extraction terminée"
 msgstr "Extraction complete"
 
-msgid "\n--- Extraction terminée avec succès ---"
-msgstr "\n--- Extraction completed successfully ---"
+#: src/gui/extraction_runner.py:36
+msgid ""
+"\n"
+"--- Extraction terminée avec succès ---"
+msgstr ""
+"\n"
+"--- Extraction completed successfully ---"
 
+#: src/gui/extraction_runner.py:37
+#, python-brace-format
 msgid "Fichier créé : {}"
 msgstr "File created: {}"
 
+#: src/gui/extraction_runner.py:38 src/gui/extraction_runner.py:53
+#: src/gui/extraction_runner.py:71
+#, python-brace-format
 msgid "Emplacement : {}"
 msgstr "Location: {}"
 
-msgid "Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: {}, CSS: {}, JS: {})"
-msgstr "Files extracted: {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: {}, CSS: {}, JS: {})"
+#: src/gui/extraction_runner.py:39
+#, python-brace-format
+msgid ""
+"Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML:"
+" {}, CSS: {}, JS: {})"
+msgstr ""
+"Files extracted: {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: "
+"{}, CSS: {}, JS: {})"
 
-msgid "Extraction terminée avec succès !\n\n"
-msgstr "Extraction completed successfully!\n\n"
+#: src/gui/extraction_runner.py:49
+#, fuzzy
+msgid "Génération du PDF en cours..."
+msgstr "Extracting..."
 
+#: src/gui/extraction_runner.py:52
+#, python-brace-format
+msgid "PDF généré : {}"
+msgstr "PDF généré : {}"
+
+#: src/gui/extraction_runner.py:56
+#, python-brace-format
+msgid "Erreur de génération du PDF : {}"
+msgstr "Erreur de génération du PDF : {}"
+
+#: src/gui/extraction_runner.py:60
+msgid ""
+"Extraction terminée avec succès !\n"
+"\n"
+msgstr ""
+"Extraction completed successfully!\n"
+"\n"
+
+#: src/gui/extraction_runner.py:61
+#, python-brace-format
 msgid "Fichier créé : {}\n"
 msgstr "File created: {}\n"
 
+#: src/gui/extraction_runner.py:62
+#, python-brace-format
 msgid "Nombre de fichiers extraits : {}\n"
 msgstr "Number of files extracted: {}\n"
 
+#: src/gui/extraction_runner.py:63
+#, python-brace-format
 msgid "  - Fichiers Python : {}\n"
 msgstr "  - Python files: {}\n"
 
+#: src/gui/extraction_runner.py:64
+#, python-brace-format
 msgid "  - Fichiers JSON : {}\n"
 msgstr "  - JSON files: {}\n"
 
+#: src/gui/extraction_runner.py:65
+#, python-brace-format
 msgid "  - Fichiers TXT : {}\n"
 msgstr "  - TXT files: {}\n"
 
+#: src/gui/extraction_runner.py:66
+#, python-brace-format
 msgid "  - Fichiers PO : {}\n"
 msgstr "  - PO files: {}\n"
 
+#: src/gui/extraction_runner.py:67
+#, python-brace-format
 msgid "  - Fichiers MO : {}\n"
 msgstr "  - MO files: {}\n"
 
+#: src/gui/extraction_runner.py:68
+#, python-brace-format
 msgid "  - Fichiers HTML : {}\n"
 msgstr "  - HTML files: {}\n"
 
+#: src/gui/extraction_runner.py:69
+#, python-brace-format
 msgid "  - Fichiers CSS : {}\n"
 msgstr "  - CSS files: {}\n"
 
+#: src/gui/extraction_runner.py:70
+#, python-brace-format
 msgid "  - Fichiers JS : {}\n"
 msgstr "  - JS files: {}\n"
 
-msgid "Emplacement : {}"
-msgstr "Location: {}"
+#: src/gui/extraction_runner.py:74
+#, python-brace-format
+msgid ""
+"\n"
+"\n"
+"PDF généré : {}"
+msgstr ""
+"\n"
+"\n"
+"PDF généré : {}"
 
+#: src/gui/extraction_runner.py:75 src/gui/network_center/send_tab.py:148
+#: src/gui/network_center/send_tab.py:151
 msgid "Succès"
 msgstr "Success"
 
+#: src/gui/controller/extraction_controller.py:99
+#: src/gui/extraction_runner.py:82
+#, python-brace-format
 msgid "Une erreur est survenue : {}"
 msgstr "An error occurred: {}"
 
-msgid "Confirmation"
-msgstr "Confirmation"
+#: src/gui/gui.py:48 src/gui/gui.py:53
+#, fuzzy
+msgid "Extracteur de code"
+msgstr "Python/JSON/TXT Code Extractor"
 
-msgid "Réinitialiser toutes les versions et l'historique ?\n"
-msgstr "Reset all versions and history?\n"
-
-msgid "Les anciens fichiers seront archivés dans out/old_out/."
-msgstr "Old files will be archived in out/old_out/."
-
-msgid "--- {} ---"
-msgstr "--- {} ---"
-
-msgid "Échec du nettoyage : {}"
-msgstr "Cleanup failed: {}"
-
-msgid "Impossible d'ouvrir la fenêtre de transfert : {}"
-msgstr "Cannot open transfer dialog: {}"
-
-msgid "Envoyer un fichier à un autre PC"
-msgstr "Send file to another PC"
-
-msgid "Fichiers disponibles dans out/ :"
-msgstr "Files available in out/:"
-
-msgid "PC disponibles sur le réseau :"
-msgstr "PCs available on network:"
-
-msgid "Envoyer le fichier"
-msgstr "Send file"
-
-msgid "Rafraîchir la liste"
-msgstr "Refresh list"
-
-msgid "Scanner le réseau"
-msgstr "Scan network"
-
+#: src/gui/controller/base_controller.py:95
+#: src/gui/network_center/send_tab.py:97
+#: src/gui/network_center/views/send_controls_view.py:37
+#: src/gui/network_center/views/send_controls_view.py:53
+#: src/gui/ui_builder/ui_builder.py:14
 msgid "Prêt"
 msgstr "Ready"
 
-msgid "Erreur de lecture des fichiers"
+#: src/gui/controller/extraction_controller.py:18
+#: src/gui/controller/extraction_controller.py:36
+#: src/gui/controller/extraction_controller.py:104
+#: src/gui/ui_builder/menus.py:159
+msgid "Attention"
+msgstr "Warning"
+
+#: src/gui/controller/extraction_controller.py:18
+#: src/gui/controller/extraction_controller.py:36
+#: src/gui/controller/extraction_controller.py:104
+#: src/gui/ui_builder/menus.py:159
+msgid "Veuillez d'abord sélectionner un dossier"
+msgstr "Please select a folder first"
+
+#: src/gui/controller/extraction_controller.py:28
+#, python-brace-format
+msgid "Sélection mise à jour : {} fichier(s) sélectionné(s)"
+msgstr "Sélection mise à jour : {} fichier(s) sélectionné(s)"
+
+#: src/gui/controller/extraction_controller.py:29
+#, python-brace-format
+msgid "Sélection : {} fichier(s)"
+msgstr "Sélection : {} fichier(s)"
+
+#: src/gui/controller/extraction_controller.py:31
+msgid "Sélection annulée"
+msgstr "Selection cancelled"
+
+#: src/gui/controller/extraction_controller.py:50
+msgid "Extraction en cours..."
+msgstr "Extracting..."
+
+#: src/gui/controller/extraction_controller.py:51
+msgid ""
+"\n"
+"--- Extraction en cours ---"
+msgstr ""
+"\n"
+"--- Extraction in progress ---"
+
+#: src/gui/controller/folder_controller.py:15
+#, fuzzy
+msgid ""
+"Sélectionner un dossier contenant des fichiers "
+"Python/JSON/TXT/PO/MO/HTML/CSS/JS"
+msgstr "Select a folder containing Python/JSON/TXT/PO files"
+
+#: src/gui/controller/folder_controller.py:27
+#, python-brace-format
+msgid "Le dossier n'existe plus : {}"
+msgstr "Le dossier n'existe plus : {}"
+
+#: src/gui/controller/folder_controller.py:36
+#, fuzzy, python-brace-format
+msgid "Dossier récent sélectionné : {}"
+msgstr "Selected folder: {}"
+
+#: src/gui/controller/folder_controller.py:47
+#, python-brace-format
+msgid "Dossier sélectionné : {}"
+msgstr "Selected folder: {}"
+
+#: src/gui/controller/folder_controller.py:50
+#, python-brace-format
+msgid "Fichiers trouvés : {}"
+msgstr "Files found: {}"
+
+#: src/gui/controller/folder_controller.py:53
+#, fuzzy, python-brace-format
+msgid "  - Fichiers {} : {}"
+msgstr "  - PO files: {}\n"
+
+#: src/gui/controller/navigation_controller.py:32
+#, fuzzy, python-brace-format
+msgid "Impossible d'ouvrir le gestionnaire de versions : {}"
+msgstr "Cannot open transfer dialog: {}"
+
+#: src/gui/controller/navigation_controller.py:49
+#, fuzzy, python-brace-format
+msgid "Impossible d'ouvrir le centre réseau : {}"
+msgstr "Cannot open transfer dialog: {}"
+
+#: src/gui/network_center/dialog.py:17
+#, fuzzy
+msgid "Centre réseau"
+msgstr "Scan network"
+
+#: src/gui/network_center/dialog.py:46
+msgid "État du serveur"
+msgstr "Server Status"
+
+#: src/gui/network_center/dialog.py:47
+#: src/gui/network_center/views/send_controls_view.py:25
+msgid "Envoyer"
+msgstr "Send"
+
+#: src/gui/network_center/dialog.py:48
+#, fuzzy
+msgid "Fichiers reçus"
+msgstr "Files found: {}"
+
+#: src/gui/network_center/dialog.py:49
+msgid "Journal réseau"
+msgstr "Network Log"
+
+#: src/gui/network_center/log_tab.py:29
+msgid "Effacer"
+msgstr "Clear"
+
+#: src/gui/network_center/received_tab.py:31 src/gui/selection/dialog.py:46
+msgid "Nom"
+msgstr "Name"
+
+#: src/gui/network_center/received_tab.py:32 src/gui/selection/dialog.py:47
+#: src/gui/version_explorer/version_tree.py:28
+msgid "Taille"
+msgstr "Size"
+
+#: src/gui/network_center/received_tab.py:33
+#: src/gui/version_explorer/version_tree.py:27
+msgid "Date"
+msgstr "Date"
+
+#: src/gui/network_center/received_tab.py:50
+#, fuzzy
+msgctxt "button"
+msgid "Ouvrir"
+msgstr "Open"
+
+#: src/gui/network_center/received_tab.py:51
+#, fuzzy
+msgctxt "button"
+msgid "Ouvrir le dossier"
+msgstr "Open Folder"
+
+#: src/gui/network_center/received_tab.py:52
+#: src/gui/version_explorer/toolbar.py:22
+#, fuzzy
+msgctxt "button"
+msgid "Supprimer"
+msgstr "Delete"
+
+#: src/gui/network_center/received_tab.py:53
+msgid "Déplacer vers out/"
+msgstr "Move to out/"
+
+#: src/gui/network_center/received_tab.py:54
+#: src/gui/version_explorer/toolbar.py:28
+#, fuzzy
+msgid "Rafraîchir"
+msgstr "Refresh list"
+
+#: src/gui/network_center/received_tab.py:64
+msgid "Dossier received/ introuvable"
+msgstr "received/ folder not found"
+
+#: src/gui/network_center/received_tab.py:75
+#, python-brace-format
+msgid "{} fichier(s)"
+msgstr "{} fichier(s)"
+
+#: src/gui/network_center/received_tab.py:78
+#, fuzzy
+msgid "Erreur de lecture"
 msgstr "Error reading files"
 
-msgid "Fichier envoyé à {} ({})"
-msgstr "File sent to {} ({})"
+#: src/gui/network_center/received_tab.py:99
+#, fuzzy, python-brace-format
+msgid "Impossible d'ouvrir : {}"
+msgstr "Cannot open transfer dialog: {}"
 
+#: src/gui/network_center/received_tab.py:101
+#: src/gui/network_center/received_tab.py:112
+#: src/gui/network_center/received_tab.py:124
+#: src/gui/version_explorer/dialog.py:108
+#: src/gui/version_explorer/dialog.py:112
+#: src/gui/version_explorer/dialog.py:133
+#: src/gui/version_explorer/dialog.py:137
+#: src/gui/version_explorer/dialog.py:158
+#: src/gui/version_explorer/dialog.py:178
+#: src/gui/version_explorer/dialog.py:193
+#, fuzzy
+msgid "Information"
+msgstr "Confirmation"
+
+#: src/gui/network_center/received_tab.py:101
+#: src/gui/network_center/received_tab.py:112
+#: src/gui/network_center/received_tab.py:124
+#, fuzzy
+msgid "Aucun fichier sélectionné"
+msgstr "Selected folder: {}"
+
+#: src/gui/network_center/received_tab.py:108
+#: src/gui/version_explorer/dialog.py:203
+#, fuzzy, python-brace-format
+msgid "Impossible d'ouvrir le dossier : {}"
+msgstr "Cannot open transfer dialog: {}"
+
+#: src/gui/network_center/received_tab.py:114
+#: src/gui/version_explorer/dialog.py:114
+#: src/gui/version_explorer/dialog.py:139
+#: src/gui/version_explorer/dialog.py:160
+#: src/gui/version_explorer/dialog.py:180
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#: src/gui/network_center/received_tab.py:114
+#, fuzzy, python-brace-format
+msgctxt "confirmation"
+msgid "Supprimer définitivement {} ?"
+msgstr "Permanently delete {} ?"
+
+#: src/gui/network_center/received_tab.py:118
+#, fuzzy
+msgid "Fichier supprimé"
+msgstr "File created: {}\n"
+
+#: src/gui/network_center/received_tab.py:120
+#, python-brace-format
+msgid "Suppression échouée : {}"
+msgstr "Suppression échouée : {}"
+
+#: src/gui/network_center/received_tab.py:138
+#, fuzzy
+msgid "Fichier déplacé vers out/"
+msgstr "Files available in out/:"
+
+#: src/gui/network_center/received_tab.py:140
+#, fuzzy, python-brace-format
+msgid "Déplacement échoué : {}"
+msgstr "Location: {}"
+
+#: src/gui/network_center/received_tab.py:145
+#, fuzzy, python-brace-format
+msgid "Nouveau fichier reçu : {}"
+msgstr "File created: {}\n"
+
+#: src/gui/network_center/send_tab.py:92
+msgid "Actualisation fichiers..."
+msgstr "Actualisation fichiers..."
+
+#: src/gui/network_center/send_tab.py:102
+#, fuzzy
+msgid "Scan réseau en cours..."
+msgstr "Extracting..."
+
+#: src/gui/network_center/send_tab.py:116
+msgid "Aucun PC trouvé"
+msgstr "Aucun PC trouvé"
+
+#: src/gui/network_center/send_tab.py:124
+#, fuzzy
+msgid "Envoi en cours..."
+msgstr "Extracting..."
+
+#: src/gui/network_center/send_tab.py:142
 msgid "Envoi réussi"
 msgstr "Send successful"
 
-msgid "Le serveur distant ne répond pas (timeout)"
-msgstr "Remote server not responding (timeout)"
+#: src/gui/network_center/send_tab.py:152
+#, python-brace-format
+msgid "Fichier envoyé à {} ({})"
+msgstr "File sent to {} ({})"
 
-msgid "Échec de l'envoi (timeout)"
-msgstr "Send failed (timeout)"
-
-msgid "Le serveur distant a refusé la connexion"
-msgstr "Remote server refused connection"
-
-msgid "Échec de l'envoi (refus)"
-msgstr "Send failed (refused)"
-
-msgid "Échec de l'envoi : {}"
-msgstr "Send failed: {}"
-
+#: src/gui/network_center/send_tab.py:159
 msgid "Échec de l'envoi"
 msgstr "Send failed"
+
+#: src/gui/network_center/send_tab.py:165
+msgid "Échec"
+msgstr "Échec"
+
+#: src/gui/network_center/status_tab.py:25
+msgid "État : Inconnu"
+msgstr "État : Inconnu"
+
+#: src/gui/network_center/status_tab.py:28
+#: src/gui/network_center/status_tab.py:71
+msgid "Hôte : -"
+msgstr "Host: -"
+
+#: src/gui/network_center/status_tab.py:31
+#: src/gui/network_center/status_tab.py:72
+msgid "Port : -"
+msgstr "Port: -"
+
+#: src/gui/network_center/status_tab.py:34
+#, python-brace-format
+msgid "IP locale : {}"
+msgstr "IP locale : {}"
+
+#: src/gui/network_center/status_tab.py:41
+msgid "Fichiers reçus depuis le lancement :"
+msgstr "Files received since start:"
+
+#: src/gui/network_center/status_tab.py:45
+msgid "Dernier reçu :"
+msgstr "Last received:"
+
+#: src/gui/network_center/status_tab.py:53
+#, fuzzy
+msgid "Les fichiers reçus sont stockés dans out/received/"
+msgstr "Old files will be archived in out/old_out/."
+
+#: src/gui/network_center/status_tab.py:66
+msgid "État : Démarré"
+msgstr "Status: Started"
+
+#: src/gui/network_center/status_tab.py:67
+#, python-brace-format
+msgid "Hôte : {}"
+msgstr "Hôte : {}"
+
+#: src/gui/network_center/status_tab.py:68
+#, python-brace-format
+msgid "Port : {}"
+msgstr "Port : {}"
+
+#: src/gui/network_center/status_tab.py:70
+msgid "État : Arrêté"
+msgstr "Status: Stopped"
+
+#: src/gui/network_center/views/file_list_view.py:19
+msgid "Fichiers disponibles dans out/ :"
+msgstr "Files available in out/:"
+
+#: src/gui/network_center/views/history_view.py:18
+msgid "Historique des envois :"
+msgstr "Historique des envois :"
+
+#: src/gui/network_center/views/peer_list_view.py:19
+msgid "PC disponibles sur le réseau :"
+msgstr "PCs available on network:"
+
+#: src/gui/network_center/views/send_controls_view.py:28
+msgid "Rafraîchir la liste"
+msgstr "Refresh list"
+
+#: src/gui/network_center/views/send_controls_view.py:29
+msgid "Scanner le réseau"
+msgstr "Scan network"
+
+#: src/gui/selection/dialog.py:20
+msgid "Sélectionner les fichiers à extraire"
+msgstr "Sélectionner les fichiers à extraire"
+
+#: src/gui/selection/dialog.py:45 src/gui/version_explorer/version_tree.py:25
+msgid "Sélection"
+msgstr "Selection"
+
+#: src/gui/selection/dialog.py:73
+msgid "(fichiers extractibles)"
+msgstr "(fichiers extractibles)"
+
+#: src/gui/selection/dialog.py:78
+msgid "Valider"
+msgstr "Valider"
+
+#: src/gui/selection/dialog.py:80
+msgid "Annuler"
+msgstr "Annuler"
+
+#: src/gui/selection/search.py:16
+msgid "Rechercher :"
+msgstr "Rechercher :"
+
+#: src/gui/selection/toolbar.py:16
+msgid "Tous les .py"
+msgstr "Tous les .py"
+
+#: src/gui/selection/toolbar.py:17
+msgid "Tous les .json"
+msgstr "Tous les .json"
+
+#: src/gui/selection/toolbar.py:18
+msgid "Tous les .txt"
+msgstr "Tous les .txt"
+
+#: src/gui/selection/toolbar.py:19
+msgid "Tous les .po"
+msgstr "Tous les .po"
+
+#: src/gui/selection/toolbar.py:20
+msgid "Tous les .mo"
+msgstr "Tous les .mo"
+
+#: src/gui/selection/toolbar.py:21
+msgid "Tous les .html"
+msgstr "Tous les .html"
+
+#: src/gui/selection/toolbar.py:22
+msgid "Tous les .htm"
+msgstr "Tous les .htm"
+
+#: src/gui/selection/toolbar.py:23
+msgid "Tous les .css"
+msgstr "Tous les .css"
+
+#: src/gui/selection/toolbar.py:24
+msgid "Tous les .js"
+msgstr "Tous les .js"
+
+#: src/gui/selection/toolbar.py:37
+msgid "☑ Tout"
+msgstr "☑ Tout"
+
+#: src/gui/selection/toolbar.py:40
+msgid "☐ Rien"
+msgstr "☐ Rien"
+
+#: src/gui/selection/toolbar.py:43
+msgid "⇄ Inverser"
+msgstr "⇄ Inverser"
+
+#: src/gui/ui_builder/menus.py:35
+#, fuzzy
+msgctxt "menu"
+msgid "Fichier"
+msgstr "File"
+
+#: src/gui/ui_builder/menus.py:40
+msgid "Exporter en PDF"
+msgstr "Export to PDF"
+
+#: src/gui/ui_builder/menus.py:45
+msgid "Quitter"
+msgstr "Quit"
+
+#: src/gui/ui_builder/menus.py:50
+#, fuzzy
+msgid "Emplacements récents"
+msgstr "Location: {}"
+
+#: src/gui/ui_builder/menus.py:59
+msgid "Aucun"
+msgstr "None"
+
+#: src/gui/ui_builder/menus.py:68
+#, fuzzy
+msgid "Effacer la liste"
+msgstr "Refresh list"
+
+#: src/gui/ui_builder/menus.py:80
+msgid "Options"
+msgstr "Options"
+
+#: src/gui/ui_builder/menus.py:86
+msgid "Inclure les sous-dossiers"
+msgstr "Include Subdirectories"
+
+#: src/gui/ui_builder/menus.py:87
+#, fuzzy
+msgid "Afficher les chemins des fichiers"
+msgstr "Error reading files"
+
+#: src/gui/ui_builder/menus.py:89
+#, fuzzy
+msgid "Inclure les fichiers JSON"
+msgstr "  - JSON files: {}\n"
+
+#: src/gui/ui_builder/menus.py:90
+#, fuzzy
+msgid "Inclure les fichiers TXT"
+msgstr "Number of files extracted: {}\n"
+
+#: src/gui/ui_builder/menus.py:91
+msgid "Inclure les fichiers .po (traductions)"
+msgstr "Include .po Files (translations)"
+
+#: src/gui/ui_builder/menus.py:92
+msgid "Inclure les fichiers .mo (compilés)"
+msgstr "Include .mo Files (compiled)"
+
+#: src/gui/ui_builder/menus.py:93
+#, fuzzy
+msgid "Inclure les fichiers HTML"
+msgstr "  - HTML files: {}\n"
+
+#: src/gui/ui_builder/menus.py:94
+#, fuzzy
+msgid "Inclure les fichiers CSS"
+msgstr "  - CSS files: {}\n"
+
+#: src/gui/ui_builder/menus.py:95
+msgid "Inclure les fichiers JavaScript"
+msgstr "Include JavaScript Files"
+
+#: src/gui/ui_builder/menus.py:97
+msgid "Inclure la structure du projet"
+msgstr "Include Project Structure"
+
+#: src/gui/ui_builder/menus.py:98
+#, fuzzy
+msgid "Ignorer les fichiers __init__.py"
+msgstr "Send file"
+
+#: src/gui/ui_builder/menus.py:99
+msgid "Ignorer le dossier .git"
+msgstr "Ignore .git Folder"
+
+#: src/gui/ui_builder/menus.py:100
+msgid "Ignorer les dossiers __pycache__"
+msgstr "Ignore __pycache__ Folders"
+
+#: src/gui/ui_builder/menus.py:102
+msgid "Inclure les statistiques"
+msgstr "Include Statistics"
+
+#: src/gui/ui_builder/menus.py:103
+msgid "Métadonnées détaillées par fichier"
+msgstr "Detailed File Metadata"
+
+#: src/gui/ui_builder/menus.py:119
+msgid "Langue"
+msgstr "Language"
+
+#: src/gui/ui_builder/menus.py:128
+msgid "Outils"
+msgstr "Tools"
+
+#: src/gui/ui_builder/menus.py:131 src/gui/version_explorer/dialog.py:24
+msgid "Gestionnaire de versions"
+msgstr "Version Manager"
+
+#: src/gui/ui_builder/menus.py:136
+msgid "Vue"
+msgstr "View"
+
+#: src/gui/ui_builder/menus.py:139
+msgid "Afficher le journal"
+msgstr "Show Log"
+
+#: src/gui/ui_builder/menus.py:161
+msgid "Contrôleur non disponible pour l'export PDF"
+msgstr "Controller not available for PDF export"
+
+#: src/gui/ui_builder/widgets.py:14
+#, fuzzy
+msgid "Extracteur de code Python, JSON & TXT"
+msgstr "Python/JSON/TXT Code Extractor"
+
+#: src/gui/ui_builder/widgets.py:20
+#, fuzzy
+msgid "Dossier à scanner :"
+msgstr "Selected folder: {}"
+
+#: src/gui/ui_builder/widgets.py:28
+msgid "Parcourir"
+msgstr "Browse"
+
+#: src/gui/ui_builder/widgets.py:36
+msgid "Extraire le code"
+msgstr "Extract Code"
+
+#: src/gui/ui_builder/widgets.py:41
+msgid "Sélectionner..."
+msgstr "Select..."
+
+#: src/gui/ui_builder/widgets.py:46
+msgid "Gérer les versions"
+msgstr "Manage Versions"
+
+#: src/gui/ui_builder/widgets.py:51
+msgid "Réseau..."
+msgstr "Network..."
+
+#: src/gui/ui_builder/widgets.py:56
+msgid "Effacer le journal"
+msgstr "Clear Log"
+
+#: src/gui/ui_builder/widgets.py:67
+msgid "Journal"
+msgstr "Log"
+
+#: src/gui/version_explorer/dialog.py:55
+#, fuzzy
+msgid "Scan en cours..."
+msgstr "Extracting..."
+
+#: src/gui/version_explorer/dialog.py:60
+msgid "Scan des fichiers en cours..."
+msgstr "Scanning files..."
+
+#: src/gui/version_explorer/dialog.py:73
+#, fuzzy
+msgid "Scan termine"
+msgstr "Extraction complete"
+
+#: src/gui/version_explorer/dialog.py:80
+#, fuzzy, python-brace-format
+msgid "Erreur de scan : {}"
+msgstr "An error occurred: {}"
+
+#: src/gui/version_explorer/dialog.py:81
+#, python-brace-format
+msgid "Impossible de scanner les fichiers : {}"
+msgstr "Impossible de scanner les fichiers : {}"
+
+#: src/gui/version_explorer/dialog.py:88
+#, python-brace-format
+msgid "Projet : {} ({} versions)"
+msgstr "Project: {} ({} versions)"
+
+#: src/gui/version_explorer/dialog.py:103
+#, fuzzy, python-brace-format
+msgid "Impossible d'ouvrir le fichier : {}"
+msgstr "Cannot open transfer dialog: {}"
+
+#: src/gui/version_explorer/dialog.py:108
+#: src/gui/version_explorer/dialog.py:133
+#: src/gui/version_explorer/dialog.py:158
+#, fuzzy
+msgid "Aucune version selectionnee."
+msgstr "No version selected."
+
+#: src/gui/version_explorer/dialog.py:112
+#, fuzzy
+msgid "Les versions selectionnees sont deja archivees."
+msgstr "Selected versions are already archived."
+
+#: src/gui/version_explorer/dialog.py:115
+#, fuzzy, python-brace-format
+msgctxt "confirmation"
+msgid "Archiver {} version(s) ?"
+msgstr "Archive {} version(s)?"
+
+#: src/gui/version_explorer/dialog.py:118
+#, fuzzy
+msgid "Archivage en cours..."
+msgstr "Extracting..."
+
+#: src/gui/version_explorer/dialog.py:128
+msgid "Erreur d'archivage"
+msgstr "Archive error"
+
+#: src/gui/version_explorer/dialog.py:137
+#, fuzzy
+msgid "Les versions selectionnees sont deja actives."
+msgstr "Selected versions are already active."
+
+#: src/gui/version_explorer/dialog.py:140
+#, fuzzy, python-brace-format
+msgctxt "confirmation"
+msgid "Restaurer {} version(s) ?"
+msgstr "Restore {} version(s)?"
+
+#: src/gui/version_explorer/dialog.py:143
+#, fuzzy
+msgid "Restauration en cours..."
+msgstr "Extracting..."
+
+#: src/gui/version_explorer/dialog.py:153
+msgid "Erreur de restauration"
+msgstr "Restore error"
+
+#: src/gui/version_explorer/dialog.py:161
+#, fuzzy, python-brace-format
+msgctxt "confirmation"
+msgid ""
+"Supprimer definitivement {} version(s) ? Cette action est irreversible."
+msgstr "Permanently delete {} version(s)? This action is irreversible."
+
+#: src/gui/version_explorer/dialog.py:164
+#, fuzzy
+msgid "Suppression en cours..."
+msgstr "Extracting..."
+
+#: src/gui/version_explorer/dialog.py:174
+msgid "Erreur de suppression"
+msgstr "Delete error"
+
+#: src/gui/version_explorer/dialog.py:178
+#: src/gui/version_explorer/dialog.py:193
+#, fuzzy
+msgid "Aucun projet selectionne."
+msgstr "No project selected."
+
+#: src/gui/version_explorer/dialog.py:181
+#, fuzzy, python-brace-format
+msgctxt "confirmation"
+msgid "Reinitialiser le compteur de versions pour le projet '{}' ?"
+msgstr "Reset all versions and history?\n"
+
+#: src/gui/version_explorer/dialog.py:185
+#, fuzzy, python-brace-format
+msgid "Compteur reinitialise pour {}"
+msgstr "Counter reset for {}"
+
+#: src/gui/version_explorer/dialog.py:197
+msgid "Le dossier de sortie n'existe pas."
+msgstr "Output folder does not exist."
+
+#: src/gui/version_explorer/dialog.py:206
+#, fuzzy
+msgid "Rafraichissement..."
+msgstr "Refreshing..."
+
+#: src/gui/version_explorer/dialog.py:214
+#, fuzzy
+msgid "Erreur de rafraichissement"
+msgstr "Refresh error"
+
+#: src/gui/version_explorer/dialog.py:235
+#, fuzzy
+msgid "Mise a jour terminee"
+msgstr "Update complete"
+
+#: src/gui/version_explorer/preview_pane.py:12
+msgid "Aperçu"
+msgstr "Preview"
+
+#: src/gui/version_explorer/preview_pane.py:28
+msgid "Aucune version sélectionnée"
+msgstr "Aucune version sélectionnée"
+
+#: src/gui/version_explorer/project_panel.py:14
+msgid "Projets"
+msgstr "Projects"
+
+#: src/gui/version_explorer/toolbar.py:16
+#, fuzzy
+msgctxt "button"
+msgid "Archiver"
+msgstr "Archive"
+
+#: src/gui/version_explorer/toolbar.py:19
+#, fuzzy
+msgctxt "button"
+msgid "Restaurer"
+msgstr "Restore"
+
+#: src/gui/version_explorer/toolbar.py:25
+#, fuzzy
+msgctxt "button"
+msgid "Ouvrir dossier"
+msgstr "Open Folder"
+
+#: src/gui/version_explorer/toolbar.py:31
+msgid "Réinitialiser compteur"
+msgstr "Reset Counter"
+
+#: src/gui/version_explorer/toolbar.py:35
+msgid "Tout sélectionner"
+msgstr "Select All"
+
+#: src/gui/version_explorer/toolbar.py:38
+msgid "Tout désélectionner"
+msgstr "Deselect All"
+
+#: src/gui/version_explorer/version_tree.py:26
+msgid "Version"
+msgstr "Version"
+
+#: src/gui/version_explorer/version_tree.py:29
+#, fuzzy
+msgid "Fichiers"
+msgstr "  - PO files: {}\n"
+
+#: src/gui/version_explorer/version_tree.py:30
+msgid "Lignes"
+msgstr "Lines"
+
+#: src/gui/version_explorer/version_tree.py:31
+msgid "Statut"
+msgstr "Status"
+
+#~ msgid "  - Fichiers Python : {}"
+#~ msgstr "  - Python files: {}"
+
+#~ msgid "  - Fichiers JSON : {}"
+#~ msgstr "  - JSON files: {}"
+
+#~ msgid "  - Fichiers TXT : {}"
+#~ msgstr "  - TXT files: {}"
+
+#~ msgid "  - Fichiers PO : {}"
+#~ msgstr "  - PO files: {}"
+
+#~ msgid "  - Fichiers MO : {}"
+#~ msgstr "  - MO files: {}"
+
+#~ msgid "  - Fichiers HTML : {}"
+#~ msgstr "  - HTML files: {}"
+
+#~ msgid "  - Fichiers CSS : {}"
+#~ msgstr "  - CSS files: {}"
+
+#~ msgid "  - Fichiers JS : {}"
+#~ msgstr "  - JS files: {}"
+
+#~ msgid "--- {} ---"
+#~ msgstr "--- {} ---"
+
+#~ msgid "Échec du nettoyage : {}"
+#~ msgstr "Cleanup failed: {}"
+
+#~ msgid "Envoyer un fichier à un autre PC"
+#~ msgstr "Send file to another PC"
+
+#~ msgid "Le serveur distant ne répond pas (timeout)"
+#~ msgstr "Remote server not responding (timeout)"
+
+#~ msgid "Échec de l'envoi (timeout)"
+#~ msgstr "Send failed (timeout)"
+
+#~ msgid "Le serveur distant a refusé la connexion"
+#~ msgstr "Remote server refused connection"
+
+#~ msgid "Échec de l'envoi (refus)"
+#~ msgstr "Send failed (refused)"
+
+#~ msgid "Échec de l'envoi : {}"
+#~ msgstr "Send failed: {}"

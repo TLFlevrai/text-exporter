@@ -2,17 +2,18 @@
 import socket
 import threading
 import time
-from src.config import config
+from src.config import get_config
 
 class DiscoveryService:
     """Découvre les autres instances du programme sur le réseau local."""
 
     def __init__(self, listen_port=None):
-        self.listen_port = listen_port or config.get('network.discovery_port', 50001)
+        cfg = get_config()
+        self.listen_port = listen_port or cfg.get('network.discovery_port', 50001)
         self._peers = {}
         self._lock = threading.Lock()
-        self.broadcast_msg = config.get('network.broadcast_msg', 'PYEXTRACTOR_DISCOVER').encode()
-        self.reply_msg = config.get('network.reply_msg', 'PYEXTRACTOR_HERE').encode()
+        self.broadcast_msg = cfg.get('network.broadcast_msg', 'PYEXTRACTOR_DISCOVER').encode()
+        self.reply_msg = cfg.get('network.reply_msg', 'PYEXTRACTOR_HERE').encode()
         self._stop_event = threading.Event()
         self._listener_thread = None
 

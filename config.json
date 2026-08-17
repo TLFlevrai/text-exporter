@@ -3,7 +3,7 @@
   "received_subdir": "received",
   "archive_subdir": "old_out",
   "version_file": "extractor_version.txt",
-  "language": "en",
+  "language": "fr",
   "network": {
     "server_host": "127.0.0.1",
     "server_port": 50000,
@@ -12,7 +12,9 @@
     "reply_msg": "PYEXTRACTOR_HERE",
     "auth_enabled": true,
     "auth_token": "change-me-secure-random-token",
-    "allowed_extensions": [".txt"]
+    "allowed_extensions": [
+      ".txt"
+    ]
   },
   "extraction": {
     "include_json": true,

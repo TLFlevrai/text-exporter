@@ -123,6 +123,8 @@ class Application:
 
     def _on_close(self):
         """Callback fermeture fenêtre - délègue à l'application."""
+        if self.app:
+            self.app.on_close()
         self._stop_network_services()
         self.root.destroy()
 
