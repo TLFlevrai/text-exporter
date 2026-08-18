@@ -5,6 +5,7 @@ from pathlib import Path
 import os
 from src.i18n import _, pgettext, change_language as i18n_change_language, register_reload_callback, unregister_reload_callback
 from src.gui.recent_files import load_recent_folders, clear_recent_folders
+from src.gui.settings_dialog import open_settings_dialog
 from .ui_widgets import UIWidgets
 
 
@@ -76,44 +77,20 @@ def _rebuild_all_menus(parent, ui: UIWidgets):
 
     update_recent_menu()
 
-    # --- Menu Options ---
+    # --- Menu Options (remplacé par boîte de dialogue Paramètres) ---
     options_menu = tk.Menu(menubar, tearoff=0)
     menubar.add_cascade(label=_("Options"), menu=options_menu)
     menu_items['options_menu'] = options_menu
     menu_items['options_cascade_index'] = 1
 
-    # Stocker les items d'options pour mise à jour des labels
-    option_items = []
-    option_items.append(('include_subdirs', _("Inclure les sous-dossiers")))
-    option_items.append(('show_file_paths', _("Afficher les chemins des fichiers")))
-    option_items.append(('sep1', None))  # separator
-    option_items.append(('include_json', _("Inclure les fichiers JSON")))
-    option_items.append(('include_txt', _("Inclure les fichiers TXT")))
-    option_items.append(('include_po', _("Inclure les fichiers .po (traductions)")))
-    option_items.append(('include_mo', _("Inclure les fichiers .mo (compilés)")))
-    option_items.append(('include_html', _("Inclure les fichiers HTML")))
-    option_items.append(('include_css', _("Inclure les fichiers CSS")))
-    option_items.append(('include_js', _("Inclure les fichiers JavaScript")))
-    option_items.append(('sep2', None))
-    option_items.append(('include_structure', _("Inclure la structure du projet")))
-    option_items.append(('ignore_init', _("Ignorer les fichiers __init__.py")))
-    option_items.append(('ignore_git', _("Ignorer le dossier .git")))
-    option_items.append(('ignore_pycache', _("Ignorer les dossiers __pycache__")))
-    option_items.append(('sep3', None))
-    option_items.append(('include_statistics', _("Inclure les statistiques")))
-    option_items.append(('include_file_metadata', _("Métadonnées détaillées par fichier")))
-
-    menu_items['option_items'] = option_items
+    options_menu.add_command(label=_("Paramètres..."), command=lambda: open_settings_dialog(parent, ui))
+    options_menu.add_separator()
     
-    for i, (key, label) in enumerate(option_items):
-        if label is None:
-            options_menu.add_separator()
-        else:
-            var = getattr(ui, key, None)
-            if var:
-                options_menu.add_checkbutton(label=label, variable=var)
-            else:
-                options_menu.add_command(label=label, state='disabled')
+    # Accès rapide aux presets
+    options_menu.add_command(label=_("Preset : Python uniquement"), command=lambda: _apply_preset(ui, 'python_only'))
+    options_menu.add_command(label=_("Preset : Assets Web"), command=lambda: _apply_preset(ui, 'web_assets'))
+    options_menu.add_command(label=_("Preset : Complet"), command=lambda: _apply_preset(ui, 'full'))
+    options_menu.add_command(label=_("Preset : Minimal"), command=lambda: _apply_preset(ui, 'minimal'))
 
     # --- Menu Langue ---
     lang_menu = tk.Menu(menubar, tearoff=0)
@@ -131,6 +108,8 @@ def _rebuild_all_menus(parent, ui: UIWidgets):
     menu_items['tools_cascade_index'] = 3
     tools_menu.add_command(label=_("Gestionnaire de versions"), command=lambda: _open_version_explorer(parent, ui))
     ui.open_version_explorer_index = 0
+    tools_menu.add_separator()
+    tools_menu.add_command(label=_("Convertisseur SVG → ICO"), command=lambda: _open_svg_converter(parent, ui))
 
     # --- Menu Vue ---
     view_menu = tk.Menu(menubar, tearoff=0)
@@ -180,6 +159,46 @@ def _open_version_explorer(parent, ui: UIWidgets):
     else:
         from src.gui.version_explorer import VersionExplorerDialog
         VersionExplorerDialog(parent)
+
+
+def _open_svg_converter(parent, ui: UIWidgets):
+    """Ouvre le convertisseur SVG vers ICO."""
+    from src.gui.converter import SVGToICOConverter
+    SVGToICOConverter(parent)
+
+
+def _apply_preset(ui: UIWidgets, preset: str):
+    """Applique un preset d'export rapide."""
+    presets = {
+        'python_only': {
+            'include_json': False, 'include_html': False, 'include_css': False,
+            'include_js': False, 'include_txt': False, 'include_po': False,
+            'include_mo': False, 'include_structure': True,
+        },
+        'web_assets': {
+            'include_json': True, 'include_html': True, 'include_css': True,
+            'include_js': True, 'include_txt': False, 'include_po': False,
+            'include_mo': False, 'include_structure': True,
+        },
+        'full': {
+            'include_json': True, 'include_html': True, 'include_css': True,
+            'include_js': True, 'include_txt': True, 'include_po': True,
+            'include_mo': True, 'include_structure': True,
+            'include_statistics': True, 'include_file_metadata': True,
+        },
+        'minimal': {
+            'include_json': False, 'include_html': False, 'include_css': False,
+            'include_js': False, 'include_txt': False, 'include_po': False,
+            'include_mo': False, 'include_structure': True,
+            'include_statistics': True,
+        },
+    }
+    
+    if preset in presets:
+        for key, value in presets[preset].items():
+            var = getattr(ui, key, None)
+            if var:
+                var.set(value)
 
 
 def unregister_menu_refresh(ui: UIWidgets):

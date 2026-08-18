@@ -45,6 +45,9 @@ class GuiConfig(BaseModel):
     version_window_y: int = Field(default=-1, ge=-1, description="Position Y fenêtre versions (-1 = centré)")
     log_height: int = Field(default=12, ge=4, le=30, description="Hauteur du journal en lignes")
     log_autoscroll: bool = Field(default=True, description="Défiler automatiquement le journal")
+    theme: str = Field(default="system", description="Thème : system, light, dark, custom")
+    # Thème personnalisé (stocké comme JSON string ou dict)
+    custom_theme: dict = Field(default_factory=dict, description="Couleurs du thème personnalisé")
 
 
 class AppConfig(BaseModel):

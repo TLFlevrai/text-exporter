@@ -8,6 +8,7 @@ from src.i18n import _, register_reload_callback, unregister_reload_callback
 from src.network.server import ReceiveServer
 from src.network.discovery import DiscoveryService
 from src.config import get_config
+from src.gui.theme import apply_theme
 from .ui_builder.ui_widgets import UIWidgets
 
 
@@ -24,6 +25,9 @@ class PythonCodeExtractor:
         self.discovery = discovery
         self.service = extraction_service
         self.config = get_config()
+
+        # Appliquer le thème au démarrage
+        apply_theme()
 
         self._setup_window_title()
         self._setup_window_geometry()

@@ -32,7 +32,7 @@ class ExtractionService:
         self,
         folder_path: str | Path,
         options: dict,
-        progress_callback: Optional[Callable[[int, int], None]] = None,
+        progress_callback: Optional[Callable[[int, int, str], None]] = None,
         log_callback: Optional[Callable[[str], None]] = None,
         selected_files: Optional[List[str]] = None
     ) -> Tuple[bool, Optional[str], Optional[dict]]:

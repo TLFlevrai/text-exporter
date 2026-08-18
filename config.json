@@ -43,6 +43,8 @@
     "version_window_x": -1,
     "version_window_y": -1,
     "log_height": 12,
-    "log_autoscroll": false
+    "log_autoscroll": false,
+    "theme": "light",
+    "custom_theme": {}
   }
 }

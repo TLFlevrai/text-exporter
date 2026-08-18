@@ -41,7 +41,7 @@ class CodeExtractor:
         self,
         folder: str,
         output_filename: str,
-        progress_callback: Optional[Callable[[int, int], None]] = None,
+        progress_callback: Optional[Callable[[int, int, str], None]] = None,
         log_callback: Optional[Callable[[str], None]] = None,
         selected_files: Optional[List[str]] = None
     ) -> tuple:

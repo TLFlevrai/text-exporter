@@ -50,14 +50,6 @@ class ExtractionController(BaseController):
         self.update_status(_("Extraction en cours..."))
         self.add_info(_("\n--- Extraction en cours ---") + (" (PDF)" if export_pdf else ""))
 
-        def progress_callback(current, total):
-            if total > 0:
-                progress = (current / total) * 100
-                self.root.after(0, lambda: self.ui.progress_var.set(progress))
-
-        def log_callback(msg):
-            self.root.after(0, lambda: self.add_info(msg))
-
         def extraction_thread():
             try:
                 success, output_filename, stats = run_extraction(
@@ -66,8 +58,8 @@ class ExtractionController(BaseController):
                     selected_folder=self._selected_folder,
                     options=options,
                     selected_files=selected,
-                    progress_callback=progress_callback,
-                    log_callback=log_callback,
+                    progress_callback=None,  # Maintenant géré dans run_extraction
+                    log_callback=None,
                     export_pdf=export_pdf
                 )
 

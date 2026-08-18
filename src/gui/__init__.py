@@ -6,6 +6,8 @@ from .folder_scanner import scan_folder
 from .recent_files import load_recent_folders, add_recent_folder, clear_recent_folders, remove_recent_folder
 from .gui import PythonCodeExtractor
 from .selection import SelectionDialog
+from .converter import SVGToICOConverter
+from .settings_dialog import open_settings_dialog, SettingsDialog
 
 __all__ = [
     'ExtractionController',
@@ -17,5 +19,8 @@ __all__ = [
     'clear_recent_folders',
     'remove_recent_folder',
     'PythonCodeExtractor',
-    'SelectionDialog'
+    'SelectionDialog',
+    'SVGToICOConverter',
+    'open_settings_dialog',
+    'SettingsDialog'
 ]

@@ -9,18 +9,34 @@ from src.services.pdf_service import PDFService  # <-- nouveau
 logger = setup_logger(__name__)
 
 def run_extraction(controller, service, selected_folder, options, selected_files,
-                   progress_callback, log_callback, export_pdf=False):  # <-- nouveau paramètre
+                    progress_callback, log_callback, export_pdf=False):  # <-- nouveau paramètre
     """
     Exécute l'extraction via le service et gère les mises à jour de l'UI.
     Retourne (success, output_filename, stats) ou (False, None, None)
     Si export_pdf est True, génère également un PDF.
     """
+    def enhanced_progress_callback(current, total, current_file=""):
+        """Callback de progression enrichi avec le fichier actuel."""
+        if total > 0:
+            progress = (current / total) * 100
+            controller.root.after(0, lambda: controller.ui.progress_var.set(progress))
+        
+        # Mettre à jour la barre de statut avec le fichier actuel
+        if current_file:
+            status_msg = _("Traitement : {} ({}/{})").format(current_file, current, total)
+            controller.root.after(0, lambda: controller.update_status(_("Extraction en cours..."), status_msg))
+        else:
+            controller.root.after(0, lambda: controller.update_status(_("Extraction en cours...")))
+    
+    def enhanced_log_callback(msg):
+        controller.root.after(0, lambda: controller.add_info(msg))
+
     try:
         success, output_filename, stats = service.extract_folder(
             selected_folder,
             options,
-            progress_callback=progress_callback,
-            log_callback=log_callback,
+            progress_callback=enhanced_progress_callback,
+            log_callback=enhanced_log_callback,
             selected_files=selected_files
         )
 

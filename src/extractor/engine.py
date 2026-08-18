@@ -70,7 +70,7 @@ class ExtractionEngine:
                 # 3) Boucle : TRAITER → ÉCRIRE (séparation des responsabilités)
                 for i, (full_path, rel_path, ext) in enumerate(files):
                     if progress_callback:
-                        progress_callback(i + 1, total_files)
+                        progress_callback(i + 1, total_files, str(rel_path))
 
                     # TRAITEMENT pur (testable sans I/O)
                     result = self.processor.process(full_path, rel_path, ext)
