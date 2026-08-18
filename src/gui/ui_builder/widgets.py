@@ -4,6 +4,7 @@ from tkinter import ttk
 from src.config import get_config
 from src.i18n import _, LazyString, register_reload_callback, unregister_reload_callback
 from .ui_widgets import UIWidgets
+from .tooltip import add_lazy_tooltip
 
 
 def build_widgets(parent, ui: UIWidgets):
@@ -25,11 +26,14 @@ def build_widgets(parent, ui: UIWidgets):
     folder_entry = ttk.Entry(main_frame, textvariable=ui.folder_path_var,
                              width=60, state='readonly')
     folder_entry.grid(row=1, column=1, padx=5, pady=5, sticky=tk.W)
+    ui.folder_entry = folder_entry
 
     browse_btn = ttk.Button(main_frame, text=str(LazyString("Parcourir")))
     browse_btn.grid(row=1, column=2, padx=5, pady=5)
     ui.browse_btn = browse_btn
     _register_lazy_widget(ui, browse_btn, "Parcourir")
+    tooltip = add_lazy_tooltip(browse_btn, "Sélectionner le dossier à scanner (Ctrl+O)")
+    ui._lazy_tooltips.append(tooltip)
 
     button_frame = ttk.Frame(main_frame)
     button_frame.grid(row=2, column=0, columnspan=3, pady=10)
@@ -38,26 +42,36 @@ def build_widgets(parent, ui: UIWidgets):
     extract_btn.pack(side=tk.LEFT, padx=5)
     ui.extract_btn = extract_btn
     _register_lazy_widget(ui, extract_btn, "Extraire le code")
+    tooltip = add_lazy_tooltip(extract_btn, "Lancer l'extraction du code (Ctrl+E)")
+    ui._lazy_tooltips.append(tooltip)
 
     select_btn = ttk.Button(button_frame, text=str(LazyString("Sélectionner...")))
     select_btn.pack(side=tk.LEFT, padx=5)
     ui.select_btn = select_btn
     _register_lazy_widget(ui, select_btn, "Sélectionner...")
+    tooltip = add_lazy_tooltip(select_btn, "Choisir les fichiers spécifiques à extraire")
+    ui._lazy_tooltips.append(tooltip)
 
     version_btn = ttk.Button(button_frame, text=str(LazyString("Gérer les versions")))
     version_btn.pack(side=tk.LEFT, padx=5)
     ui.version_btn = version_btn
     _register_lazy_widget(ui, version_btn, "Gérer les versions")
+    tooltip = add_lazy_tooltip(version_btn, "Ouvrir le gestionnaire de versions d'export")
+    ui._lazy_tooltips.append(tooltip)
 
     network_btn = ttk.Button(button_frame, text=str(LazyString("Réseau...")))
     network_btn.pack(side=tk.LEFT, padx=5)
     ui.network_btn = network_btn
     _register_lazy_widget(ui, network_btn, "Réseau...")
+    tooltip = add_lazy_tooltip(network_btn, "Ouvrir le centre de transfert réseau")
+    ui._lazy_tooltips.append(tooltip)
 
     clear_btn = ttk.Button(button_frame, text=str(LazyString("Effacer le journal")))
     clear_btn.pack(side=tk.LEFT, padx=5)
     ui.clear_btn = clear_btn
     _register_lazy_widget(ui, clear_btn, "Effacer le journal")
+    tooltip = add_lazy_tooltip(clear_btn, "Vider le journal d'activité (Ctrl+L)")
+    ui._lazy_tooltips.append(tooltip)
 
     progress_bar = ttk.Progressbar(main_frame, variable=ui.progress_var,
                                    maximum=100, length=500)
@@ -73,16 +87,31 @@ def build_widgets(parent, ui: UIWidgets):
     log_height = get_config().get('gui.log_height', 12)
     info_text = tk.Text(info_frame, height=log_height, width=80, wrap=tk.WORD)
     info_text.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
+    ui.info_text = info_text
 
     scrollbar = ttk.Scrollbar(info_frame, orient="vertical", command=info_text.yview)
     scrollbar.grid(row=0, column=1, sticky=(tk.N, tk.S))
-    info_text.configure(yscrollcommand=scrollbar.set)
-    ui.info_text = info_text
+    info_text.configure(yscrollcommand=lambda *args: _on_scroll(info_text, scrollbar, *args))
 
-    status_bar = ttk.Label(main_frame, textvariable=ui.status_var,
-                           relief=tk.SUNKEN, anchor=tk.W)
-    status_bar.grid(row=5, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=5)
+    # Barre de statut améliorée avec détails
+    status_frame = ttk.Frame(main_frame)
+    status_frame.grid(row=5, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=5)
+    status_frame.columnconfigure(1, weight=1)
+
+    status_bar = ttk.Label(status_frame, textvariable=ui.status_var, relief=tk.SUNKEN, anchor=tk.W)
+    status_bar.grid(row=0, column=0, sticky=(tk.W, tk.E))
     ui.status_bar = status_bar
+
+    # Checkbox auto-scroll à droite de la barre de statut
+    ui.log_autoscroll_var = tk.BooleanVar(value=get_config().get('gui.log_autoscroll', True))
+    autoscroll_cb = ttk.Checkbutton(
+        status_frame,
+        text=_("Auto-scroll"),
+        variable=ui.log_autoscroll_var,
+        command=lambda: _save_autoscroll_pref(ui)
+    )
+    autoscroll_cb.grid(row=0, column=1, sticky=tk.E, padx=5)
+    _register_lazy_widget(ui, autoscroll_cb, "Auto-scroll")
 
     main_frame.columnconfigure(1, weight=1)
     main_frame.rowconfigure(4, weight=1)
@@ -103,6 +132,22 @@ def build_widgets(parent, ui: UIWidgets):
 
     # Enregistrer le callback de rafraîchissement global
     _register_refresh_callback(ui)
+
+
+def _on_scroll(text_widget, scrollbar, *args):
+    """Callback de scroll - met à jour la scrollbar et gère l'auto-scroll."""
+    scrollbar.set(*args)
+    # Si l'utilisateur scrolle manuellement vers le haut, désactiver temporairement l'auto-scroll
+    # (on ne le désactive pas définitivement, juste pour cette session de scroll)
+
+
+def _save_autoscroll_pref(ui: UIWidgets):
+    """Sauvegarde la préférence d'auto-scroll dans la config."""
+    try:
+        config = get_config()
+        config.update_gui(log_autoscroll=ui.log_autoscroll_var.get())
+    except Exception:
+        pass
 
 
 def _register_lazy_widget(ui: UIWidgets, widget, msgid: str):
@@ -127,6 +172,11 @@ def _register_refresh_callback(ui: UIWidgets):
                     widget.config(text=translated)
             except Exception:
                 pass  # Widget peut être détruit
+        for tooltip in ui._lazy_tooltips:
+            try:
+                tooltip.refresh()
+            except Exception:
+                pass
     
     from src.i18n import register_reload_callback
     register_reload_callback(refresh_all_widgets)

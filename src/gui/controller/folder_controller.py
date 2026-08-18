@@ -26,8 +26,8 @@ class FolderController(BaseController):
         if not os.path.exists(folder_path):
             messagebox.showerror(_("Erreur"), _("Le dossier n'existe plus : {}").format(folder_path))
             remove_recent_folder(folder_path)
-            if 'update_recent_menu' in self.ui:
-                self.ui['update_recent_menu']()
+            if self.ui.update_recent_menu:
+                self.ui.update_recent_menu()
             return
 
         self._set_folder(folder_path)
@@ -38,8 +38,8 @@ class FolderController(BaseController):
     def _set_folder(self, folder):
         """Définit le dossier sélectionné et met à jour l'UI."""
         self._selected_folder = folder
-        self.ui['folder_path_var'].set(folder)
-        self.ui['extract_btn'].config(state='normal')
+        self.ui.folder_path_var.set(folder)
+        self.ui.extract_btn.config(state='normal')
         self.clear_info()
 
     def _log_folder_stats(self):

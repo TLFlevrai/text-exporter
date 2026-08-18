@@ -35,7 +35,14 @@
   },
   "gui": {
     "window_width": 700,
-    "window_height": 600,
-    "log_height": 12
+    "window_height": 580,
+    "window_x": 930,
+    "window_y": 420,
+    "version_window_width": 1000,
+    "version_window_height": 650,
+    "version_window_x": -1,
+    "version_window_y": -1,
+    "log_height": 12,
+    "log_autoscroll": false
   }
 }

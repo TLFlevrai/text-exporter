@@ -3,15 +3,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PythonCodeExtractor 1.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-08-17 15:44+0300\n"
+"POT-Creation-Date: 2026-08-18 11:18+0300\n"
 "PO-Revision-Date: 2026-08-16 21:50+0200\n"
 "Last-Translator: \n"
-"Language-Team: \n"
 "Language: en\n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.18.0\n"
 
 #: src/gui/controller/extraction_controller.py:92
@@ -29,9 +29,8 @@ msgstr "Extraction failed"
 #: src/gui/network_center/received_tab.py:108
 #: src/gui/network_center/received_tab.py:120
 #: src/gui/network_center/received_tab.py:140
-#: src/gui/network_center/send_tab.py:167 src/gui/ui_builder/menus.py:161
-#: src/gui/version_explorer/dialog.py:81
-#: src/gui/version_explorer/dialog.py:103
+#: src/gui/network_center/send_tab.py:167 src/gui/ui_builder/menus.py:162
+#: src/gui/version_explorer/dialog.py:81 src/gui/version_explorer/dialog.py:103
 #: src/gui/version_explorer/dialog.py:189
 #: src/gui/version_explorer/dialog.py:197
 #: src/gui/version_explorer/dialog.py:203
@@ -70,11 +69,11 @@ msgstr "Location: {}"
 #: src/gui/extraction_runner.py:39
 #, python-brace-format
 msgid ""
-"Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML:"
-" {}, CSS: {}, JS: {})"
+"Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, "
+"HTML: {}, CSS: {}, JS: {})"
 msgstr ""
-"Files extracted: {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: "
-"{}, CSS: {}, JS: {})"
+"Files extracted: {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML:"
+" {}, CSS: {}, JS: {})"
 
 #: src/gui/extraction_runner.py:49
 #, fuzzy
@@ -171,30 +170,29 @@ msgstr "Success"
 msgid "Une erreur est survenue : {}"
 msgstr "An error occurred: {}"
 
-#: src/gui/gui.py:48 src/gui/gui.py:53
+#: src/gui/gui.py:50 src/gui/gui.py:66
 #, fuzzy
 msgid "Extracteur de code"
 msgstr "Python/JSON/TXT Code Extractor"
 
-#: src/gui/controller/base_controller.py:95
+#: src/gui/controller/base_controller.py:97
 #: src/gui/network_center/send_tab.py:97
 #: src/gui/network_center/views/send_controls_view.py:37
 #: src/gui/network_center/views/send_controls_view.py:53
-#: src/gui/ui_builder/ui_builder.py:14
 msgid "Prêt"
 msgstr "Ready"
 
 #: src/gui/controller/extraction_controller.py:18
 #: src/gui/controller/extraction_controller.py:36
 #: src/gui/controller/extraction_controller.py:104
-#: src/gui/ui_builder/menus.py:159
+#: src/gui/ui_builder/menus.py:160
 msgid "Attention"
 msgstr "Warning"
 
 #: src/gui/controller/extraction_controller.py:18
 #: src/gui/controller/extraction_controller.py:36
 #: src/gui/controller/extraction_controller.py:104
-#: src/gui/ui_builder/menus.py:159
+#: src/gui/ui_builder/menus.py:160
 msgid "Veuillez d'abord sélectionner un dossier"
 msgstr "Please select a folder first"
 
@@ -598,165 +596,127 @@ msgstr "☐ Rien"
 msgid "⇄ Inverser"
 msgstr "⇄ Inverser"
 
-#: src/gui/ui_builder/menus.py:35
+#: src/gui/ui_builder/menus.py:36
 #, fuzzy
 msgctxt "menu"
 msgid "Fichier"
 msgstr "File"
 
-#: src/gui/ui_builder/menus.py:40
+#: src/gui/ui_builder/menus.py:41
 msgid "Exporter en PDF"
 msgstr "Export to PDF"
 
-#: src/gui/ui_builder/menus.py:45
+#: src/gui/ui_builder/menus.py:46
 msgid "Quitter"
 msgstr "Quit"
 
-#: src/gui/ui_builder/menus.py:50
+#: src/gui/ui_builder/menus.py:51
 #, fuzzy
 msgid "Emplacements récents"
 msgstr "Location: {}"
 
-#: src/gui/ui_builder/menus.py:59
+#: src/gui/ui_builder/menus.py:60
 msgid "Aucun"
 msgstr "None"
 
-#: src/gui/ui_builder/menus.py:68
+#: src/gui/ui_builder/menus.py:69
 #, fuzzy
 msgid "Effacer la liste"
 msgstr "Refresh list"
 
-#: src/gui/ui_builder/menus.py:80
+#: src/gui/ui_builder/menus.py:81
 msgid "Options"
 msgstr "Options"
 
-#: src/gui/ui_builder/menus.py:86
+#: src/gui/ui_builder/menus.py:87
 msgid "Inclure les sous-dossiers"
 msgstr "Include Subdirectories"
 
-#: src/gui/ui_builder/menus.py:87
+#: src/gui/ui_builder/menus.py:88
 #, fuzzy
 msgid "Afficher les chemins des fichiers"
 msgstr "Error reading files"
 
-#: src/gui/ui_builder/menus.py:89
+#: src/gui/ui_builder/menus.py:90
 #, fuzzy
 msgid "Inclure les fichiers JSON"
 msgstr "  - JSON files: {}\n"
 
-#: src/gui/ui_builder/menus.py:90
+#: src/gui/ui_builder/menus.py:91
 #, fuzzy
 msgid "Inclure les fichiers TXT"
 msgstr "Number of files extracted: {}\n"
 
-#: src/gui/ui_builder/menus.py:91
+#: src/gui/ui_builder/menus.py:92
 msgid "Inclure les fichiers .po (traductions)"
 msgstr "Include .po Files (translations)"
 
-#: src/gui/ui_builder/menus.py:92
+#: src/gui/ui_builder/menus.py:93
 msgid "Inclure les fichiers .mo (compilés)"
 msgstr "Include .mo Files (compiled)"
 
-#: src/gui/ui_builder/menus.py:93
+#: src/gui/ui_builder/menus.py:94
 #, fuzzy
 msgid "Inclure les fichiers HTML"
 msgstr "  - HTML files: {}\n"
 
-#: src/gui/ui_builder/menus.py:94
+#: src/gui/ui_builder/menus.py:95
 #, fuzzy
 msgid "Inclure les fichiers CSS"
 msgstr "  - CSS files: {}\n"
 
-#: src/gui/ui_builder/menus.py:95
+#: src/gui/ui_builder/menus.py:96
 msgid "Inclure les fichiers JavaScript"
 msgstr "Include JavaScript Files"
 
-#: src/gui/ui_builder/menus.py:97
+#: src/gui/ui_builder/menus.py:98
 msgid "Inclure la structure du projet"
 msgstr "Include Project Structure"
 
-#: src/gui/ui_builder/menus.py:98
+#: src/gui/ui_builder/menus.py:99
 #, fuzzy
 msgid "Ignorer les fichiers __init__.py"
 msgstr "Send file"
 
-#: src/gui/ui_builder/menus.py:99
+#: src/gui/ui_builder/menus.py:100
 msgid "Ignorer le dossier .git"
 msgstr "Ignore .git Folder"
 
-#: src/gui/ui_builder/menus.py:100
+#: src/gui/ui_builder/menus.py:101
 msgid "Ignorer les dossiers __pycache__"
 msgstr "Ignore __pycache__ Folders"
 
-#: src/gui/ui_builder/menus.py:102
+#: src/gui/ui_builder/menus.py:103
 msgid "Inclure les statistiques"
 msgstr "Include Statistics"
 
-#: src/gui/ui_builder/menus.py:103
+#: src/gui/ui_builder/menus.py:104
 msgid "Métadonnées détaillées par fichier"
 msgstr "Detailed File Metadata"
 
-#: src/gui/ui_builder/menus.py:119
+#: src/gui/ui_builder/menus.py:120
 msgid "Langue"
 msgstr "Language"
 
-#: src/gui/ui_builder/menus.py:128
+#: src/gui/ui_builder/menus.py:129
 msgid "Outils"
 msgstr "Tools"
 
-#: src/gui/ui_builder/menus.py:131 src/gui/version_explorer/dialog.py:24
+#: src/gui/ui_builder/menus.py:132 src/gui/version_explorer/dialog.py:24
 msgid "Gestionnaire de versions"
 msgstr "Version Manager"
 
-#: src/gui/ui_builder/menus.py:136
+#: src/gui/ui_builder/menus.py:137
 msgid "Vue"
 msgstr "View"
 
-#: src/gui/ui_builder/menus.py:139
+#: src/gui/ui_builder/menus.py:140
 msgid "Afficher le journal"
 msgstr "Show Log"
 
-#: src/gui/ui_builder/menus.py:161
+#: src/gui/ui_builder/menus.py:162
 msgid "Contrôleur non disponible pour l'export PDF"
 msgstr "Controller not available for PDF export"
-
-#: src/gui/ui_builder/widgets.py:14
-#, fuzzy
-msgid "Extracteur de code Python, JSON & TXT"
-msgstr "Python/JSON/TXT Code Extractor"
-
-#: src/gui/ui_builder/widgets.py:20
-#, fuzzy
-msgid "Dossier à scanner :"
-msgstr "Selected folder: {}"
-
-#: src/gui/ui_builder/widgets.py:28
-msgid "Parcourir"
-msgstr "Browse"
-
-#: src/gui/ui_builder/widgets.py:36
-msgid "Extraire le code"
-msgstr "Extract Code"
-
-#: src/gui/ui_builder/widgets.py:41
-msgid "Sélectionner..."
-msgstr "Select..."
-
-#: src/gui/ui_builder/widgets.py:46
-msgid "Gérer les versions"
-msgstr "Manage Versions"
-
-#: src/gui/ui_builder/widgets.py:51
-msgid "Réseau..."
-msgstr "Network..."
-
-#: src/gui/ui_builder/widgets.py:56
-msgid "Effacer le journal"
-msgstr "Clear Log"
-
-#: src/gui/ui_builder/widgets.py:67
-msgid "Journal"
-msgstr "Log"
 
 #: src/gui/version_explorer/dialog.py:55
 #, fuzzy
@@ -842,8 +802,7 @@ msgstr "Restore error"
 #: src/gui/version_explorer/dialog.py:161
 #, fuzzy, python-brace-format
 msgctxt "confirmation"
-msgid ""
-"Supprimer definitivement {} version(s) ? Cette action est irreversible."
+msgid "Supprimer definitivement {} version(s) ? Cette action est irreversible."
 msgstr "Permanently delete {} version(s)? This action is irreversible."
 
 #: src/gui/version_explorer/dialog.py:164
@@ -997,3 +956,31 @@ msgstr "Status"
 
 #~ msgid "Échec de l'envoi : {}"
 #~ msgstr "Send failed: {}"
+
+#~ msgid "Extracteur de code Python, JSON & TXT"
+#~ msgstr "Python/JSON/TXT Code Extractor"
+
+#~ msgid "Dossier à scanner :"
+#~ msgstr "Selected folder: {}"
+
+#~ msgid "Parcourir"
+#~ msgstr "Browse"
+
+#~ msgid "Extraire le code"
+#~ msgstr "Extract Code"
+
+#~ msgid "Sélectionner..."
+#~ msgstr "Select..."
+
+#~ msgid "Gérer les versions"
+#~ msgstr "Manage Versions"
+
+#~ msgid "Réseau..."
+#~ msgstr "Network..."
+
+#~ msgid "Effacer le journal"
+#~ msgstr "Clear Log"
+
+#~ msgid "Journal"
+#~ msgstr "Log"
+

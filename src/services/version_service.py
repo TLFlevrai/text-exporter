@@ -198,3 +198,20 @@ class VersionArchiveService:
         """Réinitialise tous les compteurs."""
         self.version_manager.reset()
         logger.info("Tous les compteurs réinitialisés.")
+
+    def clean_all(self) -> int:
+        """
+        Supprime tout le contenu du dossier de sortie (out) y compris les archives.
+        Retourne le nombre de fichiers supprimés.
+        """
+        count = 0
+        if self.output_dir.exists():
+            for file_path in self.output_dir.rglob('*'):
+                if file_path.is_file():
+                    try:
+                        file_path.unlink()
+                        count += 1
+                    except Exception as e:
+                        logger.error(f"Impossible de supprimer {file_path} : {e}")
+        logger.info(f"Nettoyage complet : {count} fichier(s) supprimé(s)")
+        return count

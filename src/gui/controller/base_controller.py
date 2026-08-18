@@ -40,16 +40,21 @@ class BaseController:
     def add_info(self, message):
         """Ajoute un message au journal."""
         self.ui.info_text.insert(tk.END, message + "\n")
-        self.ui.info_text.see(tk.END)
+        # Auto-scroll si activé et qu'on est déjà en bas
+        if hasattr(self.ui, 'log_autoscroll_var') and self.ui.log_autoscroll_var.get():
+            self.ui.info_text.see(tk.END)
         self.root.update_idletasks()
 
     def clear_info(self):
         """Efface le journal."""
         self.ui.info_text.delete(1.0, tk.END)
 
-    def update_status(self, message):
-        """Met à jour la barre de statut."""
-        self.ui.status_var.set(message)
+    def update_status(self, message, detail=None):
+        """Met à jour la barre de statut avec message principal et détail optionnel."""
+        if detail:
+            self.ui.status_var.set(f"{message} | {detail}")
+        else:
+            self.ui.status_var.set(message)
 
     def set_extracting(self, extracting):
         """Active/désactive l'état d'extraction."""

@@ -7,6 +7,7 @@ from pathlib import Path
 
 from src.i18n import _, pgettext
 from src.logger import setup_logger
+from src.config import get_config
 from src.services.version_service import VersionArchiveService
 from .project_panel import ProjectPanel
 from .version_tree import VersionTree
@@ -22,10 +23,12 @@ class VersionExplorerDialog(tk.Toplevel):
     def __init__(self, parent, service=None):
         super().__init__(parent)
         self.title(_("Gestionnaire de versions"))
-        self.geometry("1000x650")
         self.minsize(800, 500)
         self.transient(parent)
         self.grab_set()
+
+        self.config = get_config()
+        self._setup_window_geometry()
 
         self.service = service or VersionArchiveService()
         self.projects_data = {}
@@ -35,7 +38,41 @@ class VersionExplorerDialog(tk.Toplevel):
         self._create_widgets()
         self._start_scan()
 
+        # Raccourci F5 pour rafraîchir
+        self.bind("<F5>", lambda e: self.refresh())
+
         self.protocol("WM_DELETE_WINDOW", self._on_close)
+
+    def _setup_window_geometry(self):
+        """Restaure la géométrie de la fenêtre depuis la config."""
+        gui = self.config.get_all().gui
+        width = gui.version_window_width
+        height = gui.version_window_height
+        x = gui.version_window_x
+        y = gui.version_window_y
+
+        if x >= 0 and y >= 0:
+            self.geometry(f"{width}x{height}+{x}+{y}")
+        else:
+            self.geometry(f"{width}x{height}")
+            self.update_idletasks()
+            screen_w = self.winfo_screenwidth()
+            screen_h = self.winfo_screenheight()
+            x = (screen_w - width) // 2
+            y = (screen_h - height) // 2
+            self.geometry(f"{width}x{height}+{x}+{y}")
+
+    def _save_window_geometry(self):
+        """Sauvegarde la géométrie actuelle de la fenêtre."""
+        try:
+            self.config.update_gui(
+                version_window_width=self.winfo_width(),
+                version_window_height=self.winfo_height(),
+                version_window_x=self.winfo_x(),
+                version_window_y=self.winfo_y(),
+            )
+        except Exception:
+            pass
 
     def _create_widgets(self):
         main = ttk.Frame(self, padding=10)
@@ -202,6 +239,42 @@ class VersionExplorerDialog(tk.Toplevel):
             logger.error(f"Impossible d'ouvrir {folder} : {e}")
             messagebox.showerror(_("Erreur"), _("Impossible d'ouvrir le dossier : {}").format(e))
 
+    def clean_all(self):
+        """Supprime tout le contenu du dossier out/ y compris les archives."""
+        if not messagebox.askyesno(
+            _("Confirmation nettoyage complet"),
+            _("ATTENTION : Cette action va supprimer TOUS les fichiers d'export dans le dossier 'out/' "
+              "y compris les versions archivées.\n\nCette action est IRREVERSIBLE.\n\nContinuer ?"),
+            icon=messagebox.WARNING
+        ):
+            return
+        
+        if not messagebox.askyesno(
+            _("Confirmation finale"),
+            _("Êtes-vous ABSOLUMENT sûr de vouloir tout supprimer ?\n\n"
+              "Tous les projets, toutes les versions, toutes les archives seront perdus."),
+            icon=messagebox.WARNING
+        ):
+            return
+
+        self.status_var.set(_("Nettoyage complet en cours..."))
+        threading.Thread(target=self._clean_all_thread, daemon=True).start()
+
+    def _clean_all_thread(self):
+        try:
+            count = self.service.clean_all()
+            self.after(0, lambda: self._clean_all_finished(count))
+        except Exception as e:
+            logger.error(f"Erreur lors du nettoyage complet : {e}")
+            self.after(0, lambda: self._show_error(_("Erreur de nettoyage"), str(e)))
+
+    def _clean_all_finished(self, count):
+        """Appelé après le nettoyage complet."""
+        self.status_var.set(_("Nettoyage termine : {} fichier(s) supprime(s)").format(count))
+        messagebox.showinfo(_("Nettoyage termine"), 
+                           _("Tous les exports ont ete supprimes.\n{} fichier(s) supprime(s).").format(count))
+        self._refresh_after_action()
+
     def refresh(self):
         self.status_var.set(_("Rafraichissement..."))
         threading.Thread(target=self._refresh_thread, daemon=True).start()
@@ -244,4 +317,5 @@ class VersionExplorerDialog(tk.Toplevel):
         messagebox.showerror(title, msg)
 
     def _on_close(self):
+        self._save_window_geometry()
         self.destroy()

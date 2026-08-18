@@ -1,6 +1,7 @@
 # Translations template for Text Exporter.
 # Copyright (C) 2026 ORGANIZATION
-# This file is distributed under the same license as the Text Exporter project.
+# This file is distributed under the same license as the Text Exporter
+# project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
 #
 #, fuzzy
@@ -8,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Text Exporter 1.0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-08-17 15:44+0300\n"
+"POT-Creation-Date: 2026-08-18 11:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +33,7 @@ msgstr ""
 #: src/gui/network_center/received_tab.py:108
 #: src/gui/network_center/received_tab.py:120
 #: src/gui/network_center/received_tab.py:140
-#: src/gui/network_center/send_tab.py:167 src/gui/ui_builder/menus.py:161
+#: src/gui/network_center/send_tab.py:167 src/gui/ui_builder/menus.py:162
 #: src/gui/version_explorer/dialog.py:81 src/gui/version_explorer/dialog.py:103
 #: src/gui/version_explorer/dialog.py:189
 #: src/gui/version_explorer/dialog.py:197
@@ -69,7 +70,9 @@ msgstr ""
 
 #: src/gui/extraction_runner.py:39
 #, python-brace-format
-msgid "Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, HTML: {}, CSS: {}, JS: {})"
+msgid ""
+"Fichiers extraits : {} (Python: {}, JSON: {}, TXT: {}, PO: {}, MO: {}, "
+"HTML: {}, CSS: {}, JS: {})"
 msgstr ""
 
 #: src/gui/extraction_runner.py:49
@@ -161,29 +164,28 @@ msgstr ""
 msgid "Une erreur est survenue : {}"
 msgstr ""
 
-#: src/gui/gui.py:48 src/gui/gui.py:53
+#: src/gui/gui.py:50 src/gui/gui.py:66
 msgid "Extracteur de code"
 msgstr ""
 
-#: src/gui/controller/base_controller.py:95
+#: src/gui/controller/base_controller.py:97
 #: src/gui/network_center/send_tab.py:97
 #: src/gui/network_center/views/send_controls_view.py:37
 #: src/gui/network_center/views/send_controls_view.py:53
-#: src/gui/ui_builder/ui_builder.py:14
 msgid "Prêt"
 msgstr ""
 
 #: src/gui/controller/extraction_controller.py:18
 #: src/gui/controller/extraction_controller.py:36
 #: src/gui/controller/extraction_controller.py:104
-#: src/gui/ui_builder/menus.py:159
+#: src/gui/ui_builder/menus.py:160
 msgid "Attention"
 msgstr ""
 
 #: src/gui/controller/extraction_controller.py:18
 #: src/gui/controller/extraction_controller.py:36
 #: src/gui/controller/extraction_controller.py:104
-#: src/gui/ui_builder/menus.py:159
+#: src/gui/ui_builder/menus.py:160
 msgid "Veuillez d'abord sélectionner un dossier"
 msgstr ""
 
@@ -212,7 +214,9 @@ msgid ""
 msgstr ""
 
 #: src/gui/controller/folder_controller.py:15
-msgid "Sélectionner un dossier contenant des fichiers Python/JSON/TXT/PO/MO/HTML/CSS/JS"
+msgid ""
+"Sélectionner un dossier contenant des fichiers "
+"Python/JSON/TXT/PO/MO/HTML/CSS/JS"
 msgstr ""
 
 #: src/gui/controller/folder_controller.py:27
@@ -568,153 +572,117 @@ msgstr ""
 msgid "⇄ Inverser"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:35
+#: src/gui/ui_builder/menus.py:36
 msgctxt "menu"
 msgid "Fichier"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:40
+#: src/gui/ui_builder/menus.py:41
 msgid "Exporter en PDF"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:45
+#: src/gui/ui_builder/menus.py:46
 msgid "Quitter"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:50
+#: src/gui/ui_builder/menus.py:51
 msgid "Emplacements récents"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:59
+#: src/gui/ui_builder/menus.py:60
 msgid "Aucun"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:68
+#: src/gui/ui_builder/menus.py:69
 msgid "Effacer la liste"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:80
+#: src/gui/ui_builder/menus.py:81
 msgid "Options"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:86
+#: src/gui/ui_builder/menus.py:87
 msgid "Inclure les sous-dossiers"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:87
+#: src/gui/ui_builder/menus.py:88
 msgid "Afficher les chemins des fichiers"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:89
+#: src/gui/ui_builder/menus.py:90
 msgid "Inclure les fichiers JSON"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:90
+#: src/gui/ui_builder/menus.py:91
 msgid "Inclure les fichiers TXT"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:91
+#: src/gui/ui_builder/menus.py:92
 msgid "Inclure les fichiers .po (traductions)"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:92
+#: src/gui/ui_builder/menus.py:93
 msgid "Inclure les fichiers .mo (compilés)"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:93
+#: src/gui/ui_builder/menus.py:94
 msgid "Inclure les fichiers HTML"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:94
+#: src/gui/ui_builder/menus.py:95
 msgid "Inclure les fichiers CSS"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:95
+#: src/gui/ui_builder/menus.py:96
 msgid "Inclure les fichiers JavaScript"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:97
+#: src/gui/ui_builder/menus.py:98
 msgid "Inclure la structure du projet"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:98
+#: src/gui/ui_builder/menus.py:99
 msgid "Ignorer les fichiers __init__.py"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:99
+#: src/gui/ui_builder/menus.py:100
 msgid "Ignorer le dossier .git"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:100
+#: src/gui/ui_builder/menus.py:101
 msgid "Ignorer les dossiers __pycache__"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:102
+#: src/gui/ui_builder/menus.py:103
 msgid "Inclure les statistiques"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:103
+#: src/gui/ui_builder/menus.py:104
 msgid "Métadonnées détaillées par fichier"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:119
+#: src/gui/ui_builder/menus.py:120
 msgid "Langue"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:128
+#: src/gui/ui_builder/menus.py:129
 msgid "Outils"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:131 src/gui/version_explorer/dialog.py:24
+#: src/gui/ui_builder/menus.py:132 src/gui/version_explorer/dialog.py:24
 msgid "Gestionnaire de versions"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:136
+#: src/gui/ui_builder/menus.py:137
 msgid "Vue"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:139
+#: src/gui/ui_builder/menus.py:140
 msgid "Afficher le journal"
 msgstr ""
 
-#: src/gui/ui_builder/menus.py:161
+#: src/gui/ui_builder/menus.py:162
 msgid "Contrôleur non disponible pour l'export PDF"
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:14
-msgid "Extracteur de code Python, JSON & TXT"
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:20
-msgid "Dossier à scanner :"
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:28
-msgid "Parcourir"
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:36
-msgid "Extraire le code"
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:41
-msgid "Sélectionner..."
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:46
-msgid "Gérer les versions"
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:51
-msgid "Réseau..."
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:56
-msgid "Effacer le journal"
-msgstr ""
-
-#: src/gui/ui_builder/widgets.py:67
-msgid "Journal"
 msgstr ""
 
 #: src/gui/version_explorer/dialog.py:55

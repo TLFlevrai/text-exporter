@@ -25,14 +25,14 @@ def run_extraction(controller, service, selected_folder, options, selected_files
         )
 
         if not success:
-            controller.ui['status_var'].set(_("Extraction échouée"))
-            controller.ui['progress_var'].set(0)
+            controller.ui.status_var.set(_("Extraction échouée"))
+            controller.ui.progress_var.set(0)
             messagebox.showerror(_("Erreur"), _("Échec de l'extraction (voir journal)"))
             return False, None, None
 
         # Succès
-        controller.ui['status_var'].set(_("Extraction terminée"))
-        controller.ui['progress_var'].set(0)
+        controller.ui.status_var.set(_("Extraction terminée"))
+        controller.ui.progress_var.set(0)
         controller.add_info(_("\n--- Extraction terminée avec succès ---"))
         controller.add_info(_("Fichier créé : {}").format(output_filename))
         controller.add_info(_("Emplacement : {}").format(os.path.abspath(output_filename)))
@@ -77,7 +77,7 @@ def run_extraction(controller, service, selected_folder, options, selected_files
 
     except Exception as e:
         logger.error(f"Erreur lors de l'extraction : {e}")
-        controller.ui['status_var'].set(_("Extraction échouée"))
-        controller.ui['progress_var'].set(0)
+        controller.ui.status_var.set(_("Extraction échouée"))
+        controller.ui.progress_var.set(0)
         messagebox.showerror(_("Erreur"), _("Une erreur est survenue : {}").format(e))
         return False, None, None

@@ -53,7 +53,7 @@ class ExtractionController(BaseController):
         def progress_callback(current, total):
             if total > 0:
                 progress = (current / total) * 100
-                self.root.after(0, lambda: self.ui['progress_var'].set(progress))
+                self.root.after(0, lambda: self.ui.progress_var.set(progress))
 
         def log_callback(msg):
             self.root.after(0, lambda: self.add_info(msg))
@@ -80,20 +80,20 @@ class ExtractionController(BaseController):
 
     def _extraction_finished(self, success, output_filename, stats):
         """Appelé après la fin de l'extraction."""
-        self.ui['progress_var'].set(0)
+        self.ui.progress_var.set(0)
         self.set_extracting(False)
 
         if success:
             self.update_status(_("Extraction terminée"))
             add_recent_folder(self._selected_folder)
-            if 'update_recent_menu' in self.ui:
-                self.ui['update_recent_menu']()
+            if self.ui.update_recent_menu:
+                self.ui.update_recent_menu()
         else:
             self.update_status(_("Extraction échouée"))
 
     def _extraction_error(self, error):
         """Appelé en cas d'erreur dans le thread d'extraction."""
-        self.ui['progress_var'].set(0)
+        self.ui.progress_var.set(0)
         self.set_extracting(False)
         self.update_status(_("Extraction échouée"))
         messagebox.showerror(_("Erreur"), _("Une erreur est survenue : {}").format(error))

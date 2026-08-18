@@ -61,6 +61,7 @@ class UIWidgets:
     
     # Internal: lazy widgets for i18n refresh
     _lazy_widgets: list = field(default_factory=list)
+    _lazy_tooltips: list = field(default_factory=list)
     _i18n_refresh_callback: callable = None
     _i18n_menu_refresh_callback: callable = None
 

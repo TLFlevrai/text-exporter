@@ -37,7 +37,14 @@ class GuiConfig(BaseModel):
     """Configuration de l'interface graphique."""
     window_width: int = Field(default=700, ge=400, le=1920, description="Largeur de la fenêtre")
     window_height: int = Field(default=600, ge=300, le=1080, description="Hauteur de la fenêtre")
+    window_x: int = Field(default=-1, ge=-1, description="Position X de la fenêtre (-1 = centré)")
+    window_y: int = Field(default=-1, ge=-1, description="Position Y de la fenêtre (-1 = centré)")
+    version_window_width: int = Field(default=1000, ge=600, le=1920, description="Largeur fenêtre versions")
+    version_window_height: int = Field(default=650, ge=400, le=1080, description="Hauteur fenêtre versions")
+    version_window_x: int = Field(default=-1, ge=-1, description="Position X fenêtre versions (-1 = centré)")
+    version_window_y: int = Field(default=-1, ge=-1, description="Position Y fenêtre versions (-1 = centré)")
     log_height: int = Field(default=12, ge=4, le=30, description="Hauteur du journal en lignes")
+    log_autoscroll: bool = Field(default=True, description="Défiler automatiquement le journal")
 
 
 class AppConfig(BaseModel):

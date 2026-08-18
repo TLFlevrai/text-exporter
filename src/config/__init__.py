@@ -76,6 +76,24 @@ class _Config:
         """Retourne l'objet AppConfig complet (immuable)."""
         return self._config
 
+    def save(self) -> bool:
+        """Sauvegarde la configuration actuelle dans config.json."""
+        try:
+            with open(CONFIG_PATH, 'w', encoding='utf-8') as f:
+                json.dump(self._config.model_dump(), f, indent=2, ensure_ascii=False)
+            return True
+        except Exception as e:
+            print(f"[ERROR] Erreur de sauvegarde de config.json : {e}")
+            return False
+
+    def update_gui(self, **kwargs) -> bool:
+        """Met à jour les options GUI et sauvegarde."""
+        gui = self._config.gui
+        for key, value in kwargs.items():
+            if hasattr(gui, key):
+                setattr(gui, key, value)
+        return self.save()
+
     # --- Pour tests : reset contrôlé (optionnel) ---
     @classmethod
     def _reset_for_testing(cls):

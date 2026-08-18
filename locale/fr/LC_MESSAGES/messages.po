@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PythonCodeExtractor 1.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-08-17 15:44+0300\n"
+"POT-Creation-Date: 2026-08-18 11:18+0300\n"
 "PO-Revision-Date: 2026-08-16 21:50+0200\n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr "Extraction échouée"
 #: src/gui/network_center/received_tab.py:108
 #: src/gui/network_center/received_tab.py:120
 #: src/gui/network_center/received_tab.py:140
-#: src/gui/network_center/send_tab.py:167 src/gui/ui_builder/menus.py:161
+#: src/gui/network_center/send_tab.py:167 src/gui/ui_builder/menus.py:162
 #: src/gui/version_explorer/dialog.py:81 src/gui/version_explorer/dialog.py:103
 #: src/gui/version_explorer/dialog.py:189
 #: src/gui/version_explorer/dialog.py:197
@@ -170,30 +170,29 @@ msgstr "Succès"
 msgid "Une erreur est survenue : {}"
 msgstr "Une erreur est survenue : {}"
 
-#: src/gui/gui.py:48 src/gui/gui.py:53
+#: src/gui/gui.py:50 src/gui/gui.py:66
 #, fuzzy
 msgid "Extracteur de code"
 msgstr "Extracteur de code Python/JSON/TXT"
 
-#: src/gui/controller/base_controller.py:95
+#: src/gui/controller/base_controller.py:97
 #: src/gui/network_center/send_tab.py:97
 #: src/gui/network_center/views/send_controls_view.py:37
 #: src/gui/network_center/views/send_controls_view.py:53
-#: src/gui/ui_builder/ui_builder.py:14
 msgid "Prêt"
 msgstr "Prêt"
 
 #: src/gui/controller/extraction_controller.py:18
 #: src/gui/controller/extraction_controller.py:36
 #: src/gui/controller/extraction_controller.py:104
-#: src/gui/ui_builder/menus.py:159
+#: src/gui/ui_builder/menus.py:160
 msgid "Attention"
 msgstr "Attention"
 
 #: src/gui/controller/extraction_controller.py:18
 #: src/gui/controller/extraction_controller.py:36
 #: src/gui/controller/extraction_controller.py:104
-#: src/gui/ui_builder/menus.py:159
+#: src/gui/ui_builder/menus.py:160
 msgid "Veuillez d'abord sélectionner un dossier"
 msgstr "Veuillez d'abord sélectionner un dossier"
 
@@ -597,165 +596,127 @@ msgstr "☐ Rien"
 msgid "⇄ Inverser"
 msgstr "⇄ Inverser"
 
-#: src/gui/ui_builder/menus.py:35
+#: src/gui/ui_builder/menus.py:36
 #, fuzzy
 msgctxt "menu"
 msgid "Fichier"
 msgstr "Fichier"
 
-#: src/gui/ui_builder/menus.py:40
+#: src/gui/ui_builder/menus.py:41
 msgid "Exporter en PDF"
 msgstr "Exporter en PDF"
 
-#: src/gui/ui_builder/menus.py:45
+#: src/gui/ui_builder/menus.py:46
 msgid "Quitter"
 msgstr "Quitter"
 
-#: src/gui/ui_builder/menus.py:50
+#: src/gui/ui_builder/menus.py:51
 #, fuzzy
 msgid "Emplacements récents"
 msgstr "Emplacement : {}"
 
-#: src/gui/ui_builder/menus.py:59
+#: src/gui/ui_builder/menus.py:60
 msgid "Aucun"
 msgstr "Aucun"
 
-#: src/gui/ui_builder/menus.py:68
+#: src/gui/ui_builder/menus.py:69
 #, fuzzy
 msgid "Effacer la liste"
 msgstr "Rafraîchir la liste"
 
-#: src/gui/ui_builder/menus.py:80
+#: src/gui/ui_builder/menus.py:81
 msgid "Options"
 msgstr "Options"
 
-#: src/gui/ui_builder/menus.py:86
+#: src/gui/ui_builder/menus.py:87
 msgid "Inclure les sous-dossiers"
 msgstr "Inclure les sous-dossiers"
 
-#: src/gui/ui_builder/menus.py:87
+#: src/gui/ui_builder/menus.py:88
 #, fuzzy
 msgid "Afficher les chemins des fichiers"
 msgstr "Erreur de lecture des fichiers"
 
-#: src/gui/ui_builder/menus.py:89
+#: src/gui/ui_builder/menus.py:90
 #, fuzzy
 msgid "Inclure les fichiers JSON"
 msgstr "  - Fichiers JSON : {}\n"
 
-#: src/gui/ui_builder/menus.py:90
+#: src/gui/ui_builder/menus.py:91
 #, fuzzy
 msgid "Inclure les fichiers TXT"
 msgstr "Nombre de fichiers extraits : {}\n"
 
-#: src/gui/ui_builder/menus.py:91
+#: src/gui/ui_builder/menus.py:92
 msgid "Inclure les fichiers .po (traductions)"
 msgstr "Inclure les fichiers .po (traductions)"
 
-#: src/gui/ui_builder/menus.py:92
+#: src/gui/ui_builder/menus.py:93
 msgid "Inclure les fichiers .mo (compilés)"
 msgstr "Inclure les fichiers .mo (compilés)"
 
-#: src/gui/ui_builder/menus.py:93
+#: src/gui/ui_builder/menus.py:94
 #, fuzzy
 msgid "Inclure les fichiers HTML"
 msgstr "  - Fichiers HTML : {}\n"
 
-#: src/gui/ui_builder/menus.py:94
+#: src/gui/ui_builder/menus.py:95
 #, fuzzy
 msgid "Inclure les fichiers CSS"
 msgstr "  - Fichiers CSS : {}\n"
 
-#: src/gui/ui_builder/menus.py:95
+#: src/gui/ui_builder/menus.py:96
 msgid "Inclure les fichiers JavaScript"
 msgstr "Inclure les fichiers JavaScript"
 
-#: src/gui/ui_builder/menus.py:97
+#: src/gui/ui_builder/menus.py:98
 msgid "Inclure la structure du projet"
 msgstr "Inclure la structure du projet"
 
-#: src/gui/ui_builder/menus.py:98
+#: src/gui/ui_builder/menus.py:99
 #, fuzzy
 msgid "Ignorer les fichiers __init__.py"
 msgstr "Envoyer le fichier"
 
-#: src/gui/ui_builder/menus.py:99
+#: src/gui/ui_builder/menus.py:100
 msgid "Ignorer le dossier .git"
 msgstr "Ignorer le dossier .git"
 
-#: src/gui/ui_builder/menus.py:100
+#: src/gui/ui_builder/menus.py:101
 msgid "Ignorer les dossiers __pycache__"
 msgstr "Ignorer les dossiers __pycache__"
 
-#: src/gui/ui_builder/menus.py:102
+#: src/gui/ui_builder/menus.py:103
 msgid "Inclure les statistiques"
 msgstr "Inclure les statistiques"
 
-#: src/gui/ui_builder/menus.py:103
+#: src/gui/ui_builder/menus.py:104
 msgid "Métadonnées détaillées par fichier"
 msgstr "Métadonnées détaillées par fichier"
 
-#: src/gui/ui_builder/menus.py:119
+#: src/gui/ui_builder/menus.py:120
 msgid "Langue"
 msgstr "Langue"
 
-#: src/gui/ui_builder/menus.py:128
+#: src/gui/ui_builder/menus.py:129
 msgid "Outils"
 msgstr "Outils"
 
-#: src/gui/ui_builder/menus.py:131 src/gui/version_explorer/dialog.py:24
+#: src/gui/ui_builder/menus.py:132 src/gui/version_explorer/dialog.py:24
 msgid "Gestionnaire de versions"
 msgstr "Gestionnaire de versions"
 
-#: src/gui/ui_builder/menus.py:136
+#: src/gui/ui_builder/menus.py:137
 msgid "Vue"
 msgstr "Vue"
 
-#: src/gui/ui_builder/menus.py:139
+#: src/gui/ui_builder/menus.py:140
 msgid "Afficher le journal"
 msgstr "Afficher le journal"
 
-#: src/gui/ui_builder/menus.py:161
+#: src/gui/ui_builder/menus.py:162
 msgid "Contrôleur non disponible pour l'export PDF"
 msgstr "Contrôleur non disponible pour l'export PDF"
-
-#: src/gui/ui_builder/widgets.py:14
-#, fuzzy
-msgid "Extracteur de code Python, JSON & TXT"
-msgstr "Extracteur de code Python/JSON/TXT"
-
-#: src/gui/ui_builder/widgets.py:20
-#, fuzzy
-msgid "Dossier à scanner :"
-msgstr "Dossier sélectionné : {}"
-
-#: src/gui/ui_builder/widgets.py:28
-msgid "Parcourir"
-msgstr "Parcourir"
-
-#: src/gui/ui_builder/widgets.py:36
-msgid "Extraire le code"
-msgstr "Extraire le code"
-
-#: src/gui/ui_builder/widgets.py:41
-msgid "Sélectionner..."
-msgstr "Sélectionner..."
-
-#: src/gui/ui_builder/widgets.py:46
-msgid "Gérer les versions"
-msgstr "Gérer les versions"
-
-#: src/gui/ui_builder/widgets.py:51
-msgid "Réseau..."
-msgstr "Réseau..."
-
-#: src/gui/ui_builder/widgets.py:56
-msgid "Effacer le journal"
-msgstr "Effacer le journal"
-
-#: src/gui/ui_builder/widgets.py:67
-msgid "Journal"
-msgstr "Journal"
 
 #: src/gui/version_explorer/dialog.py:55
 #, fuzzy
@@ -995,4 +956,31 @@ msgstr "Statut"
 
 #~ msgid "Échec de l'envoi : {}"
 #~ msgstr "Échec de l'envoi : {}"
+
+#~ msgid "Extracteur de code Python, JSON & TXT"
+#~ msgstr "Extracteur de code Python/JSON/TXT"
+
+#~ msgid "Dossier à scanner :"
+#~ msgstr "Dossier sélectionné : {}"
+
+#~ msgid "Parcourir"
+#~ msgstr "Parcourir"
+
+#~ msgid "Extraire le code"
+#~ msgstr "Extraire le code"
+
+#~ msgid "Sélectionner..."
+#~ msgstr "Sélectionner..."
+
+#~ msgid "Gérer les versions"
+#~ msgstr "Gérer les versions"
+
+#~ msgid "Réseau..."
+#~ msgstr "Réseau..."
+
+#~ msgid "Effacer le journal"
+#~ msgstr "Effacer le journal"
+
+#~ msgid "Journal"
+#~ msgstr "Journal"
 
