@@ -6,6 +6,8 @@ import os
 from src.i18n import _, pgettext, change_language as i18n_change_language, register_reload_callback, unregister_reload_callback
 from src.gui.recent_files import load_recent_folders, clear_recent_folders
 from src.gui.settings_dialog import open_settings_dialog
+from src.gui.theme_editor import open_theme_editor
+from src.gui.video_converter import open_video_converter
 from .ui_widgets import UIWidgets
 
 
@@ -86,6 +88,10 @@ def _rebuild_all_menus(parent, ui: UIWidgets):
     options_menu.add_command(label=_("Paramètres..."), command=lambda: open_settings_dialog(parent, ui))
     options_menu.add_separator()
     
+    # Thème
+    options_menu.add_command(label=_("Éditeur de thème..."), command=lambda: open_theme_editor(parent))
+    options_menu.add_separator()
+    
     # Accès rapide aux presets
     options_menu.add_command(label=_("Preset : Python uniquement"), command=lambda: _apply_preset(ui, 'python_only'))
     options_menu.add_command(label=_("Preset : Assets Web"), command=lambda: _apply_preset(ui, 'web_assets'))
@@ -110,6 +116,7 @@ def _rebuild_all_menus(parent, ui: UIWidgets):
     ui.open_version_explorer_index = 0
     tools_menu.add_separator()
     tools_menu.add_command(label=_("Convertisseur SVG → ICO"), command=lambda: _open_svg_converter(parent, ui))
+    tools_menu.add_command(label=_("Convertisseur Vidéo → MP3"), command=lambda: open_video_converter(parent))
 
     # --- Menu Vue ---
     view_menu = tk.Menu(menubar, tearoff=0)

@@ -8,6 +8,8 @@ from .gui import PythonCodeExtractor
 from .selection import SelectionDialog
 from .converter import SVGToICOConverter
 from .settings_dialog import open_settings_dialog, SettingsDialog
+from .theme_editor import open_theme_editor
+from .video_converter import open_video_converter
 
 __all__ = [
     'ExtractionController',
@@ -22,5 +24,7 @@ __all__ = [
     'SelectionDialog',
     'SVGToICOConverter',
     'open_settings_dialog',
-    'SettingsDialog'
+    'SettingsDialog',
+    'open_theme_editor',
+    'open_video_converter'
 ]

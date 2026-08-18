@@ -20,10 +20,6 @@ THEMES = {
         'text_bg': '#ffffff',
         'text_fg': '#000000',
         'disabled_fg': '#666666',
-        'tab_bg': '#f3f3f3',
-        'tab_fg': '#000000',
-        'tab_selected_bg': '#0078d4',
-        'tab_selected_fg': '#ffffff',
     },
     'dark': {
         'bg': '#1e1e1e',
@@ -39,10 +35,22 @@ THEMES = {
         'text_bg': '#1e1e1e',
         'text_fg': '#ffffff',
         'disabled_fg': '#888888',
-        'tab_bg': '#333333',
-        'tab_fg': '#ffffff',
-        'tab_selected_bg': '#0078d4',
-        'tab_selected_fg': '#ffffff',
+    },
+    # Thème par défaut neutre (blanc) - pour "Set Default"
+    'default': {
+        'bg': '#ffffff',
+        'fg': '#000000',
+        'select_bg': '#0078d4',
+        'select_fg': '#ffffff',
+        'entry_bg': '#ffffff',
+        'entry_fg': '#000000',
+        'button_bg': '#e1e1e1',
+        'button_fg': '#000000',
+        'frame_bg': '#f5f5f5',
+        'border': '#cccccc',
+        'text_bg': '#ffffff',
+        'text_fg': '#000000',
+        'disabled_fg': '#666666',
     }
 }
 
@@ -104,7 +112,7 @@ def apply_theme(theme_name: str = None):
     style.configure('TLabelFrame', background=colors['frame_bg'], foreground=colors['fg'])
     style.configure('TLabelFrame.Label', background=colors['frame_bg'], foreground=colors['fg'])
     style.configure('TNotebook', background=colors['frame_bg'], borderwidth=0)
-    style.configure('TNotebook.Tab', background=colors['tab_bg'], foreground=colors['tab_fg'],
+    style.configure('TNotebook.Tab', background=colors['button_bg'], foreground=colors['button_fg'],
                     padding=(10, 5))
     style.configure('TSeparator', background=colors['border'])
     style.configure('TProgressbar', background=colors['select_bg'], troughcolor=colors['frame_bg'])
@@ -125,8 +133,8 @@ def apply_theme(theme_name: str = None):
         foreground=[('disabled', colors['disabled_fg'])]
     )
     style.map('TNotebook.Tab',
-        background=[('selected', colors['tab_selected_bg'])],
-        foreground=[('selected', colors['tab_selected_fg'])]
+        background=[('selected', colors['select_bg'])],
+        foreground=[('selected', colors['select_fg'])]
     )
     style.map('TEntry',
         fieldbackground=[('disabled', colors['frame_bg'])],

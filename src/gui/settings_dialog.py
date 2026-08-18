@@ -5,6 +5,7 @@ from tkinter import ttk, messagebox
 from pathlib import Path
 from src.i18n import _, pgettext
 from src.config import get_config
+from src.gui.theme_editor import open_theme_editor
 from src.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -172,9 +173,13 @@ class SettingsDialog(tk.Toplevel):
         ttk.Label(self.advanced_frame, text=_("Thème :")).grid(row=3, column=0, sticky=tk.W, pady=8)
         self.theme_var = tk.StringVar(value=self.config.get('gui.theme', 'system'))
         theme_combo = ttk.Combobox(self.advanced_frame, textvariable=self.theme_var,
-                                    values=['system', 'light', 'dark'], state='readonly', width=10)
+                                    values=['system', 'light', 'dark', 'custom'], state='readonly', width=10)
         theme_combo.grid(row=3, column=1, sticky=tk.W, padx=10, pady=8)
         theme_combo.bind('<<ComboboxSelected>>', lambda e: self._on_theme_change())
+
+        # Bouton éditeur de thème
+        ttk.Button(self.advanced_frame, text=_("Personnaliser le thème..."), 
+                   command=lambda: open_theme_editor(self)).grid(row=3, column=2, padx=10, pady=8)
 
         # Presets d'export
         ttk.Separator(self.advanced_frame, orient=tk.HORIZONTAL).grid(
