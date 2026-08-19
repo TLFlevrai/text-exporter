@@ -73,6 +73,10 @@ class MainController(BaseController):
     
     def extract_code(self):
         self._extraction.extract_code()
+
+    def cancel_extraction(self):
+        """Demande l'annulation de l'extraction en cours."""
+        self._extraction.cancel_extraction()
     
     def export_to_pdf(self):
         """Lance l'extraction et génère un PDF."""

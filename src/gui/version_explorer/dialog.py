@@ -1,42 +1,47 @@
 # src/gui/version_explorer/dialog.py
 import os
-import threading
 import tkinter as tk
 from tkinter import ttk, messagebox
-from pathlib import Path
 
 from src.i18n import _, pgettext
 from src.logger import setup_logger
 from src.config import get_config
 from src.services.version_service import VersionArchiveService
+from ..base_dialog import BaseDialog
 from .project_panel import ProjectPanel
 from .version_tree import VersionTree
 from .preview_pane import PreviewPane
 from .toolbar import Toolbar
+from .controller import VersionExplorerController
 
 logger = setup_logger(__name__)
 
 
-class VersionExplorerDialog(tk.Toplevel):
+class VersionExplorerDialog(BaseDialog):
     """Fenetre de gestion des versions d'export."""
 
     def __init__(self, parent, service=None):
-        super().__init__(parent)
-        self.title(_("Gestionnaire de versions"))
-        self.minsize(800, 500)
-        self.transient(parent)
-        self.grab_set()
+        super().__init__(
+            parent,
+            title=_("Gestionnaire de versions"),
+            minsize=(800, 500),
+        )
 
         self.config = get_config()
         self._setup_window_geometry()
 
-        self.service = service or VersionArchiveService()
-        self.projects_data = {}
-        self.current_project = None
         self.preview_entry = None
 
+        self.controller = VersionExplorerController(
+            service=service,
+            on_status=self._marshal(self._set_status),
+            on_projects_loaded=self._marshal(self._on_projects_loaded),
+            on_error=self._marshal(self._show_error),
+            on_info=self._marshal(self._show_info),
+        )
+
         self._create_widgets()
-        self._start_scan()
+        self.controller.start_scan()
 
         # Raccourci F5 pour rafraîchir
         self.bind("<F5>", lambda e: self.refresh())
@@ -93,33 +98,42 @@ class VersionExplorerDialog(tk.Toplevel):
         status_label = ttk.Label(main, textvariable=self.status_var, relief=tk.SUNKEN, anchor=tk.W)
         status_label.pack(side=tk.BOTTOM, fill=tk.X, pady=(5, 0))
 
-    def _start_scan(self):
-        self.status_var.set(_("Scan des fichiers en cours..."))
-        threading.Thread(target=self._scan_thread, daemon=True).start()
+    # --- Callbacks du contrôleur ---
 
-    def _scan_thread(self):
-        try:
-            self.projects_data = self.service.scan_projects()
-        except Exception as e:
-            logger.error(f"Erreur lors du scan : {e}")
-            self.after(0, lambda: self._scan_error(str(e)))
-            return
-        self.after(0, self._scan_finished)
+    def _marshal(self, func):
+        """Exécute le callback sur le thread principal de Tkinter."""
+        def wrapper(*args):
+            if self.winfo_exists():
+                self.after(0, lambda: func(*args))
+        return wrapper
 
-    def _scan_finished(self):
-        self.status_var.set(_("Scan termine"))
-        self.project_panel.update_projects(self.projects_data)
-        if self.projects_data:
-            first = list(self.projects_data.keys())[0]
-            self._on_project_selected(first)
+    def _set_status(self, msg):
+        self.status_var.set(msg)
 
-    def _scan_error(self, error_msg):
-        self.status_var.set(_("Erreur de scan : {}").format(error_msg))
-        messagebox.showerror(_("Erreur"), _("Impossible de scanner les fichiers : {}").format(error_msg))
+    def _show_info(self, title, msg):
+        self.show_info(title, msg)
+
+    def _show_error(self, title, msg):
+        self.show_error(title, msg)
+
+    def _on_projects_loaded(self, projects_data):
+        self.controller.projects_data = projects_data
+        self.project_panel.update_projects(projects_data)
+        if self.controller.current_project in projects_data:
+            self._on_project_selected(self.controller.current_project)
+        else:
+            if projects_data:
+                first = list(projects_data.keys())[0]
+                self._on_project_selected(first)
+            else:
+                self.version_tree.clear()
+                self.preview_pane.show_entry(None)
+
+    # --- Sélection ---
 
     def _on_project_selected(self, project_name):
-        self.current_project = project_name
-        entries = self.projects_data.get(project_name, [])
+        self.controller.current_project = project_name
+        entries = self.controller.projects_data.get(project_name, [])
         self.version_tree.populate(entries)
         self.preview_pane.show_entry(None)
         self.status_var.set(_("Projet : {} ({} versions)").format(project_name, len(entries)))
@@ -137,184 +151,99 @@ class VersionExplorerDialog(tk.Toplevel):
             os.startfile(str(entry.path))
         except Exception as e:
             logger.error(f"Impossible d'ouvrir {entry.path} : {e}")
-            messagebox.showerror(_("Erreur"), _("Impossible d'ouvrir le fichier : {}").format(e))
+            self.show_error(_("Erreur"), _("Impossible d'ouvrir le fichier : {}").format(e))
+
+    # --- Actions ---
 
     def archive_selected(self):
         entries = self.version_tree.get_selected_entries()
         if not entries:
-            messagebox.showinfo(_("Information"), _("Aucune version selectionnee."))
+            self.show_info(_("Information"), _("Aucune version selectionnee."))
             return
         to_archive = [e for e in entries if e.status == 'active']
         if not to_archive:
-            messagebox.showinfo(_("Information"), _("Les versions selectionnees sont deja archivees."))
+            self.show_info(_("Information"), _("Les versions selectionnees sont deja archivees."))
             return
-        if not messagebox.askyesno(_("Confirmation"),
-                                   pgettext("confirmation", "Archiver {} version(s) ?").format(len(to_archive))):
+        if not self.confirm(_("Confirmation"),
+                            pgettext("confirmation", "Archiver {} version(s) ?").format(len(to_archive))):
             return
-
-        self.status_var.set(_("Archivage en cours..."))
-        threading.Thread(target=self._archive_thread, args=(to_archive,), daemon=True).start()
-
-    def _archive_thread(self, entries):
-        try:
-            for entry in entries:
-                self.service.archive(entry)
-            self.after(0, self._refresh_after_action)
-        except Exception as e:
-            logger.error(f"Erreur lors de l'archivage : {e}")
-            self.after(0, lambda: self._show_error(_("Erreur d'archivage"), str(e)))
+        self.controller.archive_selected(to_archive)
 
     def restore_selected(self):
         entries = self.version_tree.get_selected_entries()
         if not entries:
-            messagebox.showinfo(_("Information"), _("Aucune version selectionnee."))
+            self.show_info(_("Information"), _("Aucune version selectionnee."))
             return
         to_restore = [e for e in entries if e.status == 'archived']
         if not to_restore:
-            messagebox.showinfo(_("Information"), _("Les versions selectionnees sont deja actives."))
+            self.show_info(_("Information"), _("Les versions selectionnees sont deja actives."))
             return
-        if not messagebox.askyesno(_("Confirmation"),
-                                   pgettext("confirmation", "Restaurer {} version(s) ?").format(len(to_restore))):
+        if not self.confirm(_("Confirmation"),
+                            pgettext("confirmation", "Restaurer {} version(s) ?").format(len(to_restore))):
             return
-
-        self.status_var.set(_("Restauration en cours..."))
-        threading.Thread(target=self._restore_thread, args=(to_restore,), daemon=True).start()
-
-    def _restore_thread(self, entries):
-        try:
-            for entry in entries:
-                self.service.restore(entry)
-            self.after(0, self._refresh_after_action)
-        except Exception as e:
-            logger.error(f"Erreur lors de la restauration : {e}")
-            self.after(0, lambda: self._show_error(_("Erreur de restauration"), str(e)))
+        self.controller.restore_selected(to_restore)
 
     def delete_selected(self):
         entries = self.version_tree.get_selected_entries()
         if not entries:
-            messagebox.showinfo(_("Information"), _("Aucune version selectionnee."))
+            self.show_info(_("Information"), _("Aucune version selectionnee."))
             return
-        if not messagebox.askyesno(_("Confirmation"),
-                                   pgettext("confirmation", "Supprimer definitivement {} version(s) ? Cette action est irreversible.").format(len(entries))):
+        if not self.confirm(_("Confirmation"),
+                            pgettext("confirmation", "Supprimer definitivement {} version(s) ? Cette action est irreversible.").format(len(entries))):
             return
-
-        self.status_var.set(_("Suppression en cours..."))
-        threading.Thread(target=self._delete_thread, args=(entries,), daemon=True).start()
-
-    def _delete_thread(self, entries):
-        try:
-            for entry in entries:
-                self.service.delete(entry)
-            self.after(0, self._refresh_after_action)
-        except Exception as e:
-            logger.error(f"Erreur lors de la suppression : {e}")
-            self.after(0, lambda: self._show_error(_("Erreur de suppression"), str(e)))
+        self.controller.delete_selected(entries)
 
     def reset_counter(self):
-        if not self.current_project:
-            messagebox.showinfo(_("Information"), _("Aucun projet selectionne."))
+        if not self.controller.current_project:
+            self.show_info(_("Information"), _("Aucun projet selectionne."))
             return
-        if not messagebox.askyesno(_("Confirmation"),
-                                   pgettext("confirmation", "Reinitialiser le compteur de versions pour le projet '{}' ?").format(self.current_project)):
+        if not self.confirm(_("Confirmation"),
+                            pgettext("confirmation", "Reinitialiser le compteur de versions pour le projet '{}' ?").format(self.controller.current_project)):
             return
-        try:
-            self.service.reset_project(self.current_project)
-            self.status_var.set(_("Compteur reinitialise pour {}").format(self.current_project))
-            self._refresh_after_action()
-        except Exception as e:
-            logger.error(f"Erreur lors de la reinitialisation : {e}")
-            self._show_error(_("Erreur"), str(e))
+        self.controller.reset_counter(self.controller.current_project)
 
     def open_folder(self):
-        if not self.current_project:
-            messagebox.showinfo(_("Information"), _("Aucun projet selectionne."))
+        if not self.controller.current_project:
+            self.show_info(_("Information"), _("Aucun projet selectionne."))
             return
-        folder = self.service.output_dir
+        folder = self.controller.get_output_dir()
         if not folder.exists():
-            messagebox.showerror(_("Erreur"), _("Le dossier de sortie n'existe pas."))
+            self.show_error(_("Erreur"), _("Le dossier de sortie n'existe pas."))
             return
         try:
             os.startfile(str(folder))
         except Exception as e:
             logger.error(f"Impossible d'ouvrir {folder} : {e}")
-            messagebox.showerror(_("Erreur"), _("Impossible d'ouvrir le dossier : {}").format(e))
+            self.show_error(_("Erreur"), _("Impossible d'ouvrir le dossier : {}").format(e))
 
     def clean_all(self):
         """Supprime tout le contenu du dossier out/ y compris les archives."""
-        if not messagebox.askyesno(
+        if not self.confirm(
             _("Confirmation nettoyage complet"),
             _("ATTENTION : Cette action va supprimer TOUS les fichiers d'export dans le dossier 'out/' "
               "y compris les versions archivées.\n\nCette action est IRREVERSIBLE.\n\nContinuer ?"),
-            icon=messagebox.WARNING
+            icon=messagebox.WARNING,
         ):
             return
-        
-        if not messagebox.askyesno(
+
+        if not self.confirm(
             _("Confirmation finale"),
             _("Êtes-vous ABSOLUMENT sûr de vouloir tout supprimer ?\n\n"
               "Tous les projets, toutes les versions, toutes les archives seront perdus."),
-            icon=messagebox.WARNING
+            icon=messagebox.WARNING,
         ):
             return
 
-        self.status_var.set(_("Nettoyage complet en cours..."))
-        threading.Thread(target=self._clean_all_thread, daemon=True).start()
-
-    def _clean_all_thread(self):
-        try:
-            count = self.service.clean_all()
-            self.after(0, lambda: self._clean_all_finished(count))
-        except Exception as e:
-            logger.error(f"Erreur lors du nettoyage complet : {e}")
-            self.after(0, lambda: self._show_error(_("Erreur de nettoyage"), str(e)))
-
-    def _clean_all_finished(self, count):
-        """Appelé après le nettoyage complet."""
-        self.status_var.set(_("Nettoyage termine : {} fichier(s) supprime(s)").format(count))
-        messagebox.showinfo(_("Nettoyage termine"), 
-                           _("Tous les exports ont ete supprimes.\n{} fichier(s) supprime(s).").format(count))
-        self._refresh_after_action()
+        self.controller.clean_all()
 
     def refresh(self):
-        self.status_var.set(_("Rafraichissement..."))
-        threading.Thread(target=self._refresh_thread, daemon=True).start()
-
-    def _refresh_thread(self):
-        try:
-            self.projects_data = self.service.scan_projects()
-        except Exception as e:
-            logger.error(f"Erreur lors du rafraichissement : {e}")
-            self.after(0, lambda: self._show_error(_("Erreur de rafraichissement"), str(e)))
-            return
-        self.after(0, self._refresh_after_action)
-
-    def _refresh_after_action(self):
-        try:
-            self.projects_data = self.service.scan_projects()
-        except Exception as e:
-            logger.error(f"Erreur lors du re-scan : {e}")
-            self._show_error(_("Erreur"), str(e))
-            return
-        self.project_panel.update_projects(self.projects_data)
-        if self.current_project in self.projects_data:
-            self._on_project_selected(self.current_project)
-        else:
-            if self.projects_data:
-                first = list(self.projects_data.keys())[0]
-                self._on_project_selected(first)
-            else:
-                self.version_tree.clear()
-                self.preview_pane.show_entry(None)
-        self.status_var.set(_("Mise a jour terminee"))
+        self.controller.refresh()
 
     def select_all(self):
         self.version_tree.select_all()
 
     def deselect_all(self):
         self.version_tree.deselect_all()
-
-    def _show_error(self, title, msg):
-        messagebox.showerror(title, msg)
 
     def _on_close(self):
         self._save_window_geometry()

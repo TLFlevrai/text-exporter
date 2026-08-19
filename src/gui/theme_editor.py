@@ -1,22 +1,23 @@
 # src/gui/theme_editor.py
 """Éditeur de thème personnalisé."""
 import tkinter as tk
-from tkinter import ttk, colorchooser, messagebox
+from tkinter import ttk, colorchooser
 from src.i18n import _
 from src.config import get_config
 from src.gui.theme import THEMES, apply_theme, refresh_theme
+from .base_dialog import BaseDialog
 
 
-class ThemeEditorDialog(tk.Toplevel):
+class ThemeEditorDialog(BaseDialog):
     """Dialogue pour personnaliser le thème."""
 
     def __init__(self, parent):
-        super().__init__(parent)
-        self.title(_("Éditeur de thème personnalisé"))
-        self.geometry("700x550")
-        self.minsize(650, 500)
-        self.transient(parent)
-        self.grab_set()
+        super().__init__(
+            parent,
+            title=_("Éditeur de thème personnalisé"),
+            geometry="700x550",
+            minsize=(650, 500),
+        )
 
         self.config = get_config()
         self.color_vars = {}
@@ -26,15 +27,6 @@ class ThemeEditorDialog(tk.Toplevel):
         self._load_custom_theme()
 
         self._create_widgets()
-        self._center_window()
-
-    def _center_window(self):
-        self.update_idletasks()
-        parent = self.master
-        if parent:
-            x = parent.winfo_rootx() + (parent.winfo_width() - self.winfo_width()) // 2
-            y = parent.winfo_rooty() + (parent.winfo_height() - self.winfo_height()) // 2
-            self.geometry(f"+{x}+{y}")
 
     def _load_custom_theme(self):
         """Charge le thème personnalisé depuis la config."""
@@ -161,7 +153,7 @@ class ThemeEditorDialog(tk.Toplevel):
 
     def _reset_to_default(self):
         """Réinitialise au thème par défaut (blanc neutre)."""
-        if messagebox.askyesno(_("Confirmation"), _("Réinitialiser toutes les couleurs au thème par défaut ?")):
+        if self.confirm(_("Confirmation"), _("Réinitialiser toutes les couleurs au thème par défaut ?")):
             self.custom_theme = THEMES['default'].copy()
             for key, var in self.color_vars.items():
                 var.set(self.custom_theme[key])
@@ -185,14 +177,14 @@ class ThemeEditorDialog(tk.Toplevel):
             gui.theme = 'custom'
             self.config.save()
         except Exception as e:
-            messagebox.showerror(_("Erreur"), _("Impossible de sauvegarder : {}").format(e))
+            self.show_error(_("Erreur"), _("Impossible de sauvegarder : {}").format(e))
             return
         
         # Enregistrer et appliquer
         THEMES['custom'] = self.custom_theme.copy()
         apply_theme('custom')
         
-        messagebox.showinfo(_("Succès"), _("Thème personnalisé appliqué et sauvegardé"))
+        self.show_info(_("Succès"), _("Thème personnalisé appliqué et sauvegardé"))
         self.destroy()
 
 

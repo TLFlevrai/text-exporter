@@ -141,11 +141,12 @@ def _export_to_pdf(parent, ui: UIWidgets):
     if controller:
         controller.export_to_pdf()
     else:
+        from ..errors import show_warning, show_error
         folder = ui.folder_path_var.get()
         if not folder:
-            tk.messagebox.showwarning(_("Attention"), _("Veuillez d'abord sélectionner un dossier"))
+            show_warning(_("Attention"), _("Veuillez d'abord sélectionner un dossier"), parent=parent)
             return
-        tk.messagebox.showerror(_("Erreur"), _("Contrôleur non disponible pour l'export PDF"))
+        show_error(_("Erreur"), _("Contrôleur non disponible pour l'export PDF"), parent=parent)
 
 
 def _select_recent_folder(parent, ui: UIWidgets, folder_path):

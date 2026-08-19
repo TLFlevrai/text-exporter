@@ -2,11 +2,12 @@
 import os
 import shutil
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk
 from pathlib import Path
 from datetime import datetime
 from src.i18n import _, pgettext
 from src.logger import setup_logger
+from ..errors import show_error, show_info, confirm
 
 logger = setup_logger(__name__)
 
@@ -96,32 +97,32 @@ class ReceivedTab(ttk.Frame):
             try:
                 os.startfile(str(self.selected_file))
             except Exception as e:
-                messagebox.showerror(_("Erreur"), _("Impossible d'ouvrir : {}").format(e))
+                show_error(_("Erreur"), _("Impossible d'ouvrir : {}").format(e), parent=self)
         else:
-            messagebox.showinfo(_("Information"), _("Aucun fichier sélectionné"))
+            show_info(_("Information"), _("Aucun fichier sélectionné"), parent=self)
 
     def _open_folder(self):
         if self.received_dir and self.received_dir.exists():
             try:
                 os.startfile(str(self.received_dir))
             except Exception as e:
-                messagebox.showerror(_("Erreur"), _("Impossible d'ouvrir le dossier : {}").format(e))
+                show_error(_("Erreur"), _("Impossible d'ouvrir le dossier : {}").format(e), parent=self)
 
     def _delete_file(self):
         if not self.selected_file or not self.selected_file.exists():
-            messagebox.showinfo(_("Information"), _("Aucun fichier sélectionné"))
+            show_info(_("Information"), _("Aucun fichier sélectionné"), parent=self)
             return
-        if messagebox.askyesno(_("Confirmation"), pgettext("confirmation", "Supprimer définitivement {} ?").format(self.selected_file.name)):
+        if confirm(_("Confirmation"), pgettext("confirmation", "Supprimer définitivement {} ?").format(self.selected_file.name), parent=self):
             try:
                 self.selected_file.unlink()
                 self._refresh_list()
                 self.status_var.set(_("Fichier supprimé"))
             except Exception as e:
-                messagebox.showerror(_("Erreur"), _("Suppression échouée : {}").format(e))
+                show_error(_("Erreur"), _("Suppression échouée : {}").format(e), parent=self)
 
     def _move_to_out(self):
         if not self.selected_file or not self.selected_file.exists():
-            messagebox.showinfo(_("Information"), _("Aucun fichier sélectionné"))
+            show_info(_("Information"), _("Aucun fichier sélectionné"), parent=self)
             return
         dest = self.output_dir / self.selected_file.name
         if dest.exists():
@@ -137,7 +138,7 @@ class ReceivedTab(ttk.Frame):
             self._refresh_list()
             self.status_var.set(_("Fichier déplacé vers out/"))
         except Exception as e:
-            messagebox.showerror(_("Erreur"), _("Déplacement échoué : {}").format(e))
+            show_error(_("Erreur"), _("Déplacement échoué : {}").format(e), parent=self)
 
     def on_file_received(self, data):
         # Nouveau fichier reçu → rafraîchir la liste

@@ -1,39 +1,30 @@
 # src/gui/converter.py
 """Convertisseur SVG vers ICO."""
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, filedialog
 from pathlib import Path
 from src.i18n import _
 from src.logger import setup_logger
+from .base_dialog import BaseDialog
 
 logger = setup_logger(__name__)
 
 
-class SVGToICOConverter(tk.Toplevel):
+class SVGToICOConverter(BaseDialog):
     """Fenêtre de conversion SVG vers ICO."""
 
     def __init__(self, parent):
-        super().__init__(parent)
-        self.title(_("Convertisseur SVG → ICO"))
-        self.geometry("500x350")
-        self.minsize(450, 300)
-        self.transient(parent)
-        self.grab_set()
+        super().__init__(
+            parent,
+            title=_("Convertisseur SVG → ICO"),
+            geometry="500x350",
+            minsize=(450, 300),
+        )
 
         self.svg_path = None
         self.ico_path = None
 
         self._create_widgets()
-        self._center_window()
-
-    def _center_window(self):
-        """Centre la fenêtre par rapport au parent."""
-        self.update_idletasks()
-        parent = self.master
-        if parent:
-            x = parent.winfo_rootx() + (parent.winfo_width() - self.winfo_width()) // 2
-            y = parent.winfo_rooty() + (parent.winfo_height() - self.winfo_height()) // 2
-            self.geometry(f"+{x}+{y}")
 
     def _create_widgets(self):
         main = ttk.Frame(self, padding=20)
@@ -143,17 +134,17 @@ class SVGToICOConverter(tk.Toplevel):
     def _convert(self):
         """Lance la conversion SVG vers ICO."""
         if not self.svg_path or not self.svg_path.exists():
-            messagebox.showerror(_("Erreur"), _("Veuillez sélectionner un fichier SVG valide"))
+            self.show_error(_("Erreur"), _("Veuillez sélectionner un fichier SVG valide"))
             return
 
         if not self.ico_path:
-            messagebox.showerror(_("Erreur"), _("Veuillez spécifier un fichier de sortie"))
+            self.show_error(_("Erreur"), _("Veuillez spécifier un fichier de sortie"))
             return
 
         # Récupérer les tailles sélectionnées
         sizes = [size for size, var in self.size_vars.items() if var.get()]
         if not sizes:
-            messagebox.showerror(_("Erreur"), _("Veuillez sélectionner au moins une taille"))
+            self.show_error(_("Erreur"), _("Veuillez sélectionner au moins une taille"))
             return
 
         self.convert_btn.config(state='disabled')
@@ -199,14 +190,16 @@ class SVGToICOConverter(tk.Toplevel):
             self.progress_var.set(100)
             self.status_var.set(_("Conversion terminée avec succès !"))
             
-            messagebox.showinfo(
+            self.show_info(
                 _("Succès"),
                 _("Fichier ICO créé : {}").format(self.ico_path)
             )
+            from .toast import show_toast
+            show_toast(self, _("Conversion terminée avec succès"), 'success', parent=self)
             
         except Exception as e:
             logger.error(f"Erreur lors de la conversion : {e}")
             self.status_var.set(_("Erreur lors de la conversion"))
-            messagebox.showerror(_("Erreur"), _("Impossible de convertir : {}").format(str(e)))
+            self.show_error(_("Erreur"), _("Impossible de convertir : {}").format(str(e)))
         finally:
             self.convert_btn.config(state='normal')

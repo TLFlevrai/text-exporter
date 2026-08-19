@@ -1,7 +1,9 @@
 # src/gui/version_explorer/preview_pane.py
 import tkinter as tk
 from tkinter import ttk
+from typing import Optional
 from src.i18n import _
+from src.services.version_service import VersionEntry
 from .utils import parse_date_from_header, get_file_stats
 
 
@@ -20,7 +22,7 @@ class PreviewPane:
         self.text.config(yscrollcommand=scroll.set)
         self.text.config(state=tk.DISABLED)
 
-    def show_entry(self, entry):
+    def show_entry(self, entry: Optional[VersionEntry]):
         """Affiche l'aperçu de l'entrée."""
         self.text.config(state=tk.NORMAL)
         self.text.delete(1.0, tk.END)

@@ -28,19 +28,29 @@ class Application:
 
     def start(self):
         """Démarre l'application complète."""
+        # 0. Activation High-DPI AVANT la création de la fenêtre (rendu net 4K)
+        from src.gui.premium import setup_dpi_awareness
+        setup_dpi_awareness()
+
         # 1. Initialisation i18n AVANT création GUI
         setup_i18n()
 
         # 2. Création fenêtre Tkinter
         self.root = tk.Tk()
 
-        # 3. Démarrage services réseau (AVANT GUI pour éviter race conditions UI)
+        # 3. Garde-fous : crash handler global + guard des callbacks Tk
+        from src.gui.app_guard import install_excepthook, install_tk_callback_guard
+        from src.gui.crash_report import show_crash_dialog
+        install_excepthook(on_crash=lambda details: show_crash_dialog(self.root, details))
+        install_tk_callback_guard(self.root, on_crash=lambda details: show_crash_dialog(self.root, details))
+
+        # 4. Démarrage services réseau (AVANT GUI pour éviter race conditions UI)
         self._start_network_services()
 
-        # 4. Composition Root : créer les dépendances du domaine
+        # 5. Composition Root : créer les dépendances du domaine
         extraction_service = self._create_extraction_service()
 
-        # 5. Création GUI avec injection des services
+        # 6. Création GUI avec injection des services
         self.app = PythonCodeExtractor(
             root=self.root,
             server=self.server,
@@ -48,10 +58,10 @@ class Application:
             extraction_service=extraction_service
         )
 
-        # 6. Gestion fermeture propre
+        # 7. Gestion fermeture propre
         self.root.protocol("WM_DELETE_WINDOW", self._on_close)
 
-        # 7. Boucle principale
+        # 8. Boucle principale
         try:
             self.root.mainloop()
         except KeyboardInterrupt:

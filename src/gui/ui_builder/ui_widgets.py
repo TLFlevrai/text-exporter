@@ -1,6 +1,7 @@
 # src/gui/ui_builder/ui_widgets.py
 """Type-safe UI widgets container using dataclasses."""
 from dataclasses import dataclass, field
+from typing import Optional, Callable
 import tkinter as tk
 from tkinter import ttk
 
@@ -38,6 +39,7 @@ class UIWidgets:
     # Widgets (populated by build_widgets)
     browse_btn: ttk.Button = None
     extract_btn: ttk.Button = None
+    cancel_btn: ttk.Button = None
     select_btn: ttk.Button = None
     version_btn: ttk.Button = None
     network_btn: ttk.Button = None
@@ -54,7 +56,7 @@ class UIWidgets:
     tools_menu: tk.Menu = None
     view_menu: tk.Menu = None
     open_version_explorer_index: int = 0
-    update_recent_menu: callable = None
+    update_recent_menu: Optional[Callable[[], None]] = None
     
     # Controller reference
     controller: object = None
@@ -62,8 +64,8 @@ class UIWidgets:
     # Internal: lazy widgets for i18n refresh
     _lazy_widgets: list = field(default_factory=list)
     _lazy_tooltips: list = field(default_factory=list)
-    _i18n_refresh_callback: callable = None
-    _i18n_menu_refresh_callback: callable = None
+    _i18n_refresh_callback: Optional[Callable[[], None]] = None
+    _i18n_menu_refresh_callback: Optional[Callable[[], None]] = None
 
 
 def create_ui_widgets(config_obj) -> UIWidgets:

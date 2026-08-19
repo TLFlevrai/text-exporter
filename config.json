@@ -22,16 +22,16 @@
     "show_file_paths": true,
     "include_structure": true,
     "include_txt": false,
-    "include_po": true,
-    "include_mo": true,
+    "include_po": false,
+    "include_mo": false,
     "include_html": true,
     "include_css": true,
     "include_js": true,
     "ignore_init": false,
-    "ignore_git": true,
+    "ignore_git": false,
     "ignore_pycache": true,
     "include_statistics": true,
-    "include_file_metadata": true
+    "include_file_metadata": false
   },
   "gui": {
     "window_width": 700,
@@ -43,8 +43,9 @@
     "version_window_x": -1,
     "version_window_y": -1,
     "log_height": 12,
-    "log_autoscroll": false,
-    "theme": "light",
-    "custom_theme": {}
+    "log_autoscroll": true,
+    "theme": "system",
+    "custom_theme": {},
+    "last_folder": ""
   }
 }

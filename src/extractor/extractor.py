@@ -2,13 +2,16 @@
 from pathlib import Path
 from typing import Optional, List, Callable
 from src.config import ExtractionOptions
-from src.extractor.engine import ExtractionEngine
+from src.extractor.engine import ExtractionEngine, SUCCESS, FAILED, CANCELLED
 from src.extractor.context import ExtractionContext
 from src.extractor.file_discovery import FileDiscoveryService
 from src.extractor.structure_generator import generate_project_structure
 from src.logger import setup_logger
 
 logger = setup_logger(__name__)
+
+ProgressCallback = Callable[[int, int, str], None]
+LogCallback = Callable[[str], None]
 
 
 class CodeExtractor:
@@ -41,14 +44,16 @@ class CodeExtractor:
         self,
         folder: str,
         output_filename: str,
-        progress_callback: Optional[Callable[[int, int, str], None]] = None,
-        log_callback: Optional[Callable[[str], None]] = None,
-        selected_files: Optional[List[str]] = None
+        progress_callback: Optional[ProgressCallback] = None,
+        log_callback: Optional[LogCallback] = None,
+        selected_files: Optional[List[str]] = None,
+        cancel_event=None,
     ) -> tuple:
         """
         Point d'entrée principal.
         Retourne (success, py_count, json_count, txt_count, po_count, mo_count,
                   html_count, css_count, js_count)
+        success est True (SUCCESS), False (FAILED) ou None (CANCELLED).
         """
         folder_path = Path(folder)
         output_path = Path(output_filename)
@@ -65,9 +70,11 @@ class CodeExtractor:
         )
 
         engine = ExtractionEngine(context)
-        success = engine.run(progress_callback, log_callback)
+        if cancel_event is not None:
+            engine.set_cancel_event(cancel_event)
+        result = engine.run(progress_callback, log_callback)
 
-        if success:
+        if result == SUCCESS:
             stats = context.stats
             return (
                 True,
@@ -80,5 +87,7 @@ class CodeExtractor:
                 stats.get('css', 0),
                 stats.get('js', 0)
             )
+        elif result == CANCELLED:
+            return None, 0, 0, 0, 0, 0, 0, 0, 0
         else:
             return False, 0, 0, 0, 0, 0, 0, 0, 0

@@ -1,15 +1,17 @@
 # src/gui/version_explorer/project_panel.py
 import tkinter as tk
 from tkinter import ttk
+from typing import Callable, Dict, List
 from src.i18n import _
+from src.services.version_service import VersionEntry
 
 
 class ProjectPanel:
     """Panneau gauche affichant la liste des projets avec compteurs."""
 
-    def __init__(self, parent, on_project_select):
+    def __init__(self, parent, on_project_select: Callable[[str], None]):
         self.on_project_select = on_project_select
-        self.projects = {}  # nom_projet -> compteur
+        self.projects: Dict[str, List[VersionEntry]] = {}  # nom_projet -> entrées
 
         frame = ttk.LabelFrame(parent, text=_("Projets"), padding=5)
         frame.pack(side=tk.LEFT, fill=tk.Y, padx=(0, 5))
@@ -24,7 +26,7 @@ class ProjectPanel:
 
         self.listbox.bind('<<ListboxSelect>>', self._on_select)
 
-    def update_projects(self, projects: dict):
+    def update_projects(self, projects: Dict[str, List[VersionEntry]]):
         """Met à jour la liste des projets."""
         self.projects = projects
         self.listbox.delete(0, tk.END)

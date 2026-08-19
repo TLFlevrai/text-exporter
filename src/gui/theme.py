@@ -1,8 +1,9 @@
 # src/gui/theme.py
-"""Gestion des thèmes (clair/sombre/système)."""
+"""Gestion des thèmes (clair/sombre/système) avec rendu premium via ttkbootstrap."""
 import tkinter as tk
 from tkinter import ttk
 from src.config import get_config
+from .premium import apply_premium_theme, premium_available, TTKBOOTSTRAP_THEMES
 
 # Couleurs pour les thèmes
 THEMES = {
@@ -90,6 +91,33 @@ def apply_theme(theme_name: str = None):
     actual_theme = get_current_theme()
     colors = THEMES.get(actual_theme, THEMES['light'])
     
+    # Rendu premium : ttkbootstrap si disponible et thème standard (pas 'custom')
+    premium_applied = False
+    if actual_theme in TTKBOOTSTRAP_THEMES:
+        premium_applied = apply_premium_theme(actual_theme)
+    
+    if not premium_applied:
+        # Fallback : styles ttk manuels
+        _apply_manual_styles(colors)
+    
+    # Mettre à jour les widgets Tk natifs (Text, etc.)
+    try:
+        root = tk._default_root
+        if root:
+            _apply_to_tk_widgets(root, colors)
+    except Exception:
+        pass
+    
+    # Sauvegarder
+    try:
+        config = get_config()
+        config.update_gui(theme=theme_name)
+    except Exception:
+        pass
+
+
+def _apply_manual_styles(colors):
+    """Applique les styles ttk manuels (fallback sans ttkbootstrap)."""
     style = ttk.Style()
     
     # Configurer les styles ttk
@@ -140,21 +168,6 @@ def apply_theme(theme_name: str = None):
         fieldbackground=[('disabled', colors['frame_bg'])],
         foreground=[('disabled', colors['disabled_fg'])]
     )
-    
-    # Mettre à jour les widgets Tk natifs (Text, etc.)
-    try:
-        root = tk._default_root
-        if root:
-            _apply_to_tk_widgets(root, colors)
-    except Exception:
-        pass
-    
-    # Sauvegarder
-    try:
-        config = get_config()
-        config.update_gui(theme=theme_name)
-    except Exception:
-        pass
 
 
 def _apply_to_tk_widgets(widget, colors):

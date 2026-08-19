@@ -1,9 +1,10 @@
 # src/gui/network_center/send_tab.py
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk
 from typing import Optional
 from src.i18n import _
 from src.logger import setup_logger
+from ..errors import show_info, show_error
 
 from .models import FileItem, Peer, SendHistoryEntry
 from .services.file_listing_service import FileListingService
@@ -147,12 +148,13 @@ class SendTab(ttk.Frame):
                     peer=self.selected_peer.display_name if self.selected_peer else "?",
                     status=_("Succès")
                 ))
-                messagebox.showinfo(
+                show_info(
                     _("Succès"),
                     _("Fichier envoyé à {} ({})").format(
                         self.selected_peer.hostname if self.selected_peer else "?",
                         self.selected_peer.ip if self.selected_peer else "?"
-                    )
+                    ),
+                    parent=self
                 )
                 logger.info(f"Fichier envoyé à {self.selected_peer.hostname if self.selected_peer else '?'}")
             else:
@@ -164,7 +166,7 @@ class SendTab(ttk.Frame):
                     peer=self.selected_peer.display_name if self.selected_peer else "?",
                     status=_("Échec")
                 ))
-                messagebox.showerror(_("Erreur"), result.error_message)
+                show_error(_("Erreur"), result.error_message, parent=self, log=False)
                 logger.error(result.error_message)
         
         self.dialog.after(0, ui_update)

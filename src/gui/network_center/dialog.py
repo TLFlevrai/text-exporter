@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from src.i18n import _
 from src.logger import setup_logger
+from ..base_dialog import BaseDialog
 from .status_tab import StatusTab
 from .send_tab import SendTab
 from .received_tab import ReceivedTab
@@ -11,14 +12,14 @@ from .log_tab import LogTab
 logger = setup_logger(__name__)
 
 
-class NetworkCenterDialog(tk.Toplevel):
+class NetworkCenterDialog(BaseDialog):
     def __init__(self, parent, controller, server=None, discovery=None):
-        super().__init__(parent)
-        self.title(_("Centre réseau"))
-        self.geometry("850x650")
-        self.minsize(750, 550)
-        self.transient(parent)
-        self.grab_set()
+        super().__init__(
+            parent,
+            title=_("Centre réseau"),
+            geometry="850x650",
+            minsize=(750, 550),
+        )
 
         self.controller = controller  # MainController (a get_server/start_server)
         self.server = server

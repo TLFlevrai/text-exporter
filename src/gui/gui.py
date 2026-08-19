@@ -29,6 +29,10 @@ class PythonCodeExtractor:
         # Appliquer le thème au démarrage
         apply_theme()
 
+        # Police moderne par défaut
+        from .premium import setup_default_font
+        setup_default_font(root)
+
         self._setup_window_title()
         self._setup_window_geometry()
         self.root.resizable(True, True)
@@ -58,6 +62,12 @@ class PythonCodeExtractor:
 
         # Sauvegarder la géométrie à la fermeture
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
+
+        # Restaurer la session précédente (dernier dossier)
+        self._restore_session()
+
+        # Autosave périodique de la configuration
+        self._setup_autosave()
 
     def _setup_window_title(self):
         """Configure le titre initial de la fenêtre."""
@@ -96,6 +106,31 @@ class PythonCodeExtractor:
         except Exception:
             pass
 
+    def _restore_session(self):
+        """Restaure le dernier dossier sélectionné au démarrage."""
+        try:
+            last_folder = self.config.get('gui.last_folder', '')
+            if last_folder and os.path.isdir(last_folder):
+                self.controller.select_recent_folder(last_folder)
+        except Exception:
+            pass
+
+    def _setup_autosave(self):
+        """Sauvegarde périodique de la config (toutes les 60s) pour éviter toute perte."""
+        self._autosave_after_id = None
+
+        def _autosave_tick():
+            try:
+                self.config.save()
+            except Exception:
+                pass
+            try:
+                self._autosave_after_id = self.root.after(60000, _autosave_tick)
+            except Exception:
+                self._autosave_after_id = None
+
+        self._autosave_after_id = self.root.after(60000, _autosave_tick)
+
     def _set_window_icon(self):
         """Définit l'icône de la fenêtre depuis un SVG."""
         try:
@@ -130,6 +165,8 @@ class PythonCodeExtractor:
         self.ui.browse_btn.config(command=self.controller.browse_folder)
         self.ui.clear_btn.config(command=self.controller.clear_info)
         self.ui.extract_btn.config(command=self.controller.extract_code)
+        if hasattr(self.ui, 'cancel_btn') and self.ui.cancel_btn is not None:
+            self.ui.cancel_btn.config(command=self.controller.cancel_extraction)
         self.ui.select_btn.config(command=self.controller.open_selection_dialog)
         self.ui.version_btn.config(command=self.controller.open_version_explorer)
         self.ui.network_btn.config(command=self.controller.open_network_center)
@@ -176,10 +213,17 @@ class PythonCodeExtractor:
     def on_close(self):
         """Nettoyage à la fermeture."""
         self._save_window_geometry()
+        # Arrêter l'autosave
+        if getattr(self, '_autosave_after_id', None):
+            try:
+                self.root.after_cancel(self._autosave_after_id)
+            except Exception:
+                pass
+            self._autosave_after_id = None
         self._unregister_i18n_callbacks()
         # Désenregistrer aussi les callbacks des menus et widgets
         from src.gui.ui_builder.menus import unregister_menu_refresh
         from src.gui.ui_builder.widgets import unregister_refresh_callback
         unregister_menu_refresh(self.ui)
         unregister_refresh_callback(self.ui)
-        self.root.destroy()
+        # Ne pas détruire root ici, c'est fait dans main.py

@@ -1,6 +1,6 @@
 # src/gui/controller/navigation_controller.py
-from tkinter import messagebox
 from .base_controller import BaseController
+from ..errors import show_error
 from src.i18n import _
 from src.logger import setup_logger
 
@@ -29,7 +29,7 @@ class NavigationController(BaseController):
             VersionExplorerDialog(self.root)
         except Exception as e:
             logger.error(f"Erreur lors de l'ouverture du gestionnaire de versions : {e}")
-            messagebox.showerror(_("Erreur"), _("Impossible d'ouvrir le gestionnaire de versions : {}").format(e))
+            show_error(_("Erreur"), _("Impossible d'ouvrir le gestionnaire de versions : {}").format(e), parent=self.root)
 
     def open_network_center(self):
         """Ouvre le tableau de bord réseau."""
@@ -37,8 +37,8 @@ class NavigationController(BaseController):
             from src.gui.network_center import NetworkCenterDialog
             # Passer self comme contrôleur (pour que les onglets puissent appeler)
             # MAIS il faut passer le MainController qui a start_server()
-            # On va chercher le contrôleur parent via self.ui['controller']
-            main_controller = self.ui.get('controller')
+            # On va chercher le contrôleur parent via self.ui.controller
+            main_controller = getattr(self.ui, 'controller', None)
             if main_controller:
                 NetworkCenterDialog(self.root, main_controller, self.server, self.discovery)
             else:
@@ -46,4 +46,4 @@ class NavigationController(BaseController):
                 NetworkCenterDialog(self.root, self, self.server, self.discovery)
         except Exception as e:
             logger.error(f"Erreur lors de l'ouverture du centre réseau : {e}")
-            messagebox.showerror(_("Erreur"), _("Impossible d'ouvrir le centre réseau : {}").format(e))
+            show_error(_("Erreur"), _("Impossible d'ouvrir le centre réseau : {}").format(e), parent=self.root)

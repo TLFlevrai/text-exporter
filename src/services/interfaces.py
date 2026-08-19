@@ -8,6 +8,10 @@ from pathlib import Path
 from typing import Optional, List, Callable, Protocol, Tuple
 from src.config import ExtractionOptions
 
+# Signature de callback de progression : (fichier courant, total, nom relatif)
+ProgressCallback = Callable[[int, int, str], None]
+LogCallback = Callable[[str], None]
+
 
 class ICodeExtractor(Protocol):
     """Protocole pour l'extracteur de code."""
@@ -24,14 +28,16 @@ class ICodeExtractor(Protocol):
         self,
         folder: str,
         output_filename: str,
-        progress_callback: Optional[Callable[[int, int], None]] = None,
-        log_callback: Optional[Callable[[str], None]] = None,
-        selected_files: Optional[List[str]] = None
-    ) -> Tuple[bool, int, int, int, int, int, int, int, int]:
+        progress_callback: Optional[ProgressCallback] = None,
+        log_callback: Optional[LogCallback] = None,
+        selected_files: Optional[List[str]] = None,
+        cancel_event=None,
+    ) -> Tuple[Optional[bool], int, int, int, int, int, int, int, int]:
         """
         Extrait tous les fichiers.
         Retourne (success, py_count, json_count, txt_count, po_count, mo_count,
                   html_count, css_count, js_count)
+        success : True (ok), False (échec) ou None (annulé).
         """
         ...
 
@@ -63,13 +69,15 @@ class IExtractionService(Protocol):
         self,
         folder_path: str | Path,
         options: dict,
-        progress_callback: Optional[Callable[[int, int], None]] = None,
-        log_callback: Optional[Callable[[str], None]] = None,
-        selected_files: Optional[List[str]] = None
-    ) -> Tuple[bool, Optional[str], Optional[dict]]:
+        progress_callback: Optional[ProgressCallback] = None,
+        log_callback: Optional[LogCallback] = None,
+        selected_files: Optional[List[str]] = None,
+        cancel_event=None,
+    ) -> Tuple[Optional[bool], Optional[str], Optional[dict]]:
         """
         Exécute l'extraction complète.
         Retourne (success, output_filename, stats_dict)
+        success : True (ok), False (échec) ou None (annulé).
         """
         ...
     

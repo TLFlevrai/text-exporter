@@ -23,6 +23,7 @@ dependencies = [
     "pydantic>=2.0",
     "fpdf2>=2.7",
     "pillow>=10.0",
+    "ttkbootstrap>=1.10",
 ]
 
 [project.optional-dependencies]

@@ -1,7 +1,8 @@
 # src/gui/controller/folder_controller.py
 import os
-from tkinter import filedialog, messagebox
+from tkinter import filedialog
 from .base_controller import BaseController
+from ..errors import show_error
 from src.gui.folder_scanner import scan_folder
 from src.gui.recent_files import add_recent_folder, remove_recent_folder
 from src.i18n import _
@@ -24,7 +25,7 @@ class FolderController(BaseController):
     def select_recent_folder(self, folder_path):
         """Sélectionne un dossier depuis les emplacements récents."""
         if not os.path.exists(folder_path):
-            messagebox.showerror(_("Erreur"), _("Le dossier n'existe plus : {}").format(folder_path))
+            show_error(_("Erreur"), _("Le dossier n'existe plus : {}").format(folder_path), parent=self.root)
             remove_recent_folder(folder_path)
             if self.ui.update_recent_menu:
                 self.ui.update_recent_menu()
@@ -41,6 +42,12 @@ class FolderController(BaseController):
         self.ui.folder_path_var.set(folder)
         self.ui.extract_btn.config(state='normal')
         self.clear_info()
+        # Session restore : mémoriser le dernier dossier
+        try:
+            from src.config import get_config
+            get_config().update_gui(last_folder=folder)
+        except Exception:
+            pass
 
     def _log_folder_stats(self):
         """Affiche les statistiques du dossier dans le journal."""

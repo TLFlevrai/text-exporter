@@ -1,15 +1,22 @@
 # src/gui/version_explorer/version_tree.py
 import tkinter as tk
 from tkinter import ttk
+from typing import Callable, List, Optional
 from src.i18n import _
 from src.utils import human_size
+from src.services.version_service import VersionEntry
 from .utils import parse_date_from_header, get_file_stats
 
 
 class VersionTree:
     """Table des versions avec colonnes et sélection multiple."""
 
-    def __init__(self, parent, on_version_select, on_version_double_click):
+    def __init__(
+        self,
+        parent,
+        on_version_select: Callable[[List[VersionEntry]], None],
+        on_version_double_click: Callable[[VersionEntry], None],
+    ):
         self.on_version_select = on_version_select
         self.on_version_double_click = on_version_double_click
         self.current_entries = []

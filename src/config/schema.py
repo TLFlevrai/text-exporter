@@ -48,6 +48,8 @@ class GuiConfig(BaseModel):
     theme: str = Field(default="system", description="Thème : system, light, dark, custom")
     # Thème personnalisé (stocké comme JSON string ou dict)
     custom_theme: dict = Field(default_factory=dict, description="Couleurs du thème personnalisé")
+    # Session
+    last_folder: str = Field(default="", description="Dernier dossier sélectionné (restauré au démarrage)")
 
 
 class AppConfig(BaseModel):

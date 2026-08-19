@@ -34,13 +34,16 @@ class ExtractionService:
         options: dict,
         progress_callback: Optional[Callable[[int, int, str], None]] = None,
         log_callback: Optional[Callable[[str], None]] = None,
-        selected_files: Optional[List[str]] = None
+        selected_files: Optional[List[str]] = None,
+        cancel_event=None,
     ) -> Tuple[bool, Optional[str], Optional[dict]]:
         """
         selected_files : liste de chemins relatifs (str) à extraire.
         Si None ou vide, on extrait tous les fichiers trouvés.
+        cancel_event : threading.Event optionnel pour annuler l'extraction.
         
         Retourne : (success, output_filename, stats_dict)
+        success peut être True (ok), False (échec) ou None (annulé).
         """
         folder_path = Path(folder_path)
         
@@ -64,8 +67,14 @@ class ExtractionService:
             str(output_filename),
             progress_callback=progress_callback,
             log_callback=log_callback,
-            selected_files=selected_files
+            selected_files=selected_files,
+            cancel_event=cancel_event,
         )
+
+        if success is None:
+            # Extraction annulée : on ne consomme pas la version
+            logger.info(f"Extraction annulée : {folder_name}")
+            return None, None, None
 
         if success:
             self.version_manager.use_version(folder_name, next_version)

@@ -1,50 +1,37 @@
 # src/gui/video_converter.py
-"""Convertisseur vidéo vers MP3."""
+"""Convertisseur vidéo vers MP3 (UI)."""
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, filedialog
 from pathlib import Path
-import subprocess
-import threading
+import webbrowser
 from src.i18n import _
 from src.logger import setup_logger
+from .base_dialog import BaseDialog
+from .video_converter_core import VideoConverterCore, VideoConversionOptions
 
 logger = setup_logger(__name__)
 
 
-class VideoToMP3Converter(tk.Toplevel):
+class VideoToMP3Converter(BaseDialog):
     """Fenêtre de conversion vidéo vers MP3."""
 
     def __init__(self, parent):
-        super().__init__(parent)
-        self.title(_("Convertisseur Vidéo → MP3"))
-        self.geometry("600x450")
-        self.minsize(550, 400)
-        self.transient(parent)
-        self.grab_set()
+        super().__init__(
+            parent,
+            title=_("Convertisseur Vidéo → MP3"),
+            geometry="600x450",
+            minsize=(550, 400),
+        )
 
         self.video_path = None
         self.output_path = None
-        self.ffmpeg_available = self._check_ffmpeg()
+        self.converter = VideoConverterCore()
+        self.ffmpeg_available = self.converter.check_ffmpeg()
 
         self._create_widgets()
-        self._center_window()
 
-    def _center_window(self):
-        self.update_idletasks()
-        parent = self.master
-        if parent:
-            x = parent.winfo_rootx() + (parent.winfo_width() - self.winfo_width()) // 2
-            y = parent.winfo_rooty() + (parent.winfo_height() - self.winfo_height()) // 2
-            self.geometry(f"+{x}+{y}")
-
-    def _check_ffmpeg(self) -> bool:
-        """Vérifie si ffmpeg est disponible."""
-        try:
-            result = subprocess.run(['ffmpeg', '-version'], 
-                                  capture_output=True, timeout=5)
-            return result.returncode == 0
-        except Exception:
-            return False
+        # Gérer la fermeture pendant conversion
+        self.protocol("WM_DELETE_WINDOW", self._on_close)
 
     def _create_widgets(self):
         main = ttk.Frame(self, padding=20)
@@ -82,8 +69,9 @@ class VideoToMP3Converter(tk.Toplevel):
         video_btn.grid(row=0, column=1)
 
         # Formats supportés
+        formats = self.converter.get_supported_formats()
         formats_label = ttk.Label(video_frame, 
-            text=_("Formats supportés : MP4, AVI, MKV, MOV, WMV, FLV, WebM, M4V, 3GP, OGV, MPEG, MPG"),
+            text=_("Formats supportés : {}").format(", ".join(f.upper() for f in formats)),
             font=('Arial', 8), foreground='gray')
         formats_label.grid(row=1, column=0, columnspan=2, sticky=tk.W, pady=(5, 0))
 
@@ -164,19 +152,20 @@ class VideoToMP3Converter(tk.Toplevel):
 
     def _open_ffmpeg_download(self):
         """Ouvre la page de téléchargement FFmpeg."""
-        import webbrowser
         webbrowser.open("https://ffmpeg.org/download.html")
 
     def _select_video(self):
         """Sélectionne le fichier vidéo source."""
+        from tkinter import filedialog
         path = filedialog.askopenfilename(
             title=_("Sélectionner un fichier vidéo"),
             filetypes=[
-                (_("Fichiers vidéo"), "*.mp4 *.avi *.mkv *.mov *.wmv *.flv *.webm *.m4v *.3gp *.ogv *.mpeg *.mpg"),
+                (_("Fichiers vidéo"), " ".join(f"*{ext}" for ext in self.converter.get_supported_formats())),
                 (_("Tous les fichiers"), "*.*")
             ]
         )
         if path:
+            from pathlib import Path
             self.video_path = Path(path)
             self.video_entry.config(state='normal')
             self.video_entry.delete(0, tk.END)
@@ -195,12 +184,14 @@ class VideoToMP3Converter(tk.Toplevel):
 
     def _select_output(self):
         """Sélectionne le fichier MP3 de sortie."""
+        from tkinter import filedialog
         path = filedialog.asksaveasfilename(
             title=_("Enregistrer le fichier MP3"),
             defaultextension=".mp3",
             filetypes=[(_("Fichiers MP3"), "*.mp3"), (_("Tous les fichiers"), "*.*")]
         )
         if path:
+            from pathlib import Path
             self.output_path = Path(path)
             self.output_entry.config(state='normal')
             self.output_entry.delete(0, tk.END)
@@ -210,15 +201,15 @@ class VideoToMP3Converter(tk.Toplevel):
     def _start_conversion(self):
         """Lance la conversion dans un thread séparé."""
         if not self.video_path or not self.video_path.exists():
-            messagebox.showerror(_("Erreur"), _("Veuillez sélectionner un fichier vidéo valide"))
+            self.show_error(_("Erreur"), _("Veuillez sélectionner un fichier vidéo valide"))
             return
 
         if not self.output_path:
-            messagebox.showerror(_("Erreur"), _("Veuillez spécifier un fichier de sortie"))
+            self.show_error(_("Erreur"), _("Veuillez spécifier un fichier de sortie"))
             return
 
         if not self.ffmpeg_available:
-            messagebox.showerror(_("Erreur"), _("FFmpeg n'est pas installé ou pas dans le PATH"))
+            self.show_error(_("Erreur"), _("FFmpeg n'est pas installé ou pas dans le PATH"))
             return
 
         self.convert_btn.config(state='disabled')
@@ -226,67 +217,27 @@ class VideoToMP3Converter(tk.Toplevel):
         self.progress_bar.start(10)
         self.status_var.set(_("Conversion en cours..."))
 
-        thread = threading.Thread(target=self._convert_thread, daemon=True)
-        thread.start()
+        options = VideoConversionOptions(
+            quality=self.quality_var.get(),
+            sample_rate=self.sample_rate_var.get(),
+            channels=self.channels_var.get(),
+            volume=self.volume_var.get(),
+        )
 
-    def _convert_thread(self):
-        """Thread de conversion."""
-        try:
-            # Construire la commande ffmpeg
-            cmd = [
-                'ffmpeg', '-y',  # -y = overwrite output
-                '-i', str(self.video_path),
-                '-vn',  # Pas de vidéo
-                '-acodec', 'libmp3lame',  # Codec MP3
-                '-b:a', self.quality_var.get(),  # Bitrate
-                '-ar', self.sample_rate_var.get(),  # Sample rate
-            ]
+        self.converter.convert(
+            input_path=self.video_path,
+            output_path=self.output_path,
+            options=options,
+            on_progress=lambda msg: self.after(0, lambda: self.status_var.set(msg)),
+            on_complete=self._on_conversion_complete,
+        )
 
-            # Canaux
-            if self.channels_var.get() == 'mono':
-                cmd.extend(['-ac', '1'])
-            else:
-                cmd.extend(['-ac', '2'])
-
-            # Volume
-            volume = self.volume_var.get()
-            if volume != 1.0:
-                cmd.extend(['-filter:a', f'volume={volume}'])
-
-            cmd.append(str(self.output_path))
-
-            logger.info(f"Commande ffmpeg : {' '.join(cmd)}")
-
-            # Exécuter avec capture de sortie pour progression
-            process = subprocess.Popen(
-                cmd,
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                universal_newlines=True
-            )
-
-            # Surveiller la progression (stderr contient les infos de progression)
-            while True:
-                output = process.stderr.readline()
-                if output == '' and process.poll() is not None:
-                    break
-                if output:
-                    # Parser la progression si possible
-                    if 'time=' in output:
-                        self.after(0, lambda: self.status_var.set(_("Conversion en cours...")))
-
-            return_code = process.wait()
-
-            if return_code == 0:
-                self.after(0, self._conversion_success)
-            else:
-                stderr_output = process.stderr.read()
-                logger.error(f"Erreur ffmpeg : {stderr_output}")
-                self.after(0, lambda: self._conversion_error(stderr_output))
-
-        except Exception as e:
-            logger.error(f"Erreur lors de la conversion : {e}")
-            self.after(0, lambda: self._conversion_error(str(e)))
+    def _on_conversion_complete(self, success: bool, error_msg: str | None):
+        """Callback appelé à la fin de la conversion."""
+        if success:
+            self.after(0, self._conversion_success)
+        else:
+            self.after(0, lambda: self._conversion_error(error_msg or "Erreur inconnue"))
 
     def _conversion_success(self):
         """Appelé quand la conversion réussit."""
@@ -295,19 +246,34 @@ class VideoToMP3Converter(tk.Toplevel):
         self.status_var.set(_("Conversion terminée avec succès !"))
         self.convert_btn.config(state='normal')
         
-        messagebox.showinfo(
+        self.show_info(
             _("Succès"),
             _("Fichier MP3 créé : {}").format(self.output_path)
         )
+        from .toast import show_toast
+        show_toast(self, _("Conversion terminée avec succès"), 'success', parent=self)
 
-    def _conversion_error(self, error_msg):
+    def _conversion_error(self, error_msg: str):
         """Appelé en cas d'erreur de conversion."""
         self.progress_bar.stop()
         self.progress_bar.config(mode='determinate', value=0)
         self.status_var.set(_("Erreur lors de la conversion"))
         self.convert_btn.config(state='normal')
         
-        messagebox.showerror(_("Erreur"), _("Impossible de convertir : {}").format(error_msg))
+        self.show_error(_("Erreur"), _("Impossible de convertir : {}").format(error_msg))
+
+    def _on_close(self):
+        """Gère la fermeture de la fenêtre."""
+        if self.converter.is_running():
+            # Conversion en cours, demander confirmation
+            if self.confirm(
+                _("Confirmation"),
+                _("Une conversion est en cours. Voulez-vous l'annuler et fermer ?")
+            ):
+                self.converter.cancel()
+                self.destroy()
+        else:
+            self.destroy()
 
 
 def open_video_converter(parent):
